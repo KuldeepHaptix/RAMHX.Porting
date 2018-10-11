@@ -1,0 +1,151 @@
+﻿@{
+    Layout = null;
+    var path = "/gallery" + Request.QueryString["p"];
+    string[] listDirs = Directory.GetDirectories(Server.MapPath(path));
+    bool showDirs = true;
+    bool showPhotos = true;
+    string[] photos = null;
+    string fromDir = "";
+    string galleryPath = Server.MapPath("/gallery").ToString().ToLower();
+    if (listDirs == null || listDirs.Count() == 0)
+    {
+        showDirs = false;
+        photos = Directory.GetFiles(Server.MapPath(path));
+        if (photos == null || photos.Count() == 0)
+        {
+            showPhotos = false;
+
+        }
+        else
+        {
+            for (int dInx = 0; dInx < photos.Count(); dInx++)
+            {
+                photos[dInx] = "/gallery" + photos[dInx].ToLower().Replace(galleryPath, "").Replace("\\", "/");
+            }
+        }
+    }
+    else
+    {
+        for (int dInx = 0; dInx < listDirs.Count(); dInx++)
+        {
+            listDirs[dInx] = listDirs[dInx].ToLower().Replace(galleryPath, "").Replace("\\", "/");
+        }
+    }
+}
+<style>
+    ul {
+        list-style-type: none;
+    }
+
+        ul li {
+            float: left;
+        }
+
+
+    .photodiv {
+        margin-bottom: 20px;
+    }
+</style>
+@if (Request.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-6"><h5 style="float:left;">@Request.QueryString["p"]</h5></div>
+        <div class="col-md-6 right"><a href="/admin/account/logoffpublic?redirect=/" style="float:right">Logout</a><span style="float:right">@HttpContext.Current.User.Identity.Name&nbsp;|&nbsp; </span></div>
+    </div>
+    if (showDirs)
+    {
+        <div class="">
+            <div id="" class="container">
+                <ul class="thumbnails" id="dir">
+                    @for (int i = 0; i < listDirs.Count(); i++)
+                    {
+
+                        <li class="col-lg-3">
+                            <div class="thumb-isotope">
+                                <div class="thumbnail clearfix">
+                                    <a href="/gallery?p=@listDirs[i]">
+                                        <figure>
+                                            <img src="/assets/images/folder_thumb.png" style="width:100%;"><em></em>
+                                        </figure>
+                                        <div class="caption">@listDirs[i]</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    }
+    else if (showPhotos)
+    {
+        <div id="" class="container">
+            @for (int i = 0; i < photos.Count(); i++)
+            {
+
+                <div class="col-lg-3 photodiv">
+                    <a rel="prettyPhoto[myGallery]" href="@photos[i]">
+                        <img class="viewImage" style="width:260px;height:190px;" src="@photos[i]" />
+                    </a>
+                </div>
+
+            }
+
+        </div>
+
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function () {
+                $("a[rel^='prettyPhoto']").prettyPhoto();
+
+            });
+        </script>
+    }
+    else
+    {
+        <h3>No Photos</h3>
+    }
+    <br /><br />
+    <a href="javascript:window.history.back()">Back</a>
+}
+else
+{
+    <h2 style="float:left">Log In.</h2>
+    <div class="clearfix">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-4">
+            <section id="loginForm">
+                <div class="form-group">
+                    <label class="col-md-12 control-label" for="Email">Email</label>
+                    <div class="col-md-12">
+                        <input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="clearfix">&nbsp;</div>
+                <div class="form-group ">
+                    <label class="col-md-12 control-label" for="Password">Password</label>
+                    <div class="col-md-12">
+                        <input class="form-control" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="clearfix">&nbsp;</div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="button" id="btnLogin" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <script type="text/javascript" charset="utf-8">
+            $(document).ready(function () {
+                $("#btnLogin").on("click", function () {
+
+                });
+            });
+        </script>
+}

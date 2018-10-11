@@ -1,0 +1,34 @@
+HTTrack3.48-21 launched on Thu, 24 Nov 2016 15:20:14 at http://the8guild.com/themes/html/eattie/v1.3/home-slideshow.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/*
+(webhttrack -q -%i -w http://the8guild.com/themes/html/eattie/v1.3/home-slideshow.html -O "/home/haptix/websites/Restaurant/Cafe/Foods/eattieslideshow" -n -%P -N0 -s2 -p7 -D -a -K0 -c4 -%k -A25000 -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -%s -%u )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+15:26:41	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/recipes-single.html (from the8guild.com/themes/html/eattie/v1.3/home-slideshow.html)
+15:26:45	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css (from the8guild.com/themes/html/eattie/v1.3/home-slideshow.html)
+15:27:19	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/css/style.css (from the8guild.com/themes/html/eattie/v1.3/home-slideshow.html)
+15:27:20	Warning: 	HTML file (21168 bytes) retransferred due to lack of cache: the8guild.com/themes/html/eattie/v1.3/menu1.html
+15:27:24	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/img/news/2.png (from the8guild.com/themes/html/eattie/v1.3/home-slideshow.html)
+15:27:25	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/img/app/screen.jpg (from the8guild.com/themes/html/eattie/v1.3/home-slideshow.html)
+15:27:48	Warning: 	file not stored in cache due to bogus state (incomplete type with OK (200), size 3052): the8guild.com/themes/html/eattie/v1.3/img/marker.png
+15:27:50	Warning: 	HTML file (13027 bytes) retransferred due to lack of cache: the8guild.com/themes/html/eattie/v1.3/recipes-single.html
+15:27:55	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/fonts/fontawesome-webfont.eot? (from the8guild.com/themes/html/eattie/v1.3/css/font-awesome.min.css)
+15:27:55	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/fonts/fontawesome-webfont.woff?v=4.3.0 (from the8guild.com/themes/html/eattie/v1.3/css/font-awesome.min.css)
+15:28:08	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/img/app/screen.jpg (from the8guild.com/themes/html/eattie/v1.3/home-slideshow.html)
+15:28:08	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/Popover requires tooltip.js (from the8guild.com/themes/html/eattie/v1.3/js/plugins/bootstrap.min.js)
+15:28:08	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.eot (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+15:28:08	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.eot? (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+15:28:09	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.woff2 (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+15:28:09	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.woff (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+15:28:09	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.ttf (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+15:28:09	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.svg (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+15:28:09	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/fonts/fontawesome-webfont.woff?v=4.3.0 (from the8guild.com/themes/html/eattie/v1.3/css/font-awesome.min.css)
+15:28:09	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/img/app/appstore.png (from the8guild.com/themes/html/eattie/v1.3/css/style.css)
+15:28:09	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/img/forms/calendar-arrows.svg (from the8guild.com/themes/html/eattie/v1.3/css/style.css)
+15:28:10	Warning: 	Retry after error -4 (No data (connection closed)) at link the8guild.com/themes/html/eattie/v1.3/img/forms/calendar-arrows.png (from the8guild.com/themes/html/eattie/v1.3/css/style.css)
+15:28:11	Error: 	"Not Found" (404) at link the8guild.com/themes/html/eattie/v1.3/fonts/glyphicons-halflings-regular.eot? (from the8guild.com/themes/html/eattie/v1.3/css/bootstrap.min.css)
+
+HTTrack Website Copier/3.48-21 mirror complete in 7 minutes 59 seconds : 115 links scanned, 127 files written (21024844 bytes overall) [11637920 bytes received at 24296 bytes/sec], 135938 bytes transferred using HTTP compression in 9 files, ratio 18%, 1.9 requests per connection
+(7 errors, 16 warnings, 0 messages)

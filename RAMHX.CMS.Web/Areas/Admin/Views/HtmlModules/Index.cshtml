@@ -1,0 +1,101 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.HtmlModule>
+
+@{
+    ViewBag.Title = "Index";
+}
+<section class="content-header">
+    <h1>
+        Contents
+        <small>Maintain Contents</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Contents</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <p>
+                        @Html.ActionLink("Create New", "Create", null, new { @id = "lnkcreatepage" })
+                    </p>
+                    <table class="table" id="tblHTMlModules">
+                        <thead>
+                            <tr>
+                                @if (Request.QueryString["pageid"] != "")
+            {
+                                    <th class="thSelect">
+                                        Select
+                                    </th>
+                                }
+                                <th>
+                                    #ID
+                                </th>
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Page Name
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+            {
+                                <tr>
+                                    @if (Request.QueryString["pageid"] != "")
+                {
+                                        <td class="tdChkBox">
+                                            @Html.CheckBox("checked", false, new { name = "assignChkBx", id = item.HTMLModuleId, value = item.HTMLModuleId })
+                                        </td>
+                                    }
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HTMLModuleId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HtmlModuleCode)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HtmlModuleName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PageName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.HTMLModuleId }, new { id = item.HTMLModuleId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.HTMLModuleId }, new { id = item.HTMLModuleId })
+                                        |
+                                        @if (string.IsNullOrEmpty(Request.QueryString["pageid"]))
+                                        {
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.HTMLModuleId })
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@if (!string.IsNullOrEmpty(Request.QueryString["pageid"]))
+{
+    <div class="form-group">
+        <input type="button" value="Add" class="btn btn-success" id="savedetail" />
+    </div>
+}
+
+@section scripts{
+    <script src="~/Areas/Admin/Assets/js/page.IndexHtmlModuleI.js"></script>
+}
+

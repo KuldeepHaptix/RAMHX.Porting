@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+<section class="content-header">
+    <h1>
+        Product Category
+        <small>Maintain Product</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Product</a></li>
+        <li><a href="/masters/country">Product Category</a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New Product Category
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Product Category Details - Edit</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div id="dProdCat">
+                                        <label class="control-label">Product Category</label>
+                                        <input type="text" name="Name" class="form-control" id="txtProdCatName" isrequired="1" data-error="Please enter Product Category." errorspan="sProdCat" divcontainer="dProdCat" defaultvalue="" />
+                                        <span class="help-block hide error" id="sProdCat">Please Enter Category</span>
+                                    </div>
+                                </div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="~/distadmin/js/AppAdmin/Masters/ProductCategory.js?_=@DateTime.Now.Ticks"></script>

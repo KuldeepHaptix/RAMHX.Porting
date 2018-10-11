@@ -1,0 +1,84 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = "Products";
+    var products = SiteContext.CurrentPage.cms_SubPages.ToList();
+    var category = SiteContext.CurrentPage.cms_ParentPage.cms_SubPages.ToList();
+}
+
+<!-- Inside Title -->
+<div class="inside_title image_bck bordered_wht_border white_txt" data-image="/Assets/images/shop1.jpg ">
+    <!-- Over -->
+    <div class="over" data-opacity="0.2" data-color="#000"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><h1>Shop Sidebar</h1></div>
+            <div class="col-md-6 text-right"><div class="breadcrumbs"><a href="#">Home</a><a href="#">Shop</a>Shop Sidebar</div></div>
+        </div>
+    </div>
+</div>
+<!-- Inside Title End -->
+<!-- Content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="bordered_block col-md-12 grey_border">
+
+                <div class="container">
+                    <div class="row">
+
+                        <!--Sidebar-->
+                        <div class="col-md-9 col-md-push-3 col-xs-12">
+
+                            <div class="row masonry">
+                                <!-- Item -->
+                                @foreach (var item in products)
+                                {
+                                    <div class="col-sm-6 masonry-item">
+                                        <a href="@item.FullPageUrl" class="product_item text-center">
+                                            <span class="product_photo bordered_wht_border"><img src="@item.FieldValue("Image")" alt=""></span>
+                                            <span class="product_title">@item.FieldValue("ProductName")</span>
+                                            <span class="product_price">@item.FieldValue("Price")</span>
+                                            <span class="sale">Sale</span>
+                                            <span class="new">New</span>
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+
+
+                        </div>
+                        <!--Sidebar End-->
+                        <!--Sidebar-->
+                        <div class="col-md-3 col-md-pull-9 hidden-xs hidden-sm">
+
+
+                            <div class="widget">
+                                <h6 class="title">Shop Categories</h6>
+                                <ul class="list-unstyled">
+                                    @foreach (var item in category)
+                                    {
+                                        <li>
+                                            <a href="@item.FullPageUrl">@item.FieldValue("CategoryName")</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
+
+                        </div>
+                        <!--Sidebar End-->
+                    </div>
+                    <!--Row End-->
+
+                </div>
+            </div>
+        </div>
+        <!-- Row End -->
+
+
+    </div>
+</div>
+<!-- Content End -->

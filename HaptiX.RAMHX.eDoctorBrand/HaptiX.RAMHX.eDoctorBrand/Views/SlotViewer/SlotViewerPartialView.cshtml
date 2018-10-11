@@ -1,0 +1,127 @@
+﻿@using HaptiX.RAMHX.eDoctor.Infra
+@using HaptiX.RAMHX.eDoctorBrand.Models
+@model HaptiX.RAMHX.eDoctor.DataAccess.Availability
+
+@functions {
+    private bool IsTodayWorking(HaptiX.RAMHX.eDoctor.DataAccess.Availability availibity, DateTime currentDate)
+    {
+        bool ret = false;
+
+        switch (currentDate.DayOfWeek)
+        {
+            case DayOfWeek.Sunday:
+                ret = availibity.OnSunday;
+                break;
+            case DayOfWeek.Monday:
+                ret = availibity.OnMonday;
+                break;
+            case DayOfWeek.Tuesday:
+                ret = availibity.OnTuesday;
+                break;
+            case DayOfWeek.Wednesday:
+                ret = availibity.OnWednesday;
+                break;
+            case DayOfWeek.Thursday:
+                ret = availibity.OnThursday;
+                break;
+            case DayOfWeek.Friday:
+                ret = availibity.OnFriday;
+                break;
+            case DayOfWeek.Saturday:
+                ret = availibity.OnSaturday;
+                break;
+            default:
+                ret = false;
+                break;
+        }
+        return ret;
+    }
+}
+<div class="row">
+    <div class="col-lg-2 text-center">
+        Day
+    </div>
+    <div class="col-lg-5 text-center">
+    Morning
+    </div>
+    <div class="col-lg-5 text-center">
+        Evening
+    </div>
+</div>
+
+@for (DateTime currentDate = Model.StartDate; currentDate <= Model.EndDate; currentDate = currentDate.AddDays(1))
+{
+    if (IsTodayWorking(Model, currentDate) && currentDate >= DateTime.Now && currentDate <= DateTime.Now.Date.AddDays(7))
+    {
+        <div class="row">
+            <hr />
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">
+                @currentDate.ToString(Contants.DATEFORMATE)
+                <br />
+                @currentDate.DayOfWeek.ToString()
+            </div>
+            <div class="col-lg-5">
+
+                @switch (currentDate.DayOfWeek)
+                    {
+                        case DayOfWeek.Sunday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.SundayMorningStart, EndTime = Model.SundayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Monday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.MondayMorningStart, EndTime = Model.MondayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Tuesday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.TuesdayMorningStart, EndTime = Model.TuesdayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Wednesday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.WednesdayMorningStart, EndTime = Model.WednesdayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Thursday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.ThursdayMorningStart, EndTime = Model.ThursdayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Friday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.FridayMorningStart, EndTime = Model.FridayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Saturday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.SaturdayMorningStart, EndTime = Model.SaturdayMorningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    default:
+                        break;
+                }
+            </div>
+            <div class="col-lg-5">
+                @switch (currentDate.DayOfWeek)
+                    {
+                        case DayOfWeek.Sunday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.SundayEveningStart, EndTime = Model.SundayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Monday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.MondayEveningStart, EndTime = Model.MondayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Tuesday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.TuesdayEveningStart, EndTime = Model.TuesdayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Wednesday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.WednesdayEveningStart, EndTime = Model.WednesdayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Thursday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.ThursdayEveningStart, EndTime = Model.ThursdayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Friday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.FridayEveningStart, EndTime = Model.FridayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    case DayOfWeek.Saturday:
+                        @Html.Partial("~/Views/SlotViewer/TimeSlot.cshtml", new TimeSlot { StartTime = Model.SaturdayEveningStart, EndTime = Model.SaturdayEveningEnd, DurationInMinute = Model.DurationInMinute, Date = currentDate, DoctorId = Model.DoctorId, LocationId = Model.LocationId })
+                        break;
+                    default:
+                        break;
+                }
+
+            </div>
+        </div>
+
+    }
+}

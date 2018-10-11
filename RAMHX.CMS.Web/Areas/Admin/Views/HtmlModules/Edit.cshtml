@@ -1,0 +1,146 @@
+﻿@model RAMHX.CMS.DataAccess.HtmlModule
+
+@{
+    ViewBag.Title = "Edit";
+}
+<section class="content-header">
+    <h1>
+        Contents
+        <small>Maintain Contents</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Contents</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @if (string.IsNullOrEmpty(Request.QueryString["pd"]))
+                            {
+                                <h4>Edit page content</h4>
+
+                                <hr />
+                            }
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.HtmlModuleCode)
+                            @Html.HiddenFor(model => model.HTMLModuleId)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HtmlModuleName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HtmlModuleName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HtmlModuleName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HtmlModuleDescription, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HtmlModuleDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HtmlModuleDescription, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.HtmlModuleHTML, "Html", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.HtmlModuleHTML, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.HtmlModuleHTML, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PageName, "Page Reference", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PageName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PageName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HtmlModuleHTML, "Html", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.HtmlModuleHTML, new { htmlAttributes = new { @id = "editor1", @name = "editor1" } })
+                                    @Html.ValidationMessageFor(model => model.HtmlModuleHTML, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="PageName">Examples</label>
+                                <div class="col-md-10">
+                                    &lt;ramhx htmlcode="ContactUsForm"&gt;&lt;/ramhx&gt;<br />
+                                    &lt;ramhx viewpath="~/Views/ContactUs/ContactUs.cshtml"&gt;&lt;/ramhx&gt;
+                                </div>
+                            </div>
+                            <div class="hidden">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ModifiedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ModifiedDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ModifiedDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CreatedUserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CreatedUserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CreatedUserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ModifiedUserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ModifiedUserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ModifiedUserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" name="Command" class="btn btn-success" />
+                                    @if (string.IsNullOrEmpty(Request.QueryString["pd"]))
+                {
+                                        <input type="submit" value="Save & Close" name="Command" class="btn btn-warning" />}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (string.IsNullOrEmpty(Request.QueryString["pd"]))
+                    {
+                        <div>
+                            @Html.ActionLink("Back to List", "Index", null, new { @id = "goback" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script src="/areas/admin/assets/Plugins/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('HtmlModuleHTML');
+    </script>
+
+    <script src="~/Areas/Admin/Assets/js/HtmlModule.Create.js"></script>
+}

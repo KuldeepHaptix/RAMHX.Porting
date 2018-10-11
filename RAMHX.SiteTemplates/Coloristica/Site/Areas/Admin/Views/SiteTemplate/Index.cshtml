@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RAMHX.CMS.Web.Areas.Admin.Models.SiteTemplate>
+
+
+<div class="container">
+    <div class="row">
+        <h2>Site Templates</h2>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+            {
+            <div class="col-lg-4 ">
+                <div class="bordered">
+                    <img src="@item.ThumbUrl" class="bordered" />
+                </div>
+                <div>
+                    @item.Name
+                </div>
+                <div>
+                    @item.PackagePath
+                </div>
+                <div>
+                    <button class="btn btn-success install" data-template-name="@item.Name">Install</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts{
+    <script src="/Areas/Admin/Assets/js/sitetemplate.js"></script>
+}

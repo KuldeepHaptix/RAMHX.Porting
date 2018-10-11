@@ -1,0 +1,68 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    Layout = null;
+
+    RAMHX.CMS.DataAccess.cms_Pages latestWorkPage = SiteContext.CurrentPage.cms_SubPages.First();
+
+    List<RAMHX.CMS.DataAccess.cms_Pages> portfolioCategory = latestWorkPage.cms_SubPages.ToList();
+}
+
+
+<section id="works" class="page-section">
+    <div class="image-bg content-in fixed" data-background="/Assets/img/sections/bg/bg-13.jpg">
+        <div class="overlay"></div>
+    </div>
+    <div class="container work-section">
+        <div class="section-title white" data-animation="fadeInUp">
+            <!-- Heading -->
+            <h2 class="title">@latestWorkPage.PageTitle</h2>
+        </div>
+        <div id="options" class="filter-menu">
+            <ul class="option-set nav nav-pills">
+                <li class="filter active" data-filter="all">Show All</li>
+
+                @for (int i = 0; i < portfolioCategory.Count; i++)
+                {
+                    <li class="filter" data-filter=".filter_@i">@portfolioCategory[i].PageName</li>
+                }
+
+                @*<li class="filter" data-filter=".web">web design</li>
+                    <li class="filter" data-filter=".html">landing pages</li>
+                    <li class="filter" data-filter=".wp">personal blog</li>*@
+            </ul>
+        </div>
+    </div>
+    <!-- filter -->
+    <div id="mix-container" class="portfolio-grid">
+        @for (int i = 0; i < portfolioCategory.Count; i++)
+        {
+            for (int j = 0; j < portfolioCategory[i].cms_SubPages.Count; j++)
+            {
+                RAMHX.CMS.DataAccess.cms_Pages portfolio = portfolioCategory[i].cms_SubPages.ToList()[j];
+
+                <div class="grids col-xs-12 col-sm-6 col-md-3 mix all filter_@i">
+                    <div class="grid">
+                        <img src="@portfolio.FieldValue("Thumb")" alt="@portfolio.PageName" class="img-responsive" />
+                        <div class="figcaption">
+                            <div class="caption-block">
+                                <h4>@portfolio.PageName</h4>
+                                <p>@portfolio.FieldValue("ShortDesc")</p>
+                            </div>
+                            <!-- Image Popup-->
+                            <a href="@portfolio.FieldValue("Thumb")" data-rel="prettyPhoto[portfolio]">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <a href="@portfolio.FullPageUrl">
+                                <i class="fa fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+     </div>
+            <!-- Mix Container -->
+        </section>
+        <!-- works --> 

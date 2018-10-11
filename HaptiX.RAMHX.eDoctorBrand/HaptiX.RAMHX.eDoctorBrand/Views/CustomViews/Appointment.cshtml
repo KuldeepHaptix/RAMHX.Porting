@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Appointment";
+}
+
+<style>
+    .app {
+        background: #fe824c;
+        border: none;
+        border-radius: 0;
+        color: #fff;
+        font-family: 'Karla', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 55px;
+        padding: 0;
+        height: auto;
+        -webkit-transition: all 300ms ease-in-out 0s;
+        transition: all 300ms ease-in-out 0s;
+    }
+
+        .app:hover, .app:focus {
+            background: #0186d5;
+        }
+</style>
+
+<div class="modal fade" id="appointmefnt_form_pop" tabindex="-1" role="dialog" aria-labelledby="appointmefnt_form_pop">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div id="card">
+                <div class="front">
+                    <form action="#" class="row m0 appointment_home_form2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times-circle-o"></i>
+                        </button>
+                        <h2 class="title" style="width: 340px;">BOOK<br>NOW</h2>
+                        <div class="form_inputs row m0">
+                            <div class="row m0 input_row">
+                                <select id="drpDoctor" class="form-control" disabled="disabled"></select>
+                                @*<p id="docid"></p>*@
+                            </div>
+                            <div class="row m0 input_row">
+                                @*<p id="locid"></p>*@
+                                <select id="drpLocation" class="form-control" disabled="disabled"></select>
+                            </div>
+                            <div class="row m0 input_row">
+                                <label for="app_date">Booking Date & Time</label>
+                                <div class="input-append date">
+                                    <span id="bkDate"></span>
+                                    <span id="btTime"></span>
+                                </div>
+                            </div>
+                            <div class="row m0 input_row">
+                                <input type="text" class="form-control" id="app_fullname" placeholder="Your Full Name">
+                            </div>
+                            <div class="row m0 input_row">
+                                <input type="email" class="form-control" id="app_email" placeholder="Enter your Email Address">
+                            </div>
+                            <div class="row m0 input_row">
+                                <div class="input-append date">
+                                    <input type="text" class="form-control" name="date" id="app_BirthDate" placeholder="Select the BirthDate">
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                            <div class="row m0 input_row">
+                                <label for="app_Gender">Gender</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio" id="app_GenderMale" name="rdbGender"> Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio" id="app_GenderFemale" name="rdbGender"> Female
+                            </div>
+                            <div class="row m0 input_row">
+                                <input type="tel" class="form-control" id="app_phone" placeholder="Enter your Phone Number">
+                            </div>
+
+                            <input type="button" class="form-control app" id="bookAppointmentGetOTP" value="GET OTP" style="text-align: center;">
+                        </div>
+                        <div class="row m0 form_footer">
+                            <a href="#"><img src="/Assets/images/call-now3.png" alt="">123 7890 456</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="back">
+                    <form action="#" class="row m0 appointment_home_form2">
+                        <button type="button" class="close cloaOTP" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times-circle-o"></i>
+                        </button>
+                        <h2 class="title" style="width: 340px;">BOOK<br>NOW</h2>
+                        <div class="form_inputs row m0">
+                            <div class="row m0 input_row">
+                                <label for="app_OTP">Enter OTP</label>
+                                <input type="text" class="form-control" id="app_OTP" placeholder="Enter Your OTP">
+                            </div>
+
+                            <input type="button" class="form-control app" id="bookAppointment" value="book your appointment now" style="text-align: center;">
+                        </div>
+                        <div class="row m0 form_footer">
+                            <a href="#"><img src="/Assets/images/call-now3.png" alt="">123 7890 456</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

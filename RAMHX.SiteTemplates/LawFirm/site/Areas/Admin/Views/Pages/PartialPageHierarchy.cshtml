@@ -1,0 +1,18 @@
+﻿@model IEnumerable<RAMHX.CMS.Web.Areas.Admin.Models.PageHierarchy>
+
+@foreach (var item in Model)
+{
+    @*<ul class="jstree-container-ul jstree-children">
+        <li class="jstree-node">*@
+    <ul>
+        <li>
+            @Html.ActionLink("LoadChild", "Master", new { item.PageID })
+            @if (item.ChildNood.Count > 0)
+            {
+                @Html.Partial("PartialUserHierarchy", item.ChildNood)
+            }
+        </li>
+    </ul>
+}
+
+

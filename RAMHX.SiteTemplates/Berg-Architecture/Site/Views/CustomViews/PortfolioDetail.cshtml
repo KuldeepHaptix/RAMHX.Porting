@@ -1,0 +1,60 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = SiteContext.CurrentPage.PageTitle;
+    var blogDetail = SiteContext.CurrentPage;
+}
+
+<!-- Inside Title -->
+<div class="inside_title image_bck grey_border" data-image="/Assets/images/furn2.jpg ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><h1>Portfolio Details</h1></div>
+            <div class="col-md-6 text-right"><div class="breadcrumbs"><a href="/">Home</a><a href="#">Portfolio</a>Portfolio Details</div></div>
+        </div>
+    </div>
+</div>
+<!-- Inside Title End -->
+<!-- Content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="bordered_block col-sm-12 grey_border">
+
+                <div class="container">
+                    <div class="row">
+
+                        <!--Sidebar-->
+                        <div class="col-md-12 col-xs-12">
+
+                            <!--Item-->
+                            <div class="post-snippet">
+                                <a href="#">
+                                    <img alt="Post Image" src="@blogDetail.FieldValue("DetailImage")" />
+                                </a>
+                                <div class="post-title">
+                                    <a href="#">
+                                        <h4 class="inline-block">@blogDetail.FieldValue("Title")</h4>
+                                    </a>
+                                </div>
+
+                                @blogDetail.FieldValue("LongDesc")
+                            </div>
+
+
+                        </div>
+                        <!--Sidebar End-->
+
+                    </div>
+                    <!--Row End-->
+
+                </div>
+            </div>
+        </div>
+        <!-- Row End -->
+
+
+    </div>
+</div>
+<!-- Content End -->

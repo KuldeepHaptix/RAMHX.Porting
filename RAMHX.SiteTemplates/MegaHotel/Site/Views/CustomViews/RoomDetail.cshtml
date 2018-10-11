@@ -1,0 +1,9 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    var Recipe = SiteContext.CurrentPage;
+    Page.Title = Recipe.PageTitle;
+    Layout = null;
+    ViewBag.Title = "Room Detail - " + Page.Title;
+}
+@Recipe.FieldValue("RoomDetail")

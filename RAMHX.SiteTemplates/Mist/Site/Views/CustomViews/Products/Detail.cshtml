@@ -1,0 +1,30 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+
+    Page.Title = @currentPage.PageName;
+    //Layout = "Your Layout Page goes here";
+}
+
+<div class="page-header">
+    <div class="container">
+        <h1 class="title">@currentPage.PageName</h1>
+    </div>
+    <div class="breadcrumb-box">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="@currentPage.cms_ParentPage.cms_ParentPage.FullPageUrl">@currentPage.cms_ParentPage.cms_ParentPage.PageName</a>
+                </li>
+                <li class="active">@currentPage.PageName</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@currentPage.FieldValue("LongDesc")

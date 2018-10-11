@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (Request.IsAuthenticated && (SiteContext.HasCurrentUserInRole("Admin")))
+    {
+        <script type="text/javascript">
+            var isAdminUser = 1;
+        </script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            var isAdminUser = 1;
+        </script>
+    }
+    <title>@ViewBag.Title - BOBROA</title>
+    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Assets/BobroaStyle.css")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/jstree")*@
+    <link href="~/Areas/Admin/Assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/Fontawesome/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link href="~/Areas/Admin/Assets/jqwidgets/styles/jqx.bootstrap.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container1 body-content">
+        @RenderBody()
+
+    </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Areas/Admin/Assets/jqwidgets/jqx-all.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Assets/jqwidgets/jqxgrid.aggregates.js"></script>
+    <script src="~/Areas/Admin/Assets/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Assets/js/common.js"></script>
+
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $(".body-content").find("h2").first().hide();
+            AppendQueryStringToLinks();
+        });
+    </script>
+</body>
+</html>

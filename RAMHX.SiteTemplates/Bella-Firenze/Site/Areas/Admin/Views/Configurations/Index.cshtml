@@ -1,0 +1,93 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.app_Configs>
+@using RAMHX.CMS.Repository
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int id = 0;
+    if (!string.IsNullOrEmpty(Request.QueryString["id"]) && int.TryParse(Request.QueryString["id"], out id))
+    {
+
+    }
+
+}
+<h2>Configurations</h2>
+<div>
+    <select id="ddlGroups">
+        <option value="0">Select Group</option>
+        @foreach (var item in (new AppConfiguration()).GetAllGroups())
+            {
+                if (item.GroupId == id)
+                {
+                <option selected="selected" value="@item.GroupId">@item.ItemName</option>
+            }
+            else
+            {
+                <option value="@item.GroupId">@item.ItemName</option>
+            }
+
+
+        }
+    </select>&nbsp;<span id="spanAddNew">
+        @Html.ActionLink("Create New", "Create", new { id })
+    </span>
+</div>
+<br />
+<table class="table" id="tblHTMlModules">
+    <thead>
+        <tr>
+            <th>
+                #Group Id
+            </th>
+            <th>
+                #Item Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Active?
+            </th>
+            <th>
+                Code
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemCode)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { gid = item.GroupId, itmid = item.ItemId }) |
+                    @Html.ActionLink("Details", "Details", new { gid = item.GroupId, itmid = item.ItemId })
+                    | @Html.ActionLink("Delete", "Delete", new { gid = item.GroupId, itmid = item.ItemId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script src="~/Areas/Admin/Assets/js/AppConfiguration.js"></script>
+}

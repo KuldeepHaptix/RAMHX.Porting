@@ -1,0 +1,68 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    Layout = null;
+
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+
+    List<RAMHX.CMS.DataAccess.cms_Pages> portfolioCategory = currentPage.cms_SubPages.ToList();
+
+    //List<RAMHX.CMS.DataAccess.cms_Pages> portfolios = new List<RAMHX.CMS.DataAccess.cms_Pages>();
+
+    //foreach (var portfolio in portfolioCategory)
+    //{
+    //    portfolios.AddRange(portfolio.cms_SubPages);
+    //}
+
+}
+
+
+<section id="works" class="page-section">
+    <div class="container work-section">
+        <div id="options" class="filter-menu">
+            <ul class="option-set nav black nav-pills">
+                <li class="filter active" data-filter="all">Show All</li>
+
+                @for (int i = 0; i < portfolioCategory.Count; i++)
+                {
+                    <li class="filter" data-filter=".filter_@i">@portfolioCategory[i].PageName</li>
+                }
+            </ul>
+        </div>
+
+        <!-- filter -->
+        <div id="mix-container" class="portfolio-grid grid-list">
+            @for (int i = 0; i < portfolioCategory.Count; i++)
+            {
+                for (int j = 0; j < portfolioCategory[i].cms_SubPages.Count; j++)
+                {
+                    RAMHX.CMS.DataAccess.cms_Pages portfolio = portfolioCategory[i].cms_SubPages.ToList()[j];
+
+                    <div class="grids row mix all html filter_@i">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4">
+                                <h3 class="title">
+                                    <a href="@portfolio.FullPageUrl">  @portfolio.PageName</a>
+                                </h3>
+                                <div class="description">@portfolioCategory[i].PageName</div>
+                                @portfolio.FieldValue("ShortDesc")
+
+                                <a href="@portfolio.FullPageUrl" class="btn btn-default">Project Details</a>
+                            </div>
+
+                            <div class="col-sm-8 col-md-8">
+                                <a href="@portfolio.FullPageUrl" class="image">
+                                    <img src="@portfolio.FieldValue("Thumb")" width="790" height="440" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+    <!-- Mix Container -->
+</section>
+<!-- works --> 

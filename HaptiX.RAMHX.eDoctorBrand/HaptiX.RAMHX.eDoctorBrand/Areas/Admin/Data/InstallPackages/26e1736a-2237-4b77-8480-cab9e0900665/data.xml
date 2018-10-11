@@ -1,0 +1,678 @@
+<ramhx>
+  <HtmlModules>
+    <HTMLModuleId>e6cc0932-0c33-4e95-b8fe-167d407f9827</HTMLModuleId>
+    <HtmlModuleCode>blocks</HtmlModuleCode>
+    <HtmlModuleName>blocks</HtmlModuleName>
+    <HtmlModuleDescription>blocks</HtmlModuleDescription>
+    <HtmlModuleHTML>  &lt;section class="row quick_blocks_row quick_blocks_row_home2"&gt;
+        &lt;div class="container"&gt;
+            &lt;div class="row"&gt;
+                &lt;div class="col-sm-4 quick_block emmergency"&gt;
+                    &lt;div class="row m0 inner"&gt;
+                        &lt;div class="row heading m0"&gt;
+                            &lt;h5&gt;quick help&lt;/h5&gt;
+                            &lt;h3&gt;Emergency cases&lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectet uam porttitor, nunc et fringilla.&lt;/p&gt;
+                        &lt;a href="contact.html"&gt;CONTACT US NOW&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="col-sm-4 quick_block branches"&gt;
+                    &lt;div class="row m0 inner"&gt;
+                        &lt;div class="row heading m0"&gt;
+                            &lt;h5&gt;in your country&lt;/h5&gt;
+                            &lt;h3&gt;263 branches&lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectet uam porttitor, nunc et fringilla.&lt;/p&gt;
+                        &lt;a href="contact.html"&gt;nearest location&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="col-sm-4 quick_block bill_payments"&gt;
+                    &lt;div class="row m0 inner"&gt;
+                        &lt;div class="row heading m0"&gt;
+                            &lt;h5&gt;smooth and easy&lt;/h5&gt;
+                            &lt;h3&gt;online bill payments&lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectet uam porttitor, nunc et fringilla.&lt;/p&gt;
+                        &lt;a href="contact.html"&gt;pay your bill now&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    
+    </HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:40:14.57+05:30</CreatedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+  </HtmlModules>
+  <HtmlModules>
+    <HTMLModuleId>5373fca6-6eac-4913-a8e6-3f215d3fa6c6</HTMLModuleId>
+    <HtmlModuleCode>servicetab</HtmlModuleCode>
+    <HtmlModuleName>servicetab</HtmlModuleName>
+    <HtmlModuleDescription>servicetab</HtmlModuleDescription>
+    <HtmlModuleHTML>&lt;section class="row service_tab"&gt;
+&lt;div class="container"&gt;
+&lt;div class="row titleRow"&gt;
+&lt;h5&gt;GET WELL SOON&lt;/h5&gt;
+
+&lt;h2&gt;MEDICALPRO SERVICES&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div class="row"&gt;&lt;!-- Nav tabs --&gt;&lt;!-- Nav tabs --&gt;
+&lt;ul class="nav nav-tabs nav-justified" id="service_tab" role="tablist"&gt;
+	&lt;li class="active" role="presentation"&gt;&lt;a aria-controls="heart_surgery" data-toggle="tab" href="#heart_surgery" role="tab"&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;heart surgery&lt;/a&gt;&lt;/li&gt;
+	&lt;li role="presentation"&gt;&lt;a aria-controls="dna_testing" data-toggle="tab" href="#dna_testing" role="tab"&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;dna testing&lt;/a&gt;&lt;/li&gt;
+	&lt;li role="presentation"&gt;&lt;a aria-controls="gen_treatment" data-toggle="tab" href="#gen_treatment" role="tab"&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;gen treatment&lt;/a&gt;&lt;/li&gt;
+	&lt;li role="presentation"&gt;&lt;a aria-controls="emergency_care" data-toggle="tab" href="#emergency_care" role="tab"&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;emergency care&lt;/a&gt;&lt;/li&gt;
+	&lt;li role="presentation"&gt;&lt;a aria-controls="ear_treatment" data-toggle="tab" href="#ear_treatment" role="tab"&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;ear treatment&lt;/a&gt;&lt;/li&gt;
+	&lt;li role="presentation"&gt;&lt;a aria-controls="dental_care" data-toggle="tab" href="#dental_care" role="tab"&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;dental care&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- Tab panes --&gt;
+
+&lt;div class="tab-content"&gt;
+&lt;div class="tab-pane active" id="heart_surgery" role="tabpanel"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;&lt;img alt="" class="img-responsive" src="/Assets/images/pages/service/tab.png" /&gt;
+&lt;div class="ts"&gt;trusted services&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3&gt;HEART SURGERY&lt;/h3&gt;
+
+&lt;h4&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit sque quis varius raesent lacinia elit nec nisl.&lt;/h4&gt;
+
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley&lt;/p&gt;
+&lt;a class="view_all" href="single-service.html"&gt;read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="tab-pane" id="dna_testing" role="tabpanel"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;&lt;img alt="" class="img-responsive" src="/Assets/images/pages/service/tab.png" /&gt;
+&lt;div class="ts"&gt;trusted services&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3&gt;Dna Testing&lt;/h3&gt;
+
+&lt;h4&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit sque quis varius raesent lacinia elit nec nisl.&lt;/h4&gt;
+
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley&lt;/p&gt;
+&lt;a class="view_all" href="single-service.html"&gt;read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="tab-pane" id="gen_treatment" role="tabpanel"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;&lt;img alt="" class="img-responsive" src="/Assets/images/pages/service/tab.png" /&gt;
+&lt;div class="ts"&gt;trusted services&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3&gt;General Treatment&lt;/h3&gt;
+
+&lt;h4&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit sque quis varius raesent lacinia elit nec nisl.&lt;/h4&gt;
+
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley&lt;/p&gt;
+&lt;a class="view_all" href="single-service.html"&gt;read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="tab-pane" id="emergency_care" role="tabpanel"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;&lt;img alt="" class="img-responsive" src="/Assets/images/pages/service/tab.png" /&gt;
+&lt;div class="ts"&gt;trusted services&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3&gt;Emergency Care&lt;/h3&gt;
+
+&lt;h4&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit sque quis varius raesent lacinia elit nec nisl.&lt;/h4&gt;
+
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley&lt;/p&gt;
+&lt;a class="view_all" href="single-service.html"&gt;read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="tab-pane" id="ear_treatment" role="tabpanel"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;&lt;img alt="" class="img-responsive" src="/Assets/images/pages/service/tab.png" /&gt;
+&lt;div class="ts"&gt;trusted services&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3&gt;Ear Treatment&lt;/h3&gt;
+
+&lt;h4&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit sque quis varius raesent lacinia elit nec nisl.&lt;/h4&gt;
+
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley&lt;/p&gt;
+&lt;a class="view_all" href="single-service.html"&gt;read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="tab-pane" id="dental_care" role="tabpanel"&gt;
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;&lt;img alt="" class="img-responsive" src="/Assets/images/pages/service/tab.png" /&gt;
+&lt;div class="ts"&gt;trusted services&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-6"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3&gt;Dental Care&lt;/h3&gt;
+
+&lt;h4&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit sque quis varius raesent lacinia elit nec nisl.&lt;/h4&gt;
+
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley&lt;/p&gt;
+&lt;a class="view_all" href="single-service.html"&gt;read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:45:09+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T18:25:04.537+05:30</ModifiedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+    <ModifiedUserName>admin@ramhx.com</ModifiedUserName>
+  </HtmlModules>
+  <HtmlModules>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <HtmlModuleCode>navbar</HtmlModuleCode>
+    <HtmlModuleName>navbar</HtmlModuleName>
+    <HtmlModuleDescription>navbar</HtmlModuleDescription>
+    <HtmlModuleHTML>&lt;nav class="navbar navbar-default navbar-static-top navbar2"&gt;
+&lt;div class="container"&gt;&lt;!-- Brand and toggle get grouped for better mobile display --&gt;
+&lt;div class="navbar-header"&gt;&lt;a class="navbar-brand" href="index.html"&gt;&lt;img alt="" src="/Assets/images/logo/3.png" /&gt;&lt;/a&gt;&lt;button aria-expanded="false" class="navbar-toggle collapsed" data-target="#main_nav" data-toggle="collapse" type="button"&gt;&lt;/button&gt; &lt;a class="navbar-toggle visible-xs" data-target="#appointmefnt_form_pop" data-toggle="modal" href="book-appointment.html"&gt;book appointment&lt;/a&gt;&lt;/div&gt;
+&lt;!-- Collect the nav links, forms, and other content for toggling --&gt;
+
+&lt;div class="collapse navbar-collapse" id="main_nav"&gt;
+&lt;ul class="nav navbar-nav navbar-right"&gt;
+	&lt;li&gt;&lt;a aria-expanded="false" href="#" role="button"&gt;Home&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a aria-expanded="false" href="/services" role="button"&gt;Services&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a aria-expanded="false"  href="/doctors" role="button"&gt;Doctors&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a aria-expanded="false"  href="/about" role="button"&gt;About&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a aria-expanded="false"  href="/facility" role="button"&gt;Facility&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="/contact"&gt;contact&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="/locations"&gt;Location&lt;/a&gt;&lt;/li&gt;
+	&lt;li class="hidden-xs book"&gt;&lt;a data-target="#appointmefnt_form_pop" data-toggle="modal" href="#"&gt;book appointment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;!-- /.navbar-collapse --&gt;&lt;/div&gt;
+&lt;!-- /.container --&gt;&lt;/nav&gt;
+</HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:17:45+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T18:35:51.847+05:30</ModifiedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+    <ModifiedUserName>admin@ramhx.com</ModifiedUserName>
+  </HtmlModules>
+  <HtmlModules>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <HtmlModuleCode>home</HtmlModuleCode>
+    <HtmlModuleName>home</HtmlModuleName>
+    <HtmlModuleDescription>home</HtmlModuleDescription>
+    <HtmlModuleHTML>&lt;section class="row top_bar"&gt;
+&lt;div class="container"&gt;
+&lt;div class="row m0"&gt;
+&lt;div class="fleft schedule"&gt;&lt;strong&gt;&lt;i class="fa fa-clock-o"&gt;&lt;/i&gt; Schedule&lt;/strong&gt;: Monday - Saturday - 8:00 - 18:00, Sunday - 8:00 - 14:00&lt;/div&gt;
+
+&lt;div class="fright contact_info"&gt;
+&lt;div class="fleft email"&gt;&lt;img alt="" src="/Assets/images/icons/envelope.jpg" /&gt; info@yourthemename.com&lt;/div&gt;
+
+&lt;div class="fleft phone"&gt;&lt;i class="fa fa-phone"&gt;&lt;/i&gt;&lt;strong&gt;123 7890 456&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:09:09+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T15:19:15.737+05:30</ModifiedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+    <ModifiedUserName>admin@ramhx.com</ModifiedUserName>
+  </HtmlModules>
+  <HtmlModules>
+    <HTMLModuleId>a8185785-af5a-4337-b956-ee67f67c44d3</HTMLModuleId>
+    <HtmlModuleCode>bookingbanner</HtmlModuleCode>
+    <HtmlModuleName>bookingbanner</HtmlModuleName>
+    <HtmlModuleDescription>bookingbanner</HtmlModuleDescription>
+    <HtmlModuleHTML>&lt;section class="row book_banner"&gt;
+&lt;div class="container"&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-sm-8 col-md-9"&gt;
+&lt;div class="row m0"&gt;
+&lt;h3 class="bannerTitle"&gt;ONLINE HASSLE FREE Appointment BOOKING&lt;/h3&gt;
+
+&lt;h5&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacinia, ipsum eu vulputate pulvinar,&lt;/h5&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-4 col-md-3"&gt;
+&lt;div class="row m0"&gt;&lt;a class="view_all" data-target="#appointmefnt_form_pop" data-toggle="modal" href="#"&gt;book your appointment&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:54:04.437+05:30</CreatedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+  </HtmlModules>
+  <HtmlModules>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <HtmlModuleCode>footer</HtmlModuleCode>
+    <HtmlModuleName>footer</HtmlModuleName>
+    <HtmlModuleDescription>footer</HtmlModuleDescription>
+    <HtmlModuleHTML>&lt;footer class="row"&gt;
+&lt;div class="container"&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-sm-8 col-md-6 col-lg-5 footer_menuList"&gt;
+&lt;div class="heading row m0"&gt;&lt;img alt="" src="/Assets/images/logo/1.png" /&gt;&lt;/div&gt;
+
+&lt;div class="row menuList"&gt;
+&lt;ul class="firstOrderList nav"&gt;
+	&lt;li class="active"&gt;&lt;a href="#"&gt;home&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;services&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;doctors&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;department&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="secondOrderList nav"&gt;
+	&lt;li&gt;&lt;a href="#"&gt;blog&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;contact&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;shop&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;faq&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;shortcodes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="thirdOrderList nav"&gt;
+	&lt;li&gt;&lt;a href="#"&gt;terms &amp;amp; condition&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;privacy policy&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;legal desclaimer&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;sitemap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-4 col-md-6 col-lg-3 footer_address"&gt;
+&lt;div class="heading row m0"&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div class="row address m0"&gt;
+&lt;div class="media address_line"&gt;
+&lt;div class="media-left icon"&gt;&lt;i class="fa fa-map-marker"&gt;&lt;/i&gt;&lt;/div&gt;
+
+&lt;div class="media-body address_text"&gt;Area 51 , Some near unknown,&lt;br /&gt;
+USA 000000&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="media address_line"&gt;
+&lt;div class="media-left icon"&gt;&lt;i class="fa fa-envelope"&gt;&lt;/i&gt;&lt;/div&gt;
+
+&lt;div class="media-body address_text"&gt;info@medicalprotheme.com&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="media address_line"&gt;
+&lt;div class="media-left icon"&gt;&lt;i class="fa fa-phone"&gt;&lt;/i&gt;&lt;/div&gt;
+
+&lt;div class="media-body address_text"&gt;123 7890 456&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-sm-12 col-md-12 col-lg-4 newsletter"&gt;
+&lt;div class="heading row m0"&gt;
+&lt;h3&gt;SIGNUP NEWSLETTER&lt;/h3&gt;
+&lt;/div&gt;
+
+&lt;form action="#" class="row m0 newsletterForm"&gt;&lt;input class="form-control" placeholder="Your Name" type="text" /&gt; &lt;input class="form-control" placeholder="Enter your Email Address" type="email" /&gt; &lt;input class="form-control" type="submit" value="submit" /&gt;&amp;nbsp;&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="row m0 footer_bottom"&gt;
+&lt;ul class="list-inline social_menu m0 fleft"&gt;
+	&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-facebook"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-pinterest"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-instagram"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;&lt;i class="fa fa-youtube"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="fright copyright"&gt;&amp;copy; &lt;a href="index.html"&gt;medicalpro 2015&lt;/a&gt;. Made with love for great people.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+</HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:56:36.507+05:30</CreatedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+  </HtmlModules>
+  <HtmlModules>
+    <HTMLModuleId>3e6fb4e2-61f8-4dc6-b69d-ff104c3711fb</HTMLModuleId>
+    <HtmlModuleCode>banner</HtmlModuleCode>
+    <HtmlModuleName>banner</HtmlModuleName>
+    <HtmlModuleDescription>banner</HtmlModuleDescription>
+    <HtmlModuleHTML>&lt;section class="row bannercontainer p0"&gt;
+&lt;div class="preloader"&gt;&lt;img alt="" src="/Assets/vendors/rs-plugin/assets/loader.gif" /&gt;&lt;/div&gt;
+
+&lt;div class="row m0 banner main_slider"&gt;
+&lt;ul&gt;
+	&lt;li class="first-slide" data-masterspeed="200" data-slotamount="7" data-transition="random"&gt;&lt;!--Main Image--&gt;&lt;img alt="Main Image 1" data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat" src="/Assets/images/slider/homepage/slide-1.jpg" /&gt; &lt;!--Main Image--&gt;
+	&lt;div class="container"&gt;
+	&lt;div class="heading tp-caption random fade" data-easing="Cubic.easeInOut" data-speed="3000" data-start="500"&gt;one-stop solution&lt;br /&gt;
+	medical services&lt;/div&gt;
+	&lt;!--layer1--&gt;
+
+	&lt;div class="para tp-caption slideleft incube" data-easing="easeOutBounce" data-speed="3000" data-start="200"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br /&gt;
+	Etiam sed augue vitae ex vulputate venenatis.&lt;/div&gt;
+	&lt;!--layer2--&gt;
+
+	&lt;div class="link tp-caption slideup slideup" data-easing="easeInQuad" data-speed="3000" data-start="200"&gt;&lt;a class="view_all" href="#"&gt;view services&lt;/a&gt;&lt;/div&gt;
+	&lt;!--layer 3--&gt;&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;!--Slide--&gt;
+	&lt;li class="second-slide" data-masterspeed="200" data-slotamount="7" data-transition="incube"&gt;&lt;!--Main Image--&gt;&lt;img alt="Main Image 2" data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat" src="/Assets/images/slider/homepage/slide-2.jpg" /&gt; &lt;!--Main Image--&gt;
+	&lt;div class="container"&gt;
+	&lt;div class="heading tp-caption random fade" data-easing="Cubic.easeInOut" data-speed="3000" data-start="500"&gt;medical services&lt;br /&gt;
+	you can trust &amp;amp; relay on&lt;/div&gt;
+	&lt;!--layer1--&gt;
+
+	&lt;div class="para tp-caption slideleft incube" data-easing="easeOutBounce" data-speed="3000" data-start="200"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br /&gt;
+	Etiam sed augue vitae ex vulputate venenatis.&lt;/div&gt;
+	&lt;!--layer2--&gt;
+
+	&lt;div class="link tp-caption slideup slideup" data-easing="easeInQuad" data-speed="3000" data-start="200"&gt;&lt;a class="view_all" href="#"&gt;view services&lt;/a&gt;&lt;/div&gt;
+	&lt;!--layer 3--&gt;&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;!--Slide--&gt;
+	&lt;li class="third-slide" data-masterspeed="200" data-slotamount="7" data-transition="papercut"&gt;&lt;!--Main Image--&gt;&lt;img alt="Main Image 3" data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat" src="/Assets/images/slider/homepage/slide-3.jpg" /&gt; &lt;!--Main Image--&gt;
+	&lt;div class="container"&gt;
+	&lt;div class="heading tp-caption random fade" data-easing="Cubic.easeInOut" data-speed="3000" data-start="500"&gt;medical services&lt;br /&gt;
+	you can trust &amp;amp; relay on&lt;/div&gt;
+	&lt;!--layer1--&gt;
+
+	&lt;div class="para tp-caption slideleft incube" data-easing="easeOutBounce" data-speed="3000" data-start="200"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br /&gt;
+	Etiam sed augue vitae ex vulputate venenatis.&lt;/div&gt;
+	&lt;!--layer2--&gt;
+
+	&lt;div class="link tp-caption slideup slideup" data-easing="easeInQuad" data-speed="3000" data-start="200"&gt;&lt;a class="view_all" href="#"&gt;view services&lt;/a&gt;&lt;/div&gt;
+	&lt;!--layer 3--&gt;&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;!--Slide--&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</HtmlModuleHTML>
+    <CreatedDate>2016-12-02T15:37:45.267+05:30</CreatedDate>
+    <CreatedUserName>admin@ramhx.com</CreatedUserName>
+  </HtmlModules>
+  <cms_Pages>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <PageOrder>1</PageOrder>
+    <PageName>Main</PageName>
+    <PageCode>MAIN_PAGE</PageCode>
+    <Description>Main page</Description>
+    <PageUrl>Main</PageUrl>
+    <ModifiedDate>2016-12-02T15:56:51.523+05:30</ModifiedDate>
+    <PageTitle>Main Page</PageTitle>
+    <PageMetaKeywords>Main</PageMetaKeywords>
+    <PageMetaDescription>Default Main Page</PageMetaDescription>
+    <FullItemPath>/</FullItemPath>
+  </cms_Pages>
+  <cms_Pages>
+    <PageID>021ce931-1514-4226-b57b-59bee3be99c1</PageID>
+    <ParentPageID>628ce6a0-bef9-4505-89b9-a49f76646318</ParentPageID>
+    <PageOrder>0</PageOrder>
+    <PageName>About</PageName>
+    <PageCode>About</PageCode>
+    <PageUrl>about</PageUrl>
+    <CreatedDate>2016-12-02T16:33:41.93+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T16:55:26.297+05:30</ModifiedDate>
+    <PageTitle>About</PageTitle>
+    <FullItemPath>/about</FullItemPath>
+  </cms_Pages>
+  <cms_Pages>
+    <PageID>f955be18-0126-4689-bdfa-b7b990a0f8c4</PageID>
+    <ParentPageID>628ce6a0-bef9-4505-89b9-a49f76646318</ParentPageID>
+    <PageOrder>0</PageOrder>
+    <PageName>Contact</PageName>
+    <PageCode>Contact</PageCode>
+    <PageUrl>contact</PageUrl>
+    <CreatedDate>2016-12-02T16:35:22.41+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T16:55:12.703+05:30</ModifiedDate>
+    <PageTitle>Contact</PageTitle>
+    <FullItemPath>/contact</FullItemPath>
+  </cms_Pages>
+  <cms_Pages>
+    <PageID>978c8641-2de9-423b-ba08-39d402f731e6</PageID>
+    <ParentPageID>628ce6a0-bef9-4505-89b9-a49f76646318</ParentPageID>
+    <PageOrder>0</PageOrder>
+    <PageName>Doctors</PageName>
+    <PageCode>Doctors</PageCode>
+    <PageUrl>Doctors</PageUrl>
+    <CreatedDate>2016-12-02T16:35:42.77+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T16:52:54.567+05:30</ModifiedDate>
+    <PageTitle>Doctors</PageTitle>
+    <FullItemPath>/doctors</FullItemPath>
+  </cms_Pages>
+  <cms_Pages>
+    <PageID>490508b3-499e-4a78-95b1-6eb4e1a4c767</PageID>
+    <ParentPageID>628ce6a0-bef9-4505-89b9-a49f76646318</ParentPageID>
+    <PageOrder>0</PageOrder>
+    <PageName>Facility</PageName>
+    <PageCode>Facility</PageCode>
+    <PageUrl>Facility</PageUrl>
+    <CreatedDate>2016-12-02T16:36:02.207+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T16:53:07.77+05:30</ModifiedDate>
+    <PageTitle>Facility</PageTitle>
+    <FullItemPath>/facility</FullItemPath>
+  </cms_Pages>
+  <cms_Pages>
+    <PageID>4c434ba6-0a81-4648-a37a-7be0d99ea992</PageID>
+    <ParentPageID>628ce6a0-bef9-4505-89b9-a49f76646318</ParentPageID>
+    <PageOrder>0</PageOrder>
+    <PageName>Locations</PageName>
+    <PageCode>Locations</PageCode>
+    <PageUrl>Locations</PageUrl>
+    <CreatedDate>2016-12-02T16:35:50.02+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T16:53:22.647+05:30</ModifiedDate>
+    <PageTitle>Locations</PageTitle>
+    <FullItemPath>/locations</FullItemPath>
+  </cms_Pages>
+  <cms_Pages>
+    <PageID>b513b67f-8d77-4b9c-9e3e-da8e568ee67b</PageID>
+    <ParentPageID>628ce6a0-bef9-4505-89b9-a49f76646318</ParentPageID>
+    <PageOrder>0</PageOrder>
+    <PageName>Services</PageName>
+    <PageCode>Services</PageCode>
+    <PageUrl>Services</PageUrl>
+    <CreatedDate>2016-12-02T16:35:56.017+05:30</CreatedDate>
+    <ModifiedDate>2016-12-02T16:52:45.6+05:30</ModifiedDate>
+    <PageTitle>Services</PageTitle>
+    <FullItemPath>/services</FullItemPath>
+  </cms_Pages>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>650a8c29-ddaf-474b-a2df-20dbecb6c86a</PageHTMLModuleId>
+    <PageID>490508b3-499e-4a78-95b1-6eb4e1a4c767</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T16:53:07.803+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>7f4d6836-8fe1-4e43-aa88-271646a33888</PageHTMLModuleId>
+    <PageID>b513b67f-8d77-4b9c-9e3e-da8e568ee67b</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T16:52:45.617+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>d0ad422f-a579-408f-abd3-284783f9fcf9</PageHTMLModuleId>
+    <PageID>490508b3-499e-4a78-95b1-6eb4e1a4c767</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T16:53:07.803+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>91fdcaf3-538a-4edf-987d-2a517b3f393f</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>7</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>59b1614b-dd30-42e6-bafa-30896de4f3ef</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>d6ac4d56-4c8f-46c7-8414-39de0d1c63d8</PageHTMLModuleId>
+    <PageID>b513b67f-8d77-4b9c-9e3e-da8e568ee67b</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T16:52:45.617+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>928ea692-a85b-4fe2-83b0-3aae099518e2</PageHTMLModuleId>
+    <PageID>978c8641-2de9-423b-ba08-39d402f731e6</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T16:52:54.6+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>bb075577-14bd-48a8-b060-3f43413cf236</PageHTMLModuleId>
+    <PageID>f955be18-0126-4689-bdfa-b7b990a0f8c4</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T16:55:12.75+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>178f13b4-b15c-4dd7-8f94-4170daab08f6</PageHTMLModuleId>
+    <PageID>f955be18-0126-4689-bdfa-b7b990a0f8c4</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T16:55:12.75+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>86db5aca-b8c0-4a73-bb24-42c06088fcdd</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>5e6d4930-4dbd-44a9-b308-4322949fed8b</PageHTMLModuleId>
+    <PageID>f955be18-0126-4689-bdfa-b7b990a0f8c4</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T16:55:12.75+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>0b844c71-b920-4d28-9fc3-5769472de563</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>e6cc0932-0c33-4e95-b8fe-167d407f9827</HTMLModuleId>
+    <OrderIndex>4</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>69c71477-57c4-426b-83fa-59e132ca7a3f</PageHTMLModuleId>
+    <PageID>490508b3-499e-4a78-95b1-6eb4e1a4c767</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T16:53:07.803+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>8e8cbf2b-fe98-4f94-93ea-688319ea1470</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>3e6fb4e2-61f8-4dc6-b69d-ff104c3711fb</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>4ab64e1f-bf95-49a5-b32b-7e9880c7cc12</PageHTMLModuleId>
+    <PageID>021ce931-1514-4226-b57b-59bee3be99c1</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T16:55:26.343+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>8d3c2ab0-df88-4feb-bde1-7ffca9976e3d</PageHTMLModuleId>
+    <PageID>978c8641-2de9-423b-ba08-39d402f731e6</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T16:52:54.6+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>34839b74-ac6e-4bcf-bcff-95a5ad1166df</PageHTMLModuleId>
+    <PageID>021ce931-1514-4226-b57b-59bee3be99c1</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T16:55:26.343+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>00d1067b-88ae-4492-93a6-a8a1aa202fc3</PageHTMLModuleId>
+    <PageID>b513b67f-8d77-4b9c-9e3e-da8e568ee67b</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T16:52:45.617+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>bbb6d3a5-934d-43ee-907c-aad5ff6f438d</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>5373fca6-6eac-4913-a8e6-3f215d3fa6c6</HTMLModuleId>
+    <OrderIndex>5</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>8d3c7555-de49-4cde-a889-aae2c71764e6</PageHTMLModuleId>
+    <PageID>628ce6a0-bef9-4505-89b9-a49f76646318</PageID>
+    <HTMLModuleId>a8185785-af5a-4337-b956-ee67f67c44d3</HTMLModuleId>
+    <OrderIndex>6</OrderIndex>
+    <CreatedDate>2016-12-02T15:56:51.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>ac942602-d9bc-47ca-b03e-ab2ac7d9a08b</PageHTMLModuleId>
+    <PageID>4c434ba6-0a81-4648-a37a-7be0d99ea992</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T16:53:22.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>04b100a7-f85c-40c3-b05f-b312622db94d</PageHTMLModuleId>
+    <PageID>978c8641-2de9-423b-ba08-39d402f731e6</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T16:52:54.6+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>afd8c475-64a5-461c-ab04-c71c6596171b</PageHTMLModuleId>
+    <PageID>4c434ba6-0a81-4648-a37a-7be0d99ea992</PageID>
+    <HTMLModuleId>c3e36fd3-9d29-4d15-b689-d74d00a9b56b</HTMLModuleId>
+    <OrderIndex>1</OrderIndex>
+    <CreatedDate>2016-12-02T16:53:22.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>fd3937a6-052f-4892-8c84-dd0f6f5367f0</PageHTMLModuleId>
+    <PageID>4c434ba6-0a81-4648-a37a-7be0d99ea992</PageID>
+    <HTMLModuleId>5e8d95b4-56b7-4612-8f3f-f1e89568b275</HTMLModuleId>
+    <OrderIndex>3</OrderIndex>
+    <CreatedDate>2016-12-02T16:53:22.677+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+  <cms_PageHTMLModules>
+    <PageHTMLModuleId>6d2f6350-2896-493e-8809-f33df0eff446</PageHTMLModuleId>
+    <PageID>021ce931-1514-4226-b57b-59bee3be99c1</PageID>
+    <HTMLModuleId>6d397be5-d2f2-4069-9fda-9d27ae325254</HTMLModuleId>
+    <OrderIndex>2</OrderIndex>
+    <CreatedDate>2016-12-02T16:55:26.343+05:30</CreatedDate>
+  </cms_PageHTMLModules>
+</ramhx>

@@ -1,0 +1,10 @@
+﻿@using HaptiX.RAMHX.eDoctor.Infra
+@model HaptiX.RAMHX.eDoctorBrand.Models.TimeSlot
+
+@for (TimeSpan ts = Model.StartTime; ts < Model.EndTime; ts = ts.Add(TimeSpan.FromMinutes(Model.DurationInMinute)))
+{
+    <div class="col-lg-2">
+        <a class="btn btn-success bookAppo"  data-target="#appointmefnt_form_pop" data-toggle="modal" date="@Model.Date.ToString(Contants.DATEFORMATE)" docid="@Model.DoctorId" locid="@Model.LocationId" href="#">@ts.ToString(@"hh\:mm")</a>
+    </div>
+}
+ 

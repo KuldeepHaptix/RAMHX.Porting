@@ -1,0 +1,70 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.cms_Templates>
+
+@{
+    ViewBag.Title = "TemplateList";
+}
+
+<h2>Page Content</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="tblTemplateModules">
+    <thead>
+        <tr>
+            <th class="hide thSelect">
+                Select
+            </th>
+            <th>
+                #ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide tdChkBox">
+                    @Html.CheckBox("checked", false, new { name = "assignChkBx", id = item.TemplateId, value = item.TemplateId })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TemplateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TemplateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TemplateCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TemplateId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TemplateId })
+                    | @Html.ActionLink("Delete", "Delete", new { id = item.TemplateId },
+         new { @class = "btnDelete" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="form-group">
+    <input type="button" value="Add" class="btn btn-success hide" id="savedetail" />
+</div>
+
+
+@section Scripts{
+    <script src="~/Areas/Admin/Assets/js/TemplateModule.dialog.js"></script>
+}

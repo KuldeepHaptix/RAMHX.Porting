@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+@{
+    RAMHX.CMS.Repository.RenderHtmlRepository htmlRepo = new RAMHX.CMS.Repository.RenderHtmlRepository();
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="@SiteContext.CurrentPage.PageMetaKeywords" />
+    <meta name="description" content="@SiteContext.CurrentPage.PageMetaKeywords" />
+    <title>@SiteContext.CurrentPage.PageTitle - Eattie</title>
+    <!--Google Fonts-->
+    <link href="/Assets/css/css37a7.css" rel="stylesheet" type='text/css' />
+    <link href="/Assets/css/csscd33.css" rel="stylesheet" type='text/css' />
+    <!--Bootstrap 3.3.2-->
+    <link href="/Assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--Icons Fonts-->
+    <link href="/Assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <!--Animations-->
+    <link href="/Assets/css/animate-custom.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles -->
+    <link href="/Assets/css/style.css" rel="stylesheet" type="text/css">
+   
+    <!--Modernizr-->
+    <script src="/Assets/js/libs/modernizr.custom.js"></script>
+    <!--Adding Media Queries Support for IE8-->
+    <!--[if lt IE 9]>
+      <script src="/Assets/js/plugins/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    @Html.Raw(HttpUtility.HtmlDecode(htmlRepo.GetContent("Preloader", new ControllerContext())))
+
+    @RenderBody()
+
+    <!--Javascript (jQuery)-->
+    <script src="/Assets/js/libs/jquery-1.11.2.min.js"></script>
+    <script src="/Assets/js/libs/jquery.easing.1.3.js"></script>
+    <script src="/Assets/js/plugins/bootstrap.min.js"></script>
+    <script src="/Assets/js/plugins/waypoints.min.js"></script>
+<script src="/Assets/js/plugins/jquery.validate.min.js"></script>
+    <script src="/Assets/js/scripts-secondary.js"></script>
+</body>
+</html>

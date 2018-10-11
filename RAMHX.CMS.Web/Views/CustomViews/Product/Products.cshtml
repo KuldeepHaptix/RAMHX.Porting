@@ -1,0 +1,81 @@
+﻿@using RAMHX.CMS.DataAccess;
+
+@{
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var items = (from a in dbEntity.CoreModule_ProductMasters
+                 select a).OrderByDescending(gal => gal.Id).ToList();
+
+    //var cats = dbEntities.CoreModule_ProductCategories.ToList().OrderBy<CoreModule_ProductCategory>(c => c.Name).ToList();
+    var cats = dbEntity.CoreModule_ProductCategories.ToList();
+}
+
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Products</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">Products</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="padding">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="lastest-project-warp portfolio-grid-2-warp clearfix">
+                <div class="projectFilter project-terms line-effect-2">
+                    <a href="#" data-filter="*" class="current text-cap">
+                        <h4>All Products</h4>
+                    </a>
+                    @foreach (var item in cats)
+                     {
+                        <a href="javascript:;" data-filter=".@item.ProdCategoryName.Replace(" ","")" class="text-cap">
+                            <h4>@item.ProdCategoryName</h4>
+                        </a>
+                     }
+                </div>
+                <!-- End Project Fillter -->
+                <div class="clearfix projectContainer portfolio-grid-2-container">
+                    @foreach (CoreModule_ProductMaster item in items)
+                    {
+                        <div class="element-item @cats.First(c => c.Id == item.CategoryId).ProdCategoryName.Replace(" ","")">
+                            <div class="col-lg-12 bg-grey">
+                                <div class="clearfix">&nbsp;</div>
+
+                                <a href="/products/productdtl?prodid=@item.Id" class="products-warp">
+                                    <img src="/ImageThumbHandler.ashx?s=525&f=@item.ImageUrl" class="img-responsive" alt="Image" style="height:175px" />
+                                    <span class="new-product">Offer</span>
+                                    <span class="sale-product">@item.OfferPrice</span>
+                                </a>
+
+                                <div class="product-info">
+                                    <a href="/products/productdtl?prodid=@item.Id">
+                                        <h3 class="text-cap">
+                                            @item.ProdName
+                                        </h3>
+                                    </a>
+                                    <p class="price">
+                                        MRP: @item.MRP
+                                    </p>
+                                    <a href="/products/productdetails?prodid=@item.Id" class="ot-btn  btn-main-color">View Details</a>
+                                </div>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+
+                        </div>
+                    }
+                </div>
+                <!-- End project Container -->
+            </div>
+
+        </div>
+    </div>
+</section> <!--End List Product -->

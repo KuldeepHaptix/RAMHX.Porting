@@ -1,0 +1,12 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+
+    Page.Title = @currentPage.PageName;
+    //Layout = "Your Layout Page goes here";
+}
+
+
+@currentPage.FieldValue("LongDesc")

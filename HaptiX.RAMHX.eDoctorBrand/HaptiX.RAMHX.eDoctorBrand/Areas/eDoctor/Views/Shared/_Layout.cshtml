@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/Assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/vendors/owl.carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Assets/vendors/owl.carousel/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="/Assets/vendors/flexslider/flexslider.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/Assets/vendors/bootstrap-datepicker/css/datepicker3.css" media="screen">
+
+    <!--RS-->
+    <link rel="stylesheet" type="text/css" href="/Assets/vendors/rs-plugin/css/settings.css" media="screen">
+
+    <!--Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+    <!--Mechanic Styles-->
+    <link rel="stylesheet" href="/Assets/css/default/style.css">
+    <link rel="stylesheet" href="/Assets/css/responsive/responsive.css">
+
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" type="text/css" href="/Assets/vendors/rs-plugin/css/settings-ie8.css" media="screen">
+      <script src="/Assets/js/html5shiv.min.js"></script>
+      <script src="/Assets/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="default home2">
+    <nav class="navbar navbar-default navbar-static-top navbar2">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "eDoctor" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav  navbar-right">
+                    <li><a href="">Avaibility</a></li>
+                    <li><a href="">P.O.D. Queue</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="default home2">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script src="/Assets/js/jquery-2.1.3.min.js"></script>
+
+    <!--Bootstrap JS-->
+    <script src="/Assets/js/bootstrap.min.js"></script>
+
+    <!--Owl Carousel-->
+    <script src="/Assets/vendors/owl.carousel/js/owl.carousel.min.js"></script>
+
+    <!--Counter Up-->
+    <script src="/Assets/vendors/counterup/jquery.counterup.min.js"></script>
+
+    <!--Waypoints-->
+    <script src="/Assets/vendors/waypoints/waypoints.min.js"></script>
+
+    <!--Bootstrap Date-->
+    <script src="/Assets/vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <!--FlexSlider-->
+    <script src="/Assets/vendors/flexslider/jquery.flexslider-min.js"></script>
+
+    <!--RV-->
+    <script src="/Assets/vendors/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/Assets/vendors/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!--Strella JS-->
+    <script src="/Assets/js/theme.js"></script>
+    <script src="/Assets/js/revs.js"></script>
+</body>
+</html>

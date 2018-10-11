@@ -1,0 +1,22 @@
+﻿@using HaptiX.RAMHX.eDoctor.Infra
+@model List<HaptiX.RAMHX.eDoctor.DataAccess.Location>
+
+<section class="row book_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                Select Location to Book appiment :
+            </div>
+            <div class="col-lg-3">
+                <select id="ddlLocations" class="form-control">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.LocationId">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row" id="slotViewer">
+        </div>
+    </div>
+</section>

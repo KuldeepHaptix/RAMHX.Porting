@@ -1,0 +1,111 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = "Product Detail";
+    var products = SiteContext.CurrentPage;
+}
+
+ <!-- SHOP -->
+<section class="item-detail-page padding-top-80 padding-bottom-80">
+
+    <!--======= PAGES INNER =========-->
+    <section class="section-p-30px pages-in">
+        <div class="container">
+            <div class="row">
+
+                <!--======= IMAGES SLIDER =========-->
+                <div class="col-sm-6 large-detail animate fadeInLeft" data-wow-delay="0.4s">
+                    <div class="images-slider">
+                        <ul class="slides">
+                            <li data-thumb="@products.FieldValue("ProductDetailImage1")"> <img class="img-responsive" src="@products.FieldValue("ProductDetailImage1")" alt=""> </li>
+                            <li data-thumb="@products.FieldValue("ProductDetailImage2")"> <img class="img-responsive" src="@products.FieldValue("ProductDetailImage2")" alt=""> </li>
+                            <li data-thumb="@products.FieldValue("ProductDetailImage3")"> <img class="img-responsive" src="@products.FieldValue("ProductDetailImage3")" alt=""> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 large-detail animate fadeInRight" data-wow-delay="0.4s">
+                    <h2 class="margin-top-0 margin-bottom-20">@products.FieldValue("ProductName")</h2>
+                    <p>@products.FieldValue("SortDesc")</p>
+                    <hr>
+                    <div class="some-info no-border">
+                        <ul>
+                            <li class="in-stoke margin-right-20"> PRODUCT CODE: <strong> REF. 8073/027</strong></li>
+                            <li class="in-stoke"> IN STOCK: <i class="fa fa-check-circle"></i><strong>AVAILABILTY</strong></li>
+                            <li class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></li>
+                        </ul>
+                    </div>
+                    <div class="price"> <span class="text-strike font-crimson">$99.00</span> <span class="font-crimson">$45.00</span> </div>
+
+
+
+                </div>
+            </div>
+
+            <!--======= PRODUCT DESCRIPTION =========-->
+            <div class="item-decribe animate fadeInUp" data-wow-delay="0.4s">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <!-- Nav tabs -->
+                            <div class="nav-tabs tabs style-4">
+                                <ul class="nav nav-pills" role="tablist">
+                                    <li role="presentation"><a href="#descr" aria-controls="men" role="tab" data-toggle="tab"><i class="fa fa-pencil"></i> DESCRIPTION</a></li>
+                                    <li role="presentation" class="active"><a href="#review" aria-controls="women" role="tab" data-toggle="tab"><i class="fa fa-comment-o"></i> REVIEW (03)</a></li>
+                                    <li role="presentation"><a href="#tags" aria-controls="access" role="tab" data-toggle="tab"><i class="fa fa-tags"></i> TAGS</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- DESCRIPTION -->
+                            <div role="tabpanel" class="tab-pane fade" id="descr">
+                                <p>
+                                   @products.FieldValue("LongDesc")
+                                </p>
+                            </div>
+
+                            <!-- REVIEW -->
+                            <div role="tabpanel" class="tab-pane fade  in active" id="review">
+                                <h6>3 REVIEWS FOR SHIP YOUR IDEA</h6>
+
+                                <!-- REVIEW PEOPLE 1 -->
+                                <div class="media">
+                                    <div class="media-left">
+                                        <!--  Image -->
+                                        <div class="avatar"> <a href="#"> <img class="media-object" src="@products.FieldValue("ReviewImage")" alt=""> </a> </div>
+                                    </div>
+                                    <!--  Details -->
+                                    <div class="media-body">
+                                        @products.FieldValue("ReviewDetails")
+                                    </div>
+                                </div>
+
+                                <!-- REVIEW PEOPLE 1 -->
+
+                                <div class="media">
+                                    <div class="media-left">
+                                        <!--  Image -->
+                                        <div class="avatar"> <a href="#"> <img class="media-object" src="@products.FieldValue("ReviewImage1")" alt=""> </a> </div>
+                                    </div>
+                                    <!--  Details -->
+                                    <div class="media-body">
+                                      @products.FieldValue("ReviewDetails1")
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- TAGS -->
+                            <div role="tabpanel" class="tab-pane fade" id="tags"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</section>

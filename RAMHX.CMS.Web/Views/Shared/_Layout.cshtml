@@ -1,0 +1,383 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    var pages = SiteContext.Pages.Where(pa => pa.ParentPageID == Guid.Parse("628CE6A0-BEF9-4505-89B9-A49F76646318") && pa.ShowInNavigation == true).OrderBy(pa => pa.PageOrder);
+    var homePage = SiteContext.Pages.FirstOrDefault(pa => pa.PageID == Guid.Parse("628CE6A0-BEF9-4505-89B9-A49F76646318"));
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var sliders = dbEntity.CoreModule_SliderItems.ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cityscape - @SiteContext.CurrentPage.PageTitle</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/distfrontend/css/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" href="/distfrontend/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/distfrontend/css/elegant-font.css">
+    <!-- REVOLUTION STYLE SHEETS -->
+
+    <link rel="stylesheet" type="text/css" href="/distfrontend/revolution/css/settings.css">
+    <!-- REVOLUTION LAYERS STYLES -->
+    <link rel="stylesheet" type="text/css" href="/distfrontend/revolution/css/layers.css">
+    <!-- REVOLUTION NAVIGATION STYLES -->
+    <link rel="stylesheet" type="text/css" href="/distfrontend/revolution/css/navigation.css">
+    <!-- OWL CAROUSEL
+    ================================================== -->
+    <link rel="stylesheet" href="/distfrontend/css/owl.carousel.css">
+    <!-- SCROLL BAR MOBILE MENU
+    ================================================== -->
+    <link rel="stylesheet" href="/distfrontend/css/jquery.mCustomScrollbar.css" />
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="/distfrontend/style.css">
+    <!-- color scheme -->
+    <link rel="stylesheet" href="/distfrontend/switcher/demo.css" type="text/css">
+    <link rel="stylesheet" href="/distfrontend/switcher/colors/yellow.css" type="text/css" id="colors">
+    <!-- Favicons
+      ================================================== -->
+    <link rel="shortcut icon" href="~/distfrontend/images/favicon.png">
+
+    <!-- SCRIPT -->
+    <script src="/distfrontend/js/vendor/jquery.min.js"></script>
+    <script src="/distfrontend/js/vendor/bootstrap.min.js"></script>
+    <script src="/distfrontend/js/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/distfrontend/js/plugins/wow.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/js/plugins/skrollr.min.js"></script>
+    <!-- Switcher
+    ================================================== -->
+    <script src="/distfrontend/switcher/demo.js"></script>
+
+    <!-- REVOLUTION JS FILES -->
+    <script type="text/javascript" src="/distfrontend/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
+        (Load Extensions only on Local File Systems !
+        The following part can be removed on Server for On Demand Loading) -->
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="/distfrontend/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <!-- Intializing Slider-->
+    <script type="text/javascript" src="/distfrontend/js/plugins/slider.js"></script>
+    <!-- Mobile Menu
+    ================================================== -->
+    <script src="/distfrontend/js/plugins/jquery.mobile-menu.js"></script>
+    <!-- Initializing the isotope
+    ================================================== -->
+    <script src="/distfrontend/js/plugins/isotope.pkgd.min.js"></script>
+    <script src="/distfrontend/js/plugins/custom-isotope.js"></script>
+    <!-- Initializing Owl Carousel
+    ================================================== -->
+    <script src="/distfrontend/js/plugins/owl.carousel.js"></script>
+    <script src="/distfrontend/js/plugins/custom-owl.js"></script>
+    <script src="~/distadmin/js/jquery.blockUI.js"></script>
+    <script src="~/distcommon/common.js"></script>
+
+    <!-- PreLoad
+    ================================================== -->
+    <script type="text/javascript" src="/distfrontend/js/plugins/royal_preloader.min.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            "use strict";
+            Royal_Preloader.config({
+                mode: 'logo',
+                logo: '/distfrontend/images/Header/logo_1.png',
+                timeout: 1,
+                showInfo: true,
+                opacity: 1,
+                background: ['#FFFFFF']
+            });
+        })(jQuery);
+    </script>
+    <!-- Global Js
+    ================================================== -->
+    <script src="/distfrontend/js/plugins/custom.js"></script>
+
+
+</head>
+
+<body>
+    <section class="no-padding-tb">
+        <div class="rev_slider_wrapper">
+            <!-- START REVOLUTION SLIDER 5.0 auto mode -->
+            <div class="rev_slider slider-home-2" data-version="5.0" id="slider-h2">
+                <ul>
+                    @foreach (var slide in sliders)
+                    {
+                        <li data-transition="incube-horizontal">
+                            <img alt="" data-bgfit="cover" data-bgposition="center center" src="@slide.SliderImagePath" />
+                            <div class="tp-caption heading-2 white-text" data-start="700" data-transform_in="y:[-150%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power3.easeInOut;" data-voffset="-100" data-x="center" data-y="center"><strong>@slide.FirstLine</strong></div>
+
+                            <div class="tp-caption heading-7 white-text" data-start="900" data-transform_in="y:[150%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power3.easeInOut;" data-voffset="-45" data-x="center" data-y="center">@slide.SecondLine</div>
+
+                            <div class="tp-caption heading-2 white-text text-center" data-start="1100" data-transform_in="y:[150%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power3.easeInOut;" data-voffset="40" data-x="center" data-y="center">
+                                @slide.ThirdLine<br />
+                                @slide.ForthLine
+                            </div>
+
+                            @if (slide.FirstButtonText != "" || slide.FirstButtonLink != "")
+                            {
+                                <div class="tp-caption btn-1" data-hoffset="-85" data-start="1600" data-transform_out="y:50px;opacity:0;s:300;" data-voffset="140" data-x="center" data-y="center">
+                                    <a class="ot-btn btn-main-color text-cap " href="@slide.FirstButtonLink">@slide.FirstButtonText</a>
+                                </div>
+                            }
+
+                            @if (slide.SecondButtonText != "" || slide.SecondButtonLink != "")
+                            {
+                                <div class="tp-caption btn-2" data-hoffset="85" data-start="1600" data-transform_in="y:50px;opacity:0;s:800;e:easeInOutCubic;" data-transform_out="y:50px;opacity:0;s:300;" data-voffset="140" data-x="center" data-y="center"><a class="ot-btn btn-sub-color text-cap  " href="@slide.SecondButtonLink">@slide.SecondButtonText</a></div>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- END REVOLUTION SLIDER -->
+        </div>
+        <!-- END REVOLUTION SLIDER WRAPPER -->
+    </section>
+    <!-- End Section Slider -->
+
+    <div class="mobile-menu-first">
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="header-mobile-menu">
+                <a href="#">PHONE: 9909364110</a>
+                <div class="mm-toggle">
+                    <span aria-hidden="true" class="icon_close"></span>
+                </div>
+            </div> <!-- Mobile Menu -->
+            <div class="mCustomScrollbar light" data-mcs-theme="minimal-dark">
+                <ul>
+                    @*<li>
+                            <a href="/"><i class="icon-home"></i> Home</a>
+                        </li>
+                        <li>
+                            <a href="/photogallery"><span>Gallery</span></a>
+                        </li>
+
+                        <li><a href="/Company"><span>Company</span></a></li>
+
+                        <li>
+                            <a href="/Products"><span>Products</span></a>
+                        </li>
+                        <li>
+                            <a href="/Offers"><span>Offers</span></a>
+                        </li>
+
+                        <li>
+                            <a href="/Projects"><span>Projects</span></a>
+                        </li>
+                        <li>
+                            <a href="/Jobs"><span>Jobs</span></a>
+                        </li>
+                        <li>
+                            <a href="/FAQ"><span>FAQ</span></a>
+                        </li>
+                        <li>
+                            <a href="/contact"><span>Contact</span></a>
+                        </li>*@
+
+                    @if (homePage.ShowInNavigation)
+                    {
+                        <li>
+                            <a href="/"><span>@homePage.PageTitle</span></a>
+                        </li>
+                    }
+                    @foreach (var pagee in pages)
+                    {
+                        <li>
+                            <a href="@pagee.PageUrl"><span>@pagee.PageTitle</span></a>
+                        </li>
+                    }
+                </ul>
+                <div class="footer-mobile-menu">
+                    <ul class="social">
+                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                    <ul class="address-footer-mobile">
+                        <li><p> 4th floor, 406 Orchid Plaza, B/h Mc Donald, Sama Savali Road, Vadodara - 390024</p></li>
+                        <li><p>9909364110 </p></li>
+                        <li><p>cityscape1965@gmail.com</p></li>
+
+                    </ul>
+                </div>
+            </div> <!-- /#rmm   -->
+        </div>
+    </div><!-- End Mobile Menu -->
+
+
+    @Html.Partial("~/Views/CustomViews/GetQuote/GetQuote.cshtml")
+
+
+    <div id="page">
+        <div id="skrollr-body">
+            <header id="mainmenu" class="header-v1 header-border header-fix header-bg-white" data-0="padding:10px;padding-left:40px;padding-right:40px;" data-251="padding:10px; padding-left:40px;padding-right:40px;top:0;">
+                <div id="info" class="topbar topbar-position topbar-dark" data-0="height:30px" data-251="height:0;" style="background-color:#ebcd1e; color:#000">
+
+                    <div class="col-md-12">
+                        <p class="text-cap hidden-xs">Phone: 9909364110 / 9909343775</p>
+
+                        <div class="language">
+                            <p class="text-cap"> E-mail: cityscape1965@gmail.com</p>
+                            @*<a href="#" class="active">EN</a>
+                                <a href="#">FR</a>
+                                <a href="#">PT</a>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="left-header">
+                    <ul class="navi-level-1">
+                        <li><a href="/" class="logo"><img src="/distfrontend/images/Header/logo.png" class="img-responsive" alt="Image"></a></li>
+                    </ul>
+                </div><!-- End Left Header -->
+                <nav style=" margin-top: 23px;">
+                    @*<ul class="navi-level-1 hover-style-5 main-navi">
+                            <li class="has-sub">
+                                <a href="/"><span>Home</span></a>
+                            </li>
+
+                            <li class="has-sub">
+                                <a href="/photogallery"><span>Gallery</span></a>
+                            </li>
+                            <li><a href="/Company"><span>Company </span></a></li>
+
+                            <li class="has-sub">
+                                <a href="/products"><span>Products</span></a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="/offers"><span>Offers</span></a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="/Projects"><span>Projects</span></a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="/Jobs"><span>Jobs</span></a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="/faq"><span>FAQ</span></a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="/contact"><span>Contact</span></a>
+                            </li>
+                        </ul>*@
+
+                    <ul class="navi-level-1 hover-style-5 main-navi">
+                        @if (homePage.ShowInNavigation)
+                        {
+                            <li class="has-sub">
+                                <a href="/"><span>@homePage.PageTitle</span></a>
+                            </li>
+                        }
+                        @foreach (var page in pages)
+                        {
+                            <li class="has-sub">
+                                <a href="@page.PageUrl"><span>@page.PageTitle</span></a>
+                            </li>
+                        }
+                    </ul>
+
+                </nav><!-- End Nav -->
+                <div class="right-header" style=" margin-top: 23px; text-align:right">
+                    @*<ul class="navi-level-1 sub-navi seperator-horizonal-line hover-style-4">
+                            <li>
+
+                                <a href="#" data-toggle="modal" data-target="#myModal" id="btn-search" class="ot-btn   btn-main-color icon-btn-left text-cap" style="margin-top: 10px;"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Get Quote</a>
+                            </li>
+                            <li>
+                                <a href="#/" class="mm-toggle">
+                                    <span aria-hidden="true" class="icon_menu"></span>
+                                </a>
+                            </li>
+                        </ul>*@
+
+                    <ul class="navi-level-1 seperator-horizonal-line hover-style-4">
+                        @*<li class="header-tel"><a class="tel-header" href="#">PHONE: 9909364110</a></li>*@
+                        @*<li>
+                                <a href="#">
+                                    <span aria-hidden="true" class="icon_bag_alt"></span>
+                                </a>
+                            </li>*@
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal" id="btn-search" class="reset-btn btn-in-navi btn-main-color" title="Get An Estimate"><span aria-hidden="true" class="icon_bag_alt"></span> Get An Estimate</a>
+                        </li>
+                        <li>
+                            <a href="#/" class="mm-toggle">
+                                <span aria-hidden="true" class="icon_menu"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- End Right Header -->
+
+
+            </header>
+
+            <!-- End  Header -->
+            @RenderBody()
+            <footer class="footer-v1">
+                <div class="footer-left">
+                    <a href="/">
+                        <h2 class="title white-text" style="padding: 0px; margin: 0px;">
+                            Cityscape <span class="title white-text" style="font-size:13px">Interior</span>
+                        </h2>
+
+                        @*<img src="/distfrontend/images/Header/logo.png" class="img-responsive" alt="Image">*@
+                    </a>
+                </div>
+                <!-- End Left Footer -->
+                <nav>
+                    <ul>
+                        <li>
+                            <a class="text-cap" href="#">Gallery</a>
+                        </li>
+                        <li>
+                            <a class="text-cap" href="#">Products</a>
+                        </li>
+                        <li>
+                            <a class="text-cap" href="#">Jobs</a>
+                        </li>
+                        <li>
+                            <a class="text-cap" href="#">About</a>
+                        </li>
+                        <li>
+                            <a class="text-cap" href="#">Faq</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Nav Footer -->
+                <div class="footer-right">
+                    <ul class="social social-footer">
+                        <li class="facebook active"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <!-- End Right Footer -->
+            </footer>
+            <!-- End Footer -->
+            <section class="copyright">
+                <p>Copyright © 2018 Designed by <a href="http://www.haptix.biz">HaptiX</a>. All rights reserved.</p>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿@using HaptiX.RAMHX.eDoctor.Repository
+@using HaptiX.RAMHX.eDoctor.DataAccess
+
+@{
+    //RolePrincipal r = (RolePrincipal)User;
+    string roles = string.Join(",", SiteContext.CurrentUser_Roles.Select(x => x.Name));
+
+
+    DoctorRepository doctorRepo = new DoctorRepository();
+    LocationRepository locationRepo = new LocationRepository();
+    DoctorLocationRepository doclocRepo = new DoctorLocationRepository();
+
+    List<DoctorLocation> docLoc = doclocRepo.GetDoctorLocation();
+    List<Guid> doctorIds = docLoc.Select(x => x.DoctorId).ToList();
+    List<Guid> locationIds = docLoc.Select(x => x.LocationId).ToList();
+
+    //ViewBag.GetDoctorLocation = docLoc;
+    //ViewBag.Doctors = doctorRepo.GetDoctors().Where(x => doctorIds.Contains(x.DoctorId));
+    //ViewBag.Locations = locationRepo.GetLocations().Where(x => locationIds.Contains(x.LocationId));
+
+    List<Location> locationList = locationRepo.GetLocations().Where(x => locationIds.Contains(x.LocationId)).ToList();
+    List<Doctor> doctorList = doctorRepo.GetDoctors().Where(x => doctorIds.Contains(x.DoctorId)).ToList();
+}
+
+
+
+@foreach (var location in locationList)
+{
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>@location.Name</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+
+        <ul class="treeview-menu">
+             
+            @foreach (var doctor in doctorList)
+            {
+                if (docLoc.Where(x => x.DoctorId == doctor.DoctorId && x.LocationId == location.LocationId).Count() > 0)
+                {
+                    <li><a href="/myadmin/pos?d=@doctor.DoctorId&l=@location.LocationId"><i class="fa fa-circle-o"></i> @doctor.FullName</a></li>
+                }
+            }
+        </ul>
+    </li>
+
+}

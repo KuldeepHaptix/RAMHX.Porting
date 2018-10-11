@@ -1,0 +1,30 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    Layout = null;
+
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+
+    List<RAMHX.CMS.DataAccess.cms_Pages> blogs = currentPage.cms_SubPages.ToList();
+}
+
+<section class="page-section">
+    <div class="container">
+
+        @for (int i = 0; i < blogs.Count; i++)
+            {
+            <div class="col-sm-6 col-md-6">
+                <div class="post-item">
+                    @blogs[i].FieldValue("BlogHeader")
+                    <h2 class="post-title">
+                        <a href="@blogs[i].FullPageUrl">@blogs[i].PageName</a>
+                    </h2>
+                    @blogs[i].FieldValue("ShortDesc")
+
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+</section>

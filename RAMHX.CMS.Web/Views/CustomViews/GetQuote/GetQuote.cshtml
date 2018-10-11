@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="modal fade modal-search" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id="frmGetquoat">
+                    <h2> GET AN ESTIMATE </h2>
+                    <h4>Please Provide Some Details To Get An Estimate.</h4>
+                    <div class="row">
+                        <div class="form-group col-sm-12" id="dName">
+                            <input class="form-control" id="txtName" name="txtName" placeholder="Your Name" type="text" isrequired="1" errorspan="sNameError" divcontainer="dName" defaultvalue="" />
+                            <span class="help-block hide error" id="sNameError">Please Enter Your Name</span>
+                        </div>
+
+                        <div class="form-group col-sm-12" id="dMobile">
+                            <input class="form-control" id="txtMobile" name="txtMobile" placeholder="Mobile Number" type="text" isrequired="1" errorspan="sMobileError" divcontainer="dMobile" defaultvalue="" />
+                            <span class="help-block hide error" id="sMobileError">Please Enter Mobile</span>
+                        </div>
+                        <div class="form-group col-sm-12" id="dEmail">
+                            <input class="form-control" id="txtFromEmail" name="txtFromEmail" placeholder="Your Email" type="email" isrequired="1" errorspan="sEmailError" divcontainer="dEmail" defaultvalue="" />
+                            <span class="help-block hide error" id="sEmailError">Please Enter Your Email</span>
+                        </div>
+                        <div class="form-group col-sm-12" id="dProject">
+                            <select class="form-control" id="txtProject" name="txtProject" placeholder="Your Email" type="email" isrequired="1" errorspan="sProjectError" divcontainer="dProject" defaultvalue="">
+                                <option value="Flat">Flat</option>
+                                <option value="Vila">Vila</option>
+                                <option value="Office">Office</option>
+                            </select>
+                            <span class="help-block hide error" id="sProjectError">Please Select Projects</span>
+                        </div>
+                        <div class="form-group col-sm-12" id="dPrjLocation">
+                            <input class="form-control" id="txtPrjLocation" name="txtPrjLocation" placeholder="Enter Project Location" type="text" isrequired="1" errorspan="sPrjLocationError" divcontainer="dPrjLocation" defaultvalue="" />
+                            <span class="help-block hide error" id="sPrjLocationError">Please Enter Project Location</span>
+                        </div>
+                        <h4>Attach Your House / Flat Floor Plan</h4>
+                        <h4>Attach Floor plan of your house /apartment (Auto cad/Jpeg/PDF)</h4>
+                        <div class="form-group col-sm-12" id="dFile1">
+                            <input class="form-control" id="txtFile1" name="txtFile1" placeholder="Upload Resume" type="file" isrequired="0" errorspan="sFileError1" divcontainer="dFile1" defaultvalue="" />
+                            <span class="help-block hide error" id="sFileError1">Please Select a File</span>
+                        </div>
+                        <div class="form-group col-sm-12" id="dFile2">
+                            <input class="form-control" id="txtFile2" name="txtFile2" placeholder="Upload Resume" type="file" isrequired="0" errorspan="sFileError2" divcontainer="dFile2" defaultvalue="" />
+                            <span class="help-block hide error" id="sFileError2">Please Select a File</span>
+                        </div>
+                        <div class="form-group col-sm-12" id="dFile3">
+                            <input class="form-control" id="txtFile3" name="txtFile3" placeholder="Upload Resume" type="file" isrequired="0" errorspan="sFileError3" divcontainer="dFile3" defaultvalue="" />
+                            <span class="help-block hide error" id="sFileError3">Please Select a File</span>
+                        </div>
+
+                        <h4> I Don't Have a Floor Plan With Me. You Can Collect It From.</h4>
+                        <div class="form-group col-sm-12" id="ddName">
+                            <input class="form-control" id="txtName2" name="txtName2" placeholder="Your Name" type="text" isrequired="0" errorspan="sName2Error" divcontainer="ddName" defaultvalue="" />
+                            <span class="help-block hide error" id="sName2Error">Please Enter Your Name</span>
+                        </div>
+
+                        <div class="form-group col-sm-12" id="ddMobile">
+                            <input class="form-control" id="txtMobile2" name="txtMobile2" placeholder="Mobile Number" type="text" isrequired="0" errorspan="sMobile2Error" divcontainer="ddMobile" defaultvalue="" />
+                            <span class="help-block hide error" id="sMobile2Error">Please Enter Mobile</span>
+                        </div>
+                        <div class="form-group col-sm-12" id="dRelation">
+                            <input class="form-control" id="txtRelation" name="txtRelation" placeholder="Relation" type="text" isrequired="0" errorspan="sRelationError" divcontainer="dRelation" defaultvalue="" />
+                            <span class="help-block hide error" id="sRelationError">Please Enter Relation </span>
+                        </div>
+                        <div class="form-group col-sm-12" id="ddEmail">
+                            <input class="form-control" id="txtFrom2Email" name="txtFrom2Email" placeholder="Your Email" type="email" isrequired="0" errorspan="sEmail2Error" divcontainer="ddEmail" defaultvalue="" />
+                            <span class="help-block hide error" id="sEmail2Error">Please Enter Your Email</span>
+                        </div>
+                    </div>
+                    <button class="ot-btn text-cap  btn-rounded btn-blue-color" id="btnGetQuote">Submit</button>
+                    <input type="hidden" name="txtTemplate" value="GetQuote" />
+                    <input type="hidden" name="txtEmailSubject" value="Cityspace - GET AN ESTIMATE" />
+                    <input type="hidden" name="txtToEmail" value="ashish.haptix@gmail.com" />
+                </form>
+
+                <div id="divSuccess" class="hide">
+                    <div class="form-group alert-success col-sm-12">
+                        <h4>Thank You!</h4>
+                        <p> We have received your request. We will get back to you shortly.</p>
+                        <a href="/" class="ot-btn text-cap  btn-rounded btn-blue-color">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Search-->
+<script src="~/distfrontend/js/GetQuote.js"></script>

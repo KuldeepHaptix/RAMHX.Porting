@@ -1,0 +1,80 @@
+﻿
+@using RAMHX.CMS.DataAccess;
+
+@{
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var productoffers = (from a in dbEntity.CoreModule_PackageMasters
+                         select a).OrderByDescending(gal => gal.Id).ToList();
+
+    var offers = dbEntity.CoreModule_PackageCategories.ToList();
+
+    int count = 1;
+    var instr = "in";
+    var colstr = "";
+}
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Our Offers</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">Offers</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section class="padding ">
+    <div class="container">
+        <div class="row">
+            <div class="demo-section">
+                <div class="col-md-12 padding-bottom-50">
+                    <h3 class="text-cap">Exclusive Offers </h3>
+                    <!-- End Col -->
+                    <div class="padding-top-50">
+                        <div class="accordion-style-light no-round">
+                            <div class="accordion-warp">
+                                @*<h2 class="title">Offers</h2>*@
+                                <div class="clearfix"></div>
+                                <div class="panel-group" id="accordion2">
+                                    @foreach (CoreModule_PackageMaster item in productoffers)
+                                    {
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion2" href="#@item.Id" class="@colstr">@count. @item.PackName <span class="pull-right">MRP: @item.MRP | OFFER: @item.OfferPrice</span></a>
+
+                                                </h4>
+                                            </div>
+                                            <div id="@item.Id" class="panel-collapse collapse @instr">
+                                                <div class="panel-body">
+                                                    <div class="accordion-content">
+                                                        <p>@item.LongDesc </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @{
+                                                count++;
+                                                instr = "";
+                                                colstr = "collapsed";
+                                            }
+                                        </div>
+                                                }
+                                </div>
+                            </div>
+
+                            <!-- End panel group -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Col -->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- Section Tabs -->

@@ -1,0 +1,99 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@using HaptiX.RAMHX.eDoctor.Repository;
+@using HaptiX.RAMHX.eDoctor.DataAccess;
+
+@{
+    Layout = null;
+
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+
+    List<RAMHX.CMS.DataAccess.cms_Pages> doctors = currentPage.cms_SubPages.ToList();
+    List<Guid> activeDoctorIds = new List<Guid>();
+    List<RAMHX.CMS.DataAccess.cms_Pages> ActiveDoctorsPage = new List<RAMHX.CMS.DataAccess.cms_Pages>();
+
+    DoctorRepository dr = new DoctorRepository();
+
+    foreach (var doctor in doctors)
+    {
+        Guid doctId = Guid.Empty;
+        Guid.TryParse(doctor.FieldValue("DoctorId"), out doctId);
+        bool isActive = false;
+        bool.TryParse(doctor.FieldValue("IsActive"), out isActive);
+
+        if (doctId != Guid.Empty && doctor.FieldValue("IsActive").ToLower() == "on")
+        {
+            activeDoctorIds.Add(doctId);
+            ActiveDoctorsPage.Add(doctor);
+        }
+    }
+
+    List<Doctor> doctorsList = dr.GetDoctor(activeDoctorIds);
+}
+
+<section class="row page_intro">
+    <div class="row m0 inner">
+        <div class="container">
+            <div class="row">
+                <h5>quality assurance</h5>
+                <h2>experienced doctors</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row breadcrumbRow">
+    <div class="container">
+        <div class="row inner m0">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li>doctor</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="row team_section_type2 bgf">
+    <div class="container">
+        <div class="row m0 titleRow text-left">
+            <h5>doctor</h5>
+            <h2>general health care</h2>
+        </div>
+        <div class="row dorctors_row">
+            @foreach (var dPage in ActiveDoctorsPage)
+            {
+                Guid doctIdByPage = Guid.Empty;
+                Guid.TryParse(dPage.FieldValue("DoctorId"), out doctIdByPage);
+
+                Doctor doct = doctorsList.First(d => d.DoctorId == doctIdByPage);
+
+                <div class="col-sm-6 col-md-3 team_member">
+                    <div class="row m0 inner">
+                        <a href="@dPage.FullPageUrl">
+                            <div class="row m0 image"><img src="@doct.PhotoUrl" alt="" class="img-responsive"></div>
+                            <div class="row m0 title_row">
+                                <h5>@doct.FullName</h5>
+                                <div class="row m0 pos">Cancer Care Doctor</div>
+                            </div>
+                        </a>
+                        <p>@doct.About</p>
+                     
+                         @*<ul class="social_list">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>*@
+
+                        <a href="@dPage.FullPageUrl" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+
+                @*<input type="button" value="Book Now" class="appoimentByDoctor" />
+                    <div id="slotViewer">
+
+                    </div>*@
+            }
+
+        </div>
+    </div>
+</section>

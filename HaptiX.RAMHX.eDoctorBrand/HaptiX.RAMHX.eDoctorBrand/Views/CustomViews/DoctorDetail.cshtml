@@ -1,0 +1,145 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@using HaptiX.RAMHX.eDoctor.Repository;
+@using HaptiX.RAMHX.eDoctor.DataAccess;
+
+@{
+    Layout = null;
+
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+    DoctorRepository dr = new DoctorRepository();
+    Guid doctId = Guid.Empty;
+    Guid.TryParse(currentPage.FieldValue("DoctorId"), out doctId);
+    Doctor doctor = dr.GetDoctor(doctId);
+}
+
+<section class="row page_intro">
+    <div class="row m0 inner">
+        <div class="container">
+            <div class="row">
+                <h5>quality assurance</h5>
+                <h2>experienced doctors</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row breadcrumbRow">
+    <div class="container">
+        <div class="row inner m0">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Doctor</a></li>
+                <li>@doctor.FullName</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="row doctor_details">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-9 doctor_about">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 image">
+                        <a href="#" data-toggle="modal" data-target="#image-pop"><img src="@doctor.PhotoUrl" alt="" class="img-responsive"></a>
+                        <div class="modal fade" id="image-pop" tabindex="-1" role="dialog" aria-labelledby="image-pop">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-times-circle-o"></i>
+                                    </button>
+                                    <img src="@doctor.PhotoUrl" alt="" width="100%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-8 texts">
+                        <div class="heading row m0">
+                            <div class="fleft name_pos">
+                                <h3>@doctor.FullName</h3>
+                                <h5>Cancer Care Doctor</h5>
+                            </div>
+                            @*<ul class="fright social_list">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>*@
+                        </div>
+                        <p>@doctor.About</p>
+                    </div>
+                </div>
+                <p>@doctor.AboutFullDetail</p>
+            </div>
+            <div class="col-sm-12 col-md-3 sidebar doctor_details_sidebar">
+                <div class="row m0 widget speciality">
+                    <h5 class="widget_heading">Speciality</h5>
+                    <ul class="list-unstyled">
+                        @foreach (var item in doctor.Specializations.Split('|'))
+                        {
+                            <li><i class="fa fa-angle-right"></i>@item</li>
+                        }
+
+                        @*<li><i class="fa fa-angle-right"></i>rehabilitation center</li>
+                            <li><i class="fa fa-angle-right"></i>cancer care</li>*@
+
+                    </ul>
+                    @*<a href="#" class="view_all">book appointment</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<input type="hidden" id="docId" value="@doctor.DoctorId" />
+@Html.Action("GetLocationsByDoctor", "Location", new { docid = doctId.ToString(),  area = "" })
+
+@*@Html.Action("GetAvailabilityView", "Availability", new { availid = doctId.ToString(),  area = "" })*@
+
+@*@{ Html.RenderAction("GetAvailabilityView", "Availability"); }*@
+
+ @*@Html.RenderAction("GetAvailabilityView", "Availability")*@
+
+<section class="row doctor_cv">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 cv_widget address">
+                <h5 class="heading">Address</h5>
+                <div class="row m0">
+                    @doctor.Address
+                </div>
+            </div>
+            <div class="col-sm-4 cv_widget education">
+                <h5 class="heading">Educations</h5>
+                <div class="row m0">
+                    @doctor.Educations
+                </div>
+            </div>
+            <div class="col-sm-4 cv_widget awards">
+                <h5 class="heading">awards &amp; recognition</h5>
+                <div class="row m0">
+                    @doctor.AwardAndRecognitions
+                </div>
+            </div>
+            <div class="col-sm-4 cv_widget office_hours">
+                <h5 class="heading">Experience </h5>
+                <div class="row m0">
+                    @doctor.Experience
+                </div>
+            </div>
+            <div class="col-sm-4 cv_widget certifications">
+                <h5 class="heading">Registrations(s)</h5>
+                <div class="row m0">
+                    @doctor.Registrations
+                </div>
+            </div>
+            <div class="col-sm-4 cv_widget contact_info">
+                <h5 class="heading">contact info</h5>
+                <div class="row m0">
+                    @doctor.Mobile <br>
+                    @doctor.Email
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

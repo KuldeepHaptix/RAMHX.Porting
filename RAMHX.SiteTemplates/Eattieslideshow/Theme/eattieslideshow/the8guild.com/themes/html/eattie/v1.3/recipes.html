@@ -1,0 +1,234 @@
+<!doctype html>
+<!--Conditionals for IE8-9 Support-->
+<!--[if IE 8]><html lang="en" class="ie ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie ie9"><![endif]-->
+<html>
+  
+<!-- Mirrored from the8guild.com/themes/html/eattie/v1.3/recipes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Nov 2016 09:54:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Eattie - Restaurant HTML Template</title>
+    <meta name="description" content="Responsive Restaurant HTML Template" />
+		<meta name="keywords" content="responsive html template, restaurant, cafe, bootstrap 3.0, css, jquery" />
+		<meta name="author" content="8Guild" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!--Google Fonts-->
+    <link href='../../../../../fonts.googleapis.com/css37a7.css?family=Marmelad' rel='stylesheet' type='text/css'>
+    <link href='../../../../../fonts.googleapis.com/csscd33.css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!--Bootstrap 3.3.2-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--Icons Fonts-->
+    <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!--Modernizr-->
+		<script src="js/libs/modernizr.custom.js"></script>
+    <!--Adding Media Queries Support for IE8-->
+    <!--[if lt IE 9]>
+      <script src="js/plugins/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <!--Body-->
+  <body>
+  
+  	<!-- Preloader -->
+    <div id="preloader">
+      <div id="status">
+        <img class="svg" src="img/logo-big.svg" width="133" height="120" alt="Eattie"/>
+        <img class="png" src="img/logo-big.png" width="133" height="120" alt="Eattie"/>
+        <div id="fountainG">
+          <div id="fountainG_1" class="fountainG"></div>
+          <div id="fountainG_2" class="fountainG"></div>
+          <div id="fountainG_3" class="fountainG"></div>
+          <div id="fountainG_4" class="fountainG"></div>
+          <div id="fountainG_5" class="fountainG"></div>
+          <div id="fountainG_6" class="fountainG"></div>
+          <div id="fountainG_7" class="fountainG"></div>
+          <div id="fountainG_8" class="fountainG"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--Header-->
+    <header class="pinned"><!--By adding "pinned" class we pinned header to the top of the window-->
+      <div class="container">
+        <a class="logo" href="home-slideshow.html"></a>
+        
+        <!--Navigation-->
+        <nav class="navbar" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navi-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navi-collapse">
+            <ul class="nav navbar-nav nav-left">
+              <li><a href="home-slideshow.html">home</a></li>
+              <li><a href="home-slideshow.html#about">about</a></li>
+              <li><a href="home-slideshow.html#serv-reservation">services/reservation</a></li>
+              <li class="last"><a href="home-slideshow.html#news">news</a></li>
+            </ul>
+            <ul class="nav navbar-nav nav-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">menu <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="menu1.html">1 column layout</a></li>
+                  <li><a href="menu2.html">2 columns layout</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">reviews <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="reviews.html">reviews list</a></li>
+                  <li><a href="reviews-single.html">reviews single</a></li>
+                </ul>
+              </li>
+              <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">chef recipes <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="recipes.html">chef recipes list</a></li>
+                  <li><a href="recipes-single.html">chef recipes single</a></li>
+                </ul>
+              </li>
+              <li class="last"><a href="home-slideshow.html#contacts">contacts</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </nav><!--Close Navigation -->
+      </div>
+    </header>
+    
+    <!--Recipes-->
+    <section class="block recipes">
+      <div class="fsbg">
+        <!--The id (like id="r_1") of the div element should correspond with the rel attribute (like rel="r_1") of the link below. Thus we connect link with background image-->
+        <div class="visible" style="background-image: url(img/recipes/default.jpg)"></div><!--Generic Default Image not connected with any recipe-->
+        <div id="r_1" style="background: url(img/recipes/r_1.jpg)"></div>
+        <div id="r_2" style="background: url(img/recipes/r_2.jpg)"></div>
+        <div id="r_3" style="background: url(img/recipes/r_3.jpg)"></div>
+        <div id="r_4" style="background: url(img/recipes/r_4.jpg)"></div>
+        <div id="r_5" style="background: url(img/recipes/r_5.jpg)"></div>
+      </div>
+    	<div class="recipes-inner">
+        <div class="heading"><h2>Chef recipes</h2><span class="triangle"></span></div>
+        <a href="recipes-single.html" data-recipe="r_1">
+          <div class="bg"></div>
+          <div class="inner">
+            <h3>cream cherry pie</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <span class="arrowRight"></span>
+          </div>
+        </a>
+        <a href="recipes-single.html" data-recipe="r_2">
+        <div class="bg"></div>
+          <div class="inner">
+            <h3>veal stew with boiled vegetables</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <span class="arrowRight"></span>
+          </div>
+        </a>
+        <a href="recipes-single.html" data-recipe="r_3">
+          <div class="bg"></div>
+          <div class="inner">
+            <h3>cheesecake with caramel</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <span class="arrowRight"></span>
+          </div>
+        </a>
+        <a href="recipes-single.html" data-recipe="r_4">
+          <div class="bg"></div>
+          <div class="inner">
+            <h3>bacon wrapped chicken breasts</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <span class="arrowRight"></span>
+          </div>
+        </a>
+        <a href="recipes-single.html" data-recipe="r_5">
+          <div class="bg"></div>
+          <div class="inner">
+            <h3>donuts topped with sugar powder</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <span class="arrowRight"></span>
+          </div>
+        </a>
+      </div>
+    </section>
+    
+    <!--Footer-->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-2">
+          <div class="footer-logo"></div>
+        </div>
+        <div class="col-lg-5 col-md-5">
+          <div class="footer-contacts">
+            <h3>contacts</h3>
+            <div class="group">
+              <i class="fa fa-map-marker"></i>
+              <p>4120 Lenox Avenue, New York, NY, 10035 76 Saint<br/>Nicholas Avenue</p>
+            </div>
+            <div class="group">
+              <i class="fa fa-mobile"></i>
+              <p>+48 543765234</p>
+            </div>
+            <div class="group">
+              <i class="fa fa-envelope"></i>
+              <p>eattie@mail.com</p>
+            </div>
+            <div class="group last">
+              <i class="fa fa-clock-o"></i>
+              <p>Open 11am-11pm Mon-Wed; 11am-1am Thur-Sat;<br/>noon-midnight Sun</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5">
+          <h3>subscribe for our news</h3>
+          <form class="subscribe-form group" method="post" role="form">
+            <div class="row">
+              <div class="col-lg-7 col-md-7 form-group">
+                <input class="form-control" type="email" name="email" placeholder="enter your email" required>
+              </div>
+              <div class="col-lg-5 col-md-5 form-group">
+                <button type="submit" class="btn btn-primary" name="subscribe">subscribe</button>
+              </div>
+            </div>
+          </form>
+          <h3>find us on social networks</h3>
+          <div class="social-bar">
+            <a href="#" class="fa fa-instagram tooltipped" title="Instagram"></a>
+            <a href="#" class="fa fa-vimeo-square tooltipped" title="Vimeo"></a>
+            <a href="#" class="fa fa-youtube-square tooltipped" title="Youtube"></a>
+            <a href="#" class="fa fa-tumblr-square tooltipped" title="Tumblr"></a>
+            <a href="#" class="fa fa-facebook-square tooltipped" title="Facebook"></a>
+            <a href="#" class="fa fa-linkedin-square tooltipped" title="LinkedIn"></a>
+            <a href="#" class="fa fa-pinterest-square tooltipped" title="Pinterest"></a>
+            <a href="#" class="fa fa-google-plus-square tooltipped" title="Google+"></a>
+          </div>
+        </div> 
+      </div>
+      <div class="copyright row">
+        <div class="col-lg-10 col-md-10 col-lg-offset-2 col-md-offset-2">
+          <p>&copy; Eattie. All Rights Reserved. Designed by <a href="http://8guild.com/" target="_blank">8Guild</a></p>
+        </div>
+      </div>
+      </div>
+    </footer>
+    
+    <!--Javascript (jQuery)-->
+		<script src="js/libs/jquery-1.11.2.min.js"></script>
+		<script src="js/plugins/bootstrap.min.js"></script>
+		<script src="js/plugins/jquery.validate.min.js"></script>
+		<script src="js/scripts-secondary.js"></script>
+    
+  </body><!--Close Body-->
+
+<!-- Mirrored from the8guild.com/themes/html/eattie/v1.3/recipes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Nov 2016 09:56:41 GMT -->
+</html>

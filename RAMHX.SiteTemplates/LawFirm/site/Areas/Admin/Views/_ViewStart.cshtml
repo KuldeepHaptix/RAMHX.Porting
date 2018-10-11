@@ -1,0 +1,11 @@
+﻿@{
+    if (Request.QueryString["dialog"] == "1")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_PopupLayout.cshtml";
+    }
+    else
+    { 
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+
+}

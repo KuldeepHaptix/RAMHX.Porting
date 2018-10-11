@@ -1,0 +1,44 @@
+﻿/*Hide folder icon from jstree*/
+.jstree li > a > .jstree-icon {
+    display: none !important;
+}
+
+/*sortable*/
+.clssortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 90%;
+}
+
+    .clssortable li {
+        margin: 0 3px 3px 3px;
+        /*padding: 0.4em;*/
+        padding-left: 1.5em;
+        font-size: 1.4em;
+        height: 18px;
+    }
+
+        .clssortable li span {
+            position: absolute;
+            margin-left: -1.3em;
+        }
+
+        .clssortable, .clssortable li span, .clssortable li {
+            font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif";
+            font-size: 87.5%;
+        }
+
+/* Form validation message color  */
+.error {
+    color: red;
+}
+
+.required-star {
+    color: red;
+}
+
+#PageMgr{
+   max-height:920px;
+   overflow:auto;
+}

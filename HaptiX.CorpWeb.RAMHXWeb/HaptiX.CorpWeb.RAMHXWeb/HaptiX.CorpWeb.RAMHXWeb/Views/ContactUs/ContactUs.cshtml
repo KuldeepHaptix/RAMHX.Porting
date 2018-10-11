@@ -1,0 +1,172 @@
+﻿@model RAMHX.CMS.Repository.Models.ContactUsModel
+
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+@*<h2>Contact us</h2>*@
+
+<br />
+<br />
+<div class="form-group">
+    <div>
+        @Html.Action("Index", "HtmlModule", new { id = "ContactMap" })
+    </div>
+    <br />
+    <br />
+    <br />
+    <div>
+        <div class="container marg50">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 class="title"><span>Contact us</span></h3>
+                    <form id="contactForm">
+                        <div class="alert alert-success success" visible="false" id="successMsg"><i class="fa fa-check"></i> Well done! Your message is successfully sent to admin.</div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div>
+                                <span class="input">
+                                    <p class="contact-width">
+                                        @Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control contact-width" }, @placeholder = "Name", @size = "40", @class = "form-control contact-width", @Id = "Name" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </p>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="input">
+                                    <p class="contact-width">
+                                        @Html.TextBoxFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control contact-width" }, @placeholder = "Contact No.", @size = "40", @class = "form-control contact-width", @Id = "ContactNo" })
+                                        @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                                    </p>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="input">
+                                    <p class="contact-width">
+                                        @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "Your E-mail", @size = "40", @class = "form-control contact-width", @Id = "MailAddress" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </p>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="input">
+                                    <p class="contact-width">
+                                        <select id="Category" class="form-control" style="width:70%">
+                                            <option selected="selected">Select Category</option>
+                                            <option>Enquiry</option>
+                                            <option>Query</option>
+                                            <option>Thought</option>
+                                            <option>General</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                                    </p>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="input">
+                                    <p class="contact-width">
+                                        @Html.TextAreaFor(model => model.Commants, new { cols = "40", rows = "10", @placeholder = "Comments", @size = "40", @style = "width:70%", @class = "form-control contact-width", @Id = "Comments" })
+                                        @Html.ValidationMessageFor(model => model.Commants, "", new { @class = "text-danger" })
+                                    </p>
+                                </span>
+                            </div>
+
+                            <br>
+                            <div class="form-actions">
+                                @*<input type="submit" value="Send message" id="btnSendEmail"  name="command" class="btn btn-default">*@
+                                @*@Html.HiddenFor(m => m.Email, new { @class = "email" })*@
+                                @*<a class="btn btn-default  btnSendEmail" email="@Model.Email">
+                                        Send Email
+                                    </a>*@
+                                <input type="button" id="btnSendMail" class="btn btn-default  btnSendEmail" value="Send Email" />
+                            </div>
+                            @*<p>
+                                    <input type="submit" id="send" class="btn btn-default" value="Send message" />
+                                </p>*@
+                        }
+                    </form>
+                </div>
+                <div>
+                    @Html.Action("Index", "HtmlModule", new { id = "AddressInformation" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+            $('.btnSendEmail').click(function () {
+
+                var name = $('#Name').val();
+                var contactno = $('#ContactNo').val();
+                var email = $('#MailAddress').val();
+                var category = $('#Category').val();
+                var comments = $('#Comments').val();
+
+                if (name == '') {
+                    alert("Please enter valid name");
+                    $('#Name').focus();
+                    return;
+                }
+                if (contactno == '') {
+                    alert("Please enter valid contact no");
+                    $('#ContactNo').focus();
+                    return;
+                }
+                if (email == '') {
+                    alert("Please enter valid email");
+                    $('#MailAddress').focus();
+                    return;
+                }
+                if (category == 'Select Category') {
+                    alert("Please select category");
+                    $('#Category').focus();
+                    return;
+                }
+                if (comments == '') {
+                    alert("Please enter valid comments");
+                    $('#Comments').focus();
+                    return;
+                }
+
+                var edfata = "{'name':'" + name + "','contactno':'" + contactno + "','email':'" + email + "','category':'" + category + "','comments':'" + comments + "'}";
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ContactUs/SendEmail",
+                    cache: false,
+                    
+                    //data: {"name": name, "contactno": contactno,"email":email,"category":category,"comments":comments},
+                    data:edfata,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (res) {
+                        //window.location.reload(true);
+                        console.log("success",res.d);
+                        $('#Name').val('');
+                        $('#ContactNo').val('');
+                        $('#MailAddress').val('');
+                        $('#Category').val('');
+                        $('#Comments').val('');
+                        $("#successMsg").show();
+                    },
+                    error: function (er) {
+                        console.log(er);
+                    }
+
+                });
+
+                return false;
+            });
+        });
+
+
+    </script>
+}

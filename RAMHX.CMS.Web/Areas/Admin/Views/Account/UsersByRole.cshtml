@@ -1,0 +1,195 @@
+﻿@*@model IEnumerable<RAMHX.CMS.DataAccess.AspNetUser>*@
+@model  IEnumerable<RAMHX.CMS.Repository.UserModel>
+
+@{
+    ViewBag.Title = "Users";
+}
+<div class="col-md-12">
+
+    <h2>Users</h2>
+    @*<div class="col-md-3">*@
+    @if (Request.QueryString["adnew"] == "1")
+    {
+        <p>
+            @Html.ActionLink("New User", "Register") |
+            @if (Request.QueryString["adnewrole"] == "1")
+            {
+                @Html.ActionLink("Roles", "Index", "Roles", new { area = "admin" }, new { @class = "" })
+            }
+        </p>
+    }
+    @*</div>*@
+    @*<div class="col-md-3">
+            @using (Html.BeginForm())
+            {
+                @*<div class="editor-label">
+                    @Html.LabelFor(m => m.AssignedRoles)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.AssignedRoles)
+                    @Html.ValidationMessageFor(m => m.AssignedRoles)
+                </div>
+            <input type="button" id='lnkDelete' class="deleteuser btn-link" userid="" value="Delete" />
+            }
+        </div>*@
+    <table class="table" id="userrolelist">
+        <thead>
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.EmailConfirmed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PasswordHash)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SecurityStamp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LockoutEnabled)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccessFailedCount)
+                    </th>*@
+                <th>
+                    @*@Html.DisplayNameFor(model => model.UserName)*@
+                    User
+                </th>
+                <th>First name</th>
+                <th>Last name</th>
+                @if (Request.QueryString["adnewrole"] == "1")
+                {
+                    <th>Roles</th>
+                }
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PasswordHash)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SecurityStamp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AspNetRoles)
+                        </td>*@
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Users.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Users.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Users.LastName)
+                    </td>
+                    @if (Request.QueryString["adnewrole"] == "1")
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssignedRoles)
+                        </td>
+                    }
+                    <td>
+                        @Html.ActionLink("Edit", "UpdateUser", new { id = item.Users.Id })
+                        | @Html.ActionLink("Reset Password", "Manage", new { id = item.Users.Id })
+
+                        @if (Request.QueryString["adnewrole"] == "1")
+                        {
+                            @Html.Raw("|")
+                            <a href="" id='@item.Users.Id' class="userrole">Roles</a>
+                        }
+
+                        @if (Request.QueryString["delusr"] == "1")
+                        {
+                            @Html.Raw("|")
+                            <input type="button" id='lnkDelete_@item.Users.Id' class="deleteuser btn-link" userid="@item.Users.Id" value="Delete" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h6>*NOTE: Please refresh page after changes roles to any users</h6>
+</div>
+
+<div id="dialogUserRoles" hidden="hidden" style="overflow:hidden" title="Media Library">
+    <iframe id="iFrmPageRoles" height="100%" width="100%" style="border: 0px"></iframe>
+</div>
+
+@section Scripts{
+    <script src="~/Areas/Admin/Assets/js/User.Roles.js"></script>
+    <script src="~/Areas/Admin/Assets/js/Page.Roles.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userrolelist").DataTable();
+            $(".deleteuser").click(function () {
+                if (confirm("Are you sure want to delete user account?")) {
+                    var request = $.ajax({
+                        url: "/Admin/Account/DeleteAccount?userid=" + $(this).attr("userid"),
+                        cache: false,
+                        type: 'GET',
+                        success: function (data) {
+                            console.log(data);
+                            if (data == "1") {
+                                window.location = window.location;
+                            }
+                            else {
+                                alert("you cannot delete your profile or user");
+                            }
+                        },
+                        error: function (jqXHR, exception) {
+                            console.log(jqXHR);
+                            console.log(exception);
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+}

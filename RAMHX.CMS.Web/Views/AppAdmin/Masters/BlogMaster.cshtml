@@ -1,0 +1,141 @@
+﻿@{
+    Layout = null;
+}
+
+
+<section class="content-header">
+    <h1>
+        Blog Master
+        <small>Maintain Blogs</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Blogs Master</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New Blogs
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Blogs Details - Edit</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dTitle">
+                                                <label class="control-label">Blog Title</label>
+                                                <input type="text" name="Name" class="form-control" id="txtTitle" errorspan="sTitle" isrequired="1" data-error="Please enter Title" divcontainer="dTitle" defaultvalue="" />
+                                                <span class="help-block hide error" id="sTitle">Please Enter Title</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div id="dShortDescription">
+                                                <label class="control-label">Short Description</label>
+                                                <input type="text" name="Name" class="form-control" id="txtShortDesc" isrequired="1" data-error="Please enter Short Description." errorspan="sShortDescription" divcontainer="dShortDescription" defaultvalue="" />
+                                                <span class="help-block hide error" id="sShortDescription">Please Enter Short Description</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dDateTime">
+                                                <label class="control-label">Publish Date</label>
+                                                <input type="text" name="txtDateTime" class="form-control" id="dtpDate" isrequired="1" errorspan="sDateTime" divcontainer="dDateTime"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sDateTime">Please Enter Date And Time</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div id="dAuthor">
+                                                <label class="control-label">Author</label>
+                                                <input type="text" name="Name" class="form-control" id="txtAuthor" isrequired="1" data-error="Please enter Short Description." errorspan="sAuthor" divcontainer="dAuthor" defaultvalue="" />
+                                                <span class="help-block hide error" id="sAuthor">Please Enter Author Name</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div id="dTags">
+                                                <label class="control-label">Tags</label>
+                                                <input type="text" name="Name" class="form-control" id="txtTags" isrequired="1" data-error="Please enter Short Description." errorspan="sTags" divcontainer="dTags" defaultvalue="" />
+                                                <span class="help-block hide error" id="sTags">Please Enter Tag</span>
+                                            </div>
+                                        </div>
+                                        <div id="dCategoryId">
+                                            <label class="control-label">Category</label>
+                                            <select type="text" name="CategoryId" class="form-control" id="ddlCategoryId" isrequired="1" data-error="Please enter Category." errorspan="sCategoryId" divcontainer="dCategoryId"
+                                                    defaultvalue="0" />
+                                            <span class="help-block hide error" id="sCategoryId">Please Select Category</span>
+                                        </div>
+
+                                        <div>&nbsp;</div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Status</label>
+                                            <div>
+                                                <input type="checkbox" name="Active" value="true" id="chkActive" />
+                                                <label class="control-label">Active</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-8">
+                                        <div id="dLongDescription">
+                                            <label class="control-label">Long Description</label>
+                                            <textarea rows="4" cols="40" class="form-control" id="txtLongDesc" errorspan="sLongDescription" data-error="Please enter Long Description." divcontainer="dLongDescription"
+                                                      defaultvalue="">
+                                    </textarea>
+                                            <span class="help-block hide error" id="sLongDescription">Please Enter Long Description</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hide">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="productJqxgrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/distadmin/js/AppAdmin/Masters/BlogMaster.js?_=@DateTime.Now.Ticks"></script>
+<script src="/areas/admin/assets/Plugins/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('txtLongDesc');
+</script>
+

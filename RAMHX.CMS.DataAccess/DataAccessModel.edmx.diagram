@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7733246c7125433994ce77d2e5aafdc9" Name="Diagram1">
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.app_Configs" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AspNetRole" Width="1.5" PointX="7.75" PointY="9.5" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AspNetUserClaim" Width="1.5" PointX="12.25" PointY="8" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AspNetUserLogin" Width="1.5" PointX="12.25" PointY="10.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AspNetUser" Width="1.5" PointX="10" PointY="8.375" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_PageFieldValues" Width="1.5" PointX="7.5" PointY="4.375" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_PageHTMLModules" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_PageRoles" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_Pages" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_TemplateFields" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_Templates" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_UpgradeHistory" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.HtmlModule" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK__cms_PageF__PageI__4F7CD00D" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5070F446" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5165187F" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK__cms_Pages__Paren__3C69FB99" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.FK__cms_Templ__Templ__4CA06362" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.AspNetUserRoles" />
+        <AssociationConnector Association="RAMHX.CMS.DataAccess.cms_PageTemplate" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_301Redirection" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.cms_PackageInstallations" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppFAQCategory" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppFAQMaster" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppGalleryAlbum" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppGalleryAlbumItem" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppGalleryCategory" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppJobCategory" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppJobMaster" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppPackageCategory" Width="1.5" PointX="7.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppPackageMaster" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppProductCategory" Width="1.5" PointX="14.75" PointY="11.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppProductMaster" Width="1.5" PointX="14.75" PointY="14.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppProjectCategory" Width="1.5" PointX="4.75" PointY="15.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppProjectMaster" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppTestimonialCategory" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppTestimonialMaster" Width="1.5" PointX="16.75" PointY="7.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppBlogCategory" Width="1.5" PointX="17.75" PointY="10.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppBlog" Width="1.5" PointX="17.75" PointY="13.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppEventCategory" Width="1.5" PointX="17.75" PointY="17.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppEvent" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppNew" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppNewsCategory" Width="1.5" PointX="4.75" PointY="18.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppSliderItem" Width="1.5" PointX="6.75" PointY="18.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppSlider" Width="1.5" PointX="8.75" PointY="18.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppSMSQueue" Width="1.5" PointX="11.375" PointY="18.75" />
+        <EntityTypeShape EntityType="RAMHX.CMS.DataAccess.AppForgotPasswordToken" Width="1.5" PointX="5.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

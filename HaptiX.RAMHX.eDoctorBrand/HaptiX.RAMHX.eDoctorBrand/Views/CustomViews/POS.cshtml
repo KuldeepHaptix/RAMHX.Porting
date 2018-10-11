@@ -1,0 +1,207 @@
+﻿<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<style>
+    .bootstrap-timepicker span {
+        color: black !important;
+    }
+</style>
+
+<section class="content-header">
+    <h1>
+        Appointment
+        <small>Manage Appointments</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">OPD</a></li>
+        <li class="active">Appointment </li>
+    </ol>
+</section>
+
+<div class="modal modal-info fade" id="modal-patientDetail" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-book"></i> Patient Detail </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="box-body table-responsive">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form role="form">
+                                    <input type="hidden" id="hdnAppinmentId" />
+                                    <input type="hidden" id="hdnNewStatus" />
+                                    <input type="hidden" id="hdnPatientId" />
+                                    <div class="row" id="divIsNewCustumer">
+                                        <input type="button" class="btn btn-primary" id="btnAddNewPatient" value="New Patient" />
+                                        <input type="button" class="btn btn-success" id="btnSearchPatient" value="Select Patient" />
+                                    </div>
+                                    <div class="divToggle" id="divPatient" style="display:none">
+                                        <div class="form-group">
+                                            <label for="txtPatient">Patient</label>
+                                            <input type="text" class="form-control" id="txtPatient">
+                                            <div id="patientContainer" style="position:fixed;"></div>
+                                        </div>
+                                    </div>
+                                    <div style="display:none;" id="divPatientDetail" class="divToggle">
+                                        <div class="form-group">
+                                            <label for="txtFullName">Full Name</label>
+                                            <input type="text" class="form-control" id="txtFullName" placeholder="Full Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtBirthDate">Birth Date</label>
+                                            <input type="text" class="form-control" id="txtBirthDate" placeholder="Birth Date">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="app_Gender">Gender</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" id="app_GenderMale" name="Gender" value="Male"> <label for="app_GenderMale">Male</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" id="app_GenderFemale" name="Gender" value="Female"> <label for="app_GenderFemale"> Female</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtMobile">Mobile</label>
+                                            <input type="text" class="form-control" id="txtMobile" placeholder="Mobile">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtEmail">Email</label>
+                                            <input type="text" class="form-control" id="txtEmail" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtAddress">Address</label>
+                                            <textarea type="text" class="form-control" id="txtAddress" placeholder="Address"></textarea>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="txtAppDate">Date</label>
+                                                    <input type="text" class="form-control" id="txtAppDate" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 ">
+                                                <div class="bootstrap-timepicker">
+                                                    <div class="form-group">
+                                                        <label for="txtAppTime">Time</label>
+                                                        <input type="text" class="form-control timepicker" id="txtAppTime" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ddlDoctor">Doctor</label>
+                                            <select style="width:100%" class="form-control select2" id="ddlDoctor"></select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ddlLocation">Location</label>
+                                            <select style="width:100%" class="form-control select2" id="ddlLocation"></select>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="button" class="btn btn-warning back" id="btnBack" value="Back" style="display:none;" />
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                <button id="btnSubmit" type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> <span id="doctorName"></span> ,  <span id="locationName"></span></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body ">
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- PRODUCT LIST -->
+            <div class="col-lg-4">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Todays Appoiments</h3>
+                        <div class="box-tools pull-right">
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body ">
+                        <ul class="products-list product-list-in-box connectedSortable" id="sortable1" status="0">
+                            @* Status is used while change status *@
+                            <li class="item" data-ng-repeat="apmt in pendingRecords" id="{{apmt.AppointmentId}}">
+                                <div class="product-info1">
+                                    <a href="javascript:void(0)" class="product-title">
+                                        {{apmt.FullName}} - {{ apmt.Mobile  }}
+                                        <span class="label label-warning pull-right">{{ getTime(apmt.ApplicationOn) }}</span>
+                                    </a>
+                                    @*<span class="product-description">
+                                           {{getDateString(apmt.BirthDate) }} - {{apmt.Mobile}} - {{apmt.Email}} - {{apmt.Gender}}
+                                        </span>*@
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+
+            <!-- PRODUCT LIST -->
+            <div class="col-lg-4">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Todays OPD</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" title="Add New Patient" id="AddNewOPD">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body ">
+                        <ul class="products-list product-list-in-box connectedSortable" id="sortable2" status="1">
+                            @* Status is used while change status *@
+                            <li class="item" data-ng-repeat="apmt in currentRecords" id="{{apmt.AppointmentId}}">
+                                <div class="product-info1">
+                                    <a href="javascript:void(0)" class="product-title">
+                                        {{apmt.PatientFullName}} - {{ apmt.PatientMobile  }}
+                                        <span class="label label-warning pull-right">{{ getTime(apmt.ApplicationOn) }}</span>
+                                    </a>
+                                    @*<span class="product-description">
+                                           {{getDateString(apmt.PatientBirthDate) }} - {{apmt.PatientMobile}} - {{apmt.PatientEmail}} - {{apmt.PatientGender}}
+                                        </span>*@
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>
+
+

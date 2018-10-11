@@ -1,0 +1,33 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = SiteContext.CurrentPage.PageTitle;
+    var portfolioDetail = SiteContext.CurrentPage;
+}
+
+ <!-- PORTFOLIO -->
+<section class="portfolio port-wrap padding-top-80 padding-bottom-80">
+
+    <!-- PORTFOLIO ITEMS -->
+    <div class="container">
+        <div class="with-nav animate fadeInUp" data-wow-delay="0.4s">
+            <div class="single-slides margin-bottom-30">
+                <div><img class="img-responsive" src="@portfolioDetail.FieldValue("Slider1")" alt=""></div>
+                <div><img class="img-responsive" src="@portfolioDetail.FieldValue("Slider2")" alt=""></div>
+                <div><img class="img-responsive" src="@portfolioDetail.FieldValue("Slider3")" alt=""></div>
+            </div>
+
+        </div>
+
+        <div class="row animate fadeInUp" data-wow-delay="0.4s">
+            <div class="col-md-8 padding-right-30">
+                <h2 class="margin-top-0 margin-bottom-20">@portfolioDetail.FieldValue("PortfolioName")</h2>
+                <p>
+                    @portfolioDetail.FieldValue("Details")
+                </p>
+            </div>
+            <!-- PORTFOLIO INFO -->
+            @portfolioDetail.FieldValue("LeftDetails")
+        </div>
+    </div>
+</section>

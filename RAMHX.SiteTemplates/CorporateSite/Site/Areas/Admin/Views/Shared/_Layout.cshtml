@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAMHX CMS - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Areas/Admin/Assets/Fontawesome/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container1">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RAMHX CMS", "Index", "Dashboard", new { area = "admin" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <ul class="nav navbar-nav">
+                        <li><a href="/admin/Pages/Index" title="Pages"><i class="fa fa-book fa-1x"></i> Pages</a></li>
+                        <li><a href="/admin/HtmlModules/Index" title="Page Content"><i class="fa fa-file fa-1x"></i> Contents</a></li>
+                        @*<li><a href="/admin/Documents/Index">Documents</a></li>*@
+                        <li><a href="/admin/media" title="Media Library"><i class="fa fa-folder-open-o fa-1x"></i> Media</a></li>
+                        @*<li><a href="/admin/News/Index">News</a></li>*@
+                        <li><a href="/Admin/Account/Users" title="Users"><i class="fa fa-user fa-1x"></i> Users</a></li>
+                        <li><a href="/Admin/Configurations/index" title="Config"><i class="fa fa-wrench fa-1x"></i> Configs</a></li>
+                        <li><a href="/Admin/Templates/index" title="Templates"><i class="fa fa-wrench fa-1x"></i> Templates</a></li>
+                        <li><a href="/Admin/Redirects/index" title="Templates"><i class="fa fa-wrench fa-1x"></i> 301 Redirections</a></li>
+                    </ul>
+                }
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container1 body-content">
+        @RenderBody()
+
+    </div>
+    <div class="container1">
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bottomjs")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

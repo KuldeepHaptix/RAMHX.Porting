@@ -1,0 +1,50 @@
+﻿@model RAMHX.CMS.DataAccess.AspNetRole
+
+@{
+    ViewBag.Title = "Create";
+}
+<link href="~/Areas/Admin/Assets/css/page.manager.css" rel="stylesheet" />
+<h2>Roles</h2>
+
+@using (Html.BeginForm("Create", "Roles", FormMethod.Post, new { @id = "rolecreate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Add New Role</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input class="form-control text-box single-line" id="Name" name="Name" type="text" value="" required>
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @id = "goback" })
+</div>
+@section scripts{
+    
+<script src="~/Areas/Admin/Assets/js/jquery.validate.js"></script>
+    <script src="~/Areas/Admin/Assets/js/common.js"></script>
+    <script src="~/Areas/Admin/Assets/js/Role.Create.Validation.js"></script>
+}

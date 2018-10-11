@@ -1,0 +1,229 @@
+﻿@model RAMHX.CMS.Web.Areas.Admin.Models.PackageViewModel
+@{
+    ViewBag.Title = "Packages";
+}
+
+<section class="content-header">
+    <h1>
+        Packges
+        <small>Maintain Packages</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Packages</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="col-md-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tabCreate" data-toggle="tab">Create</a></li>
+                            <li><a href="#tabInstall" data-toggle="tab">Install</a></li>
+                            <li><a href="#tabStatus" data-toggle="tab">Status</a></li>
+                        </ul>
+
+                        <input type="hidden" id="hdnSelectedTab" value="0" />
+
+                        <div class="tab-content clearfix">
+                            <div class="tab-pane active" id="tabCreate">
+                                <div class="row">
+                                    <div class="col-lg-4 contentTable">
+                                        <h3>Pages</h3>
+                                        <table id="tblPages" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.CheckBox("cbxAllPages", false, new { id = "cbxSelectAllPages", @class = "selectAll" })
+                                                    </th>
+                                                    <th>
+                                                        Page Name
+                                                    </th>
+                                                    <th>
+                                                        URL
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var page in Model.Pages)
+                                                {
+                                                    <tr>
+                                                        <td class="tdChkBox">
+                                                            @Html.CheckBox("cbxPage", false, new { name = "cbxPage", id = page.PageID, value = page.PageID })
+                                                        </td>
+
+                                                        <td>
+                                                            @page.PageName
+                                                        </td>
+                                                        <td>
+                                                            @page.FullItemPath
+                                                        </td>
+
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-4 contentTable">
+                                        <h3>Content</h3>
+
+                                        <table id="tblContent" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.CheckBox("cbxSelectAllContent", false, new { name = "selectAllContent", id = "cbxSelectAllContent", @class = "selectAll" })
+                                                    </th>
+                                                    <th>
+                                                        Content Name
+                                                    </th>
+                                                    <th>
+                                                        Code
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var htmlModule in Model.HtmlModules)
+                                                {
+                                                    <tr>
+                                                        <td class="tdChkBox">
+                                                            @Html.CheckBox("cbxContent", false, new { name = "cbxContent", id = htmlModule.HTMLModuleId, value = htmlModule.HTMLModuleId })
+                                                        </td>
+                                                        <td>
+                                                            @htmlModule.HtmlModuleName
+                                                        </td>
+                                                        <td>
+                                                            @htmlModule.HtmlModuleCode
+                                                        </td>
+
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-4 contentTable">
+                                        <h3>Templates</h3>
+
+                                        <table id="tblTemplates" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.CheckBox("cbxSelectAllTemplates", false, new { name = "cbxSelectAllTemplates", id = "cbxSelectAllTemplates", @class = "selectAll" })
+                                                    </th>
+                                                    <th>
+                                                        Template
+                                                    </th>
+
+                                                    <th>
+                                                        Template Field
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var templateFields in Model.TemplatesFilds)
+                                                {
+                                                    <tr>
+                                                        <td class="tdChkBox">
+                                                            @Html.CheckBox("cbxTemplates", false, new { name = "cbxTemplates", id = templateFields.FieldId, value = templateFields.FieldId })
+                                                        </td>
+
+                                                        <td>
+                                                            @templateFields.TemplateName
+                                                        </td>
+
+                                                        <td>
+                                                            @templateFields.FieldName
+                                                        </td>
+
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="button" value="Generate Package" id="btnExport" class="btn btn-success" />
+
+                                    <a href="#" id="lnkDownloadPkg" target="_blank">Download Package</a>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane " id="tabInstall">
+                                @*<div class="row">
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-2">
+                                                    <label class="control-label" for="selectPackage">Select Package</label>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <input class="form-control text-box single-line" id="selectPackage" name="selectPackage" type="text" value="">
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <a href="javascript:void(0)" onclick="FileMngrDialog();"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a>
+                                                    <span class="field-validation-valid text-danger" data-valmsg-for="selectPackage" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="button" value="Install" id="btnInstall" class="btn btn-success" />
+                                        </div>
+                                    </div>*@
+
+
+                                @*@Html.Action("InstallRequest")*@
+
+
+
+                                @using (Html.BeginForm("InstallRequest", "Packages", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmPackageInstall" }))
+            {
+                                    <input type="hidden" id="pt" value="@Model.PublishingTarget" />
+
+                                    <div class="col-lg-12">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                Select Package
+                                                <input type="file" name="package" id="package" />
+                                            </div>
+                                            <input type="hidden" name="apikey" id="apikey" value="testingkey" />
+                                            <input type="hidden" name="currentusername" id="currentusername" value="admin" />
+                                            <div class="form-group">
+                                                <input type="button" value="Publish" id="btnPublish" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div class="tab-pane " id="tabStatus">
+
+                                @Html.Partial("InstallListing", Model.PackageInstallations)
+
+                            </div>
+
+                            <div id="dialogFileMngr" hidden="hidden" style="overflow:hidden" title="Media Library">
+                                <iframe id="iFrmFileManager" height="100%" width="100%" style="border: 0px"></iframe>
+                            </div>
+
+                            @section scripts{
+                                <script src="@Url.Content("~/Areas/Admin/Assets/js/Packages.js")" type="text/javascript"></script>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = null;
+}
+<input type="hidden" id="txtUserId" />
+<input type="hidden" id="txtUserMobile" />
+<input type="hidden" id="txtTokenId" />
+<input type="hidden" id="txtUserCode" />
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Forgot Password</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">Forgot Password</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section class="padding ">
+    <div class="container">
+        <div class="row" id="dUserName">
+            <div class="alert alert-danger hide UsererrorDiv">
+                <h4> Please Correct Below Error(s)</h4>
+                <p id="perror"></p>
+            </div>
+            <div class="demo-section">
+                <div class="col-md-12 padding-bottom-50">
+                    <h3 class="text-cap">Forgot Password </h3>
+                    <div class="col-lg-3">
+                        <input class="form-control" type="text" id="txtUserName" placeholder="User Name/ID" isrequired="1" errorspan="sUserNameError" divcontainer="dUserName" defaultvalue="" />
+                        <span class="help-block hide error" id="sUserNameError">Please Enter Username</span>
+                    </div>
+                    <div class="col-lg-3">
+                        <input class="btn btn-primary" type="button" id="btnSubmit" value="Submit" />
+                    </div>
+                </div>
+                <!-- End Col -->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="row hide" id="divUserDetails">
+            <div class="alert alert-danger hide UDetailserrorDiv">
+                <h4> Please Correct Below Error(s)</h4>
+                <p id="pUserDetailserror"></p>
+            </div>
+            <div class="col-md-12">
+                <div>
+                    <h4>Mobile Number:</h4>
+                    <span id="spUserMobileNumber"></span>
+                </div>
+                <div>
+                    <input type="text" id="txtMobileNumber" placeholder="Mobile Number" isrequired="1" errorspan="sMobileError" divcontainer="divUserDetails" defaultvalue="" />
+                    <span class="help-block hide error" id="sMobileError">Please Enter Username</span>
+
+                </div>
+                <div>&nbsp;</div>
+                <div class="col-lg-3">
+                    <input class="btn btn-success" type="button" id="btnSendCode" value="Send Code" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row hide" id="divOTPCode">
+            <div class="alert alert-danger hide OTPerrorDiv">
+                <h4> Please Correct Below Error(s)</h4>
+                <p id="pOTPCodeerror"></p>
+            </div>
+            <div class="col-md-12">
+                <div>
+                    <h4>Enter OTP:</h4>
+                </div>
+                <div>
+                    <input type="text" id="txtOTPCode" placeholder="OTP" isrequired="1" errorspan="sOTPError" divcontainer="divOTPCode" defaultvalue=""  />
+                    <span class="help-block hide error" id="sOTPError">Please Enter OTP</span>
+
+                </div>
+                <div>&nbsp;</div>
+                <div class="col-lg-3">
+                    <input class="btn btn-success" type="button" id="btnOTPSubmit" value="Submit" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row hide" id="divChangePassword">
+            <div class="alert alert-danger hide changePWDerrorDiv">
+                <h4>Please Correct Below Error(s)</h4>
+                <p id="pchangePWDerror"></p>
+            </div>
+
+            <div class="alert alert-success hide successdiv">
+                <h4>Password has been Reset successfully!</h4>
+                <p>You can <a href="/login">Login</a> now</p>
+            </div>
+            <div id="dForm">
+                <div class="form-group has-feedback">
+                    Enter Your New Password
+                    <input type="password" class="form-control" id="txtNewPassword" placeholder="New Password" isrequired="1" errorspan="schangePWDError" divcontainer="divChangePassword" defaultvalue="" >
+                    <span class="help-block hide error" id="schangePWDError">Please Enter New Password</span>
+
+                </div>
+                <div class="form-group has-feedback">
+                    Enter Your Confirm New Password
+                    <input type="password" class="form-control" id="txtConfirmNewPassword" placeholder="Confirm New Password" isrequired="1" errorspan="schangeConfirmPWDError" divcontainer="divChangePassword" defaultvalue="">
+                    <span class="help-block hide error" id="schangeConfirmPWDError">Please Enter Confirm New Password</span>
+                </div>
+                <div class="">
+                    <button type="submit" class="btn btn-primary btn-flat" id="btnChangePassword">Reset Password </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/distfrontend/js/CoreModules/ForgotPassword.js?_=@DateTime.Now.Ticks"></script>

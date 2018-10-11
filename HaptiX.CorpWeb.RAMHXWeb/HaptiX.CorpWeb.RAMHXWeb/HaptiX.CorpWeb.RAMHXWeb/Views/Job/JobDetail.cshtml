@@ -1,0 +1,188 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@{
+    // var jobs = new HaptiX.CorpWeb.RAMHXWeb.Repos.JobRepo().GetJobs();
+    //Model = jobs;
+    Layout = null;
+    ViewBag.Title = "Index";
+
+    var jobdtl = SiteContext.CurrentPage;
+
+    var FieldValues = jobdtl.FieldValues();
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 id="jobTitle">@SiteContext.CurrentPage.FieldValue("JobTitle")</h3>
+                <p>@SiteContext.CurrentPage.FieldValue("JobDescription")</p>
+                <p>@SiteContext.CurrentPage.FieldValue("JobDetail")</p>
+            </div>
+        </div>
+        <div class="spacer-30"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Apply For This Possition</h3>
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Contact FORM -->
+                <form class="contact-form" id="jobseeker-form" role="form">
+                    <div class="form-field-wrapper">
+                        <input class="input-sm form-full" id="jobseeker-name" type="text" name="jobseeker-name" placeholder="Your Name">
+                    </div>
+
+                    <div class="form-field-wrapper">
+                        <input class="input-sm form-full" id="jobseeker-contact" type="text" name="jobseeker-email" placeholder="Contact">
+                    </div>
+
+                    <div class="form-field-wrapper">
+                        <input class="input-sm form-full" id="jobseeker-email" type="email" name="jobseeker-email" placeholder="Email">
+                    </div>
+
+                    <div class="form-field-wrapper">
+                        <textarea class="form-full" id="jobseeker-message" rows="7" name="jobseeker-message" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <div class="form-field-wrapper">
+                        Your Resume : <input type="file" id="jobseeker-resume" name="jobseeker-resume" title="Your Resume" />
+                    </div>
+
+                    <div id="divCaptcha"></div>
+                    <br />
+
+                    <button class="btn btn-md btn-color-b" type="submit" id="jobseeker-submit" name="submit">Apply</button>
+
+                    <a class="btn btn-md btn-black-line" href="@SiteContext.Pages.First(x=>x.PageCode == "Current Opennings").FullPageUrl">Back</a>
+                </form>
+                <!-- END Contact FORM -->
+            </div>
+        </div>
+		<div class="row">
+            <div class="col-md-12"><br/>
+			Note: In case you are not able to submit your application due to any error/issue, please apply via sending email to us at info@haptix.biz
+			</div>
+        </div>
+    </div>
+
+</section>
+<!-- Contact Section -->
+
+
+
+<script src="/Areas/Admin/Assets/js/toastr.min.js"></script>
+
+<link href="/Areas/Admin/Assets/css/toastr.css" rel="stylesheet" />
+<script type="text/javascript">
+    var REresponse = null;
+
+    function ApplyJob() {
+        var name = $("#jobseeker-name").val();
+        var contact = $("#jobseeker-contact").val();
+        var email = $("#jobseeker-email").val();
+        var message = $("#jobseeker-message").val();
+        var file = $("#jobseeker-resume").val();
+        var jobTitle = $('#jobTitle').html();
+
+        if (name == '') {
+            toastr.error('Please enter valid Name');
+            $('#jobseeker-name').focus();
+            return;
+        }
+        if (contact == '') {
+            toastr.error('Please enter valid Contact Number');
+            $('#jobseeker-contact').focus();
+            return;
+        }
+        if (email == '') {
+            toastr.error('Please enter valid Email');
+            $('#jobseeker-email').focus();
+            return;
+        }
+
+        if (message == '') {
+            toastr.error('Please enter valid Comments');
+            $('#jobseeker-message').focus();
+            return;
+        }
+
+        if (grecaptcha.getResponse(captchaObj) == "") {
+            toastr.error('Please validate captcha');
+            return;
+        }
+
+        var formData = new FormData();
+
+        console.log('files', $("#jobseeker-resume")[0].files[0]);
+        formData.append("jobseeker-resume", $("#jobseeker-resume")[0].files[0]);
+        formData.append("jobseeker-name", name);
+        formData.append("jobseeker-contact", contact);
+        formData.append("jobseeker-email", email);
+        formData.append("jobseeker-message", message);
+        formData.append("jobseeker-title", jobTitle);
+
+        //var dataString = 'name=' + name + '&email=' + email + '&subject=' + subject + '&message=' + message;
+        @*function validEmail(emailAddress) {
+                var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+                return pattern.test(emailAddress);
+            };*@
+
+        $('#jobseeker-submit').html('Please Wait....');
+        $.ajax({
+            type: "POST",
+            url: "/Contact/ApplyJob",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                //window.location.reload(true);
+                console.log("success", response);
+                $('#jobseeker-name').val('');
+                $('#jobseeker-contact').val('');
+                $('#jobseeker-email').val('');
+                $('#jobseeker-message').val('');
+                $("#jobseeker-resume").val('')
+                //$("#successMsg").show();
+                $('#jobseeker-submit').html('Apply');
+                toastr.success('Thank You for Apply job. We will get back to you shortly.');
+                grecaptcha.reset();
+            },
+            error: function (er) {
+				toastr.error('Error Occurred. Kindly send your resume at info@haptix.biz or try later!. Thank you.');
+                grecaptcha.reset();
+                console.log(er);
+				$('#jobseeker-submit').html('Apply');
+            }
+        });
+
+        return false;
+    }
+
+    $(document).ready(function () {
+        $('#jobseeker-submit').click(function () {
+            ApplyJob();
+            return false;
+        });
+
+
+    });
+
+    var verifyCallback = function (response) {
+        REresponse = response;
+    };
+    var captchaObj;
+    var onloadCallback = function () {
+        captchaObj = grecaptcha.render('divCaptcha', {
+            'sitekey': '6Lf_XxMUAAAAAMrwxLelhHCOZ0Y-eVInWr3wQ0zU',
+            'callback': verifyCallback
+        });
+    };
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>

@@ -1,0 +1,256 @@
+@font-face {
+	font-family: 'hotels';
+	src:url('../fonts/hotels088f.eot?2nxxzr');
+	src:url('../fonts/hotelsd41d.eot?#iefix2nxxzr') format('embedded-opentype'),
+		url('../fonts/hotels088f.ttf?2nxxzr') format('truetype'),
+		url('../fonts/hotels088f.woff?2nxxzr') format('woff'),
+		url('../fonts/hotels088f.svg?2nxxzr#hotels') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="fp-ht-"], [class*=" fp-ht-"] {
+	font-family: 'hotels';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.fp-ht-alarm:before {
+	content: "\e600";
+}
+.fp-ht-basin:before {
+	content: "\e601";
+}
+.fp-ht-bathtub:before {
+	content: "\e602";
+}
+.fp-ht-bed:before {
+	content: "\e603";
+}
+.fp-ht-bed29:before {
+	content: "\e604";
+}
+.fp-ht-beer:before {
+	content: "\e605";
+}
+.fp-ht-bellhop:before {
+	content: "\e606";
+}
+.fp-ht-bottle:before {
+	content: "\e607";
+}
+.fp-ht-bowling:before {
+	content: "\e608";
+}
+.fp-ht-briefcase:before {
+	content: "\e609";
+}
+.fp-ht-nocamera:before {
+	content: "\e60a";
+}
+.fp-ht-camera:before {
+	content: "\e60b";
+}
+.fp-ht-clock:before {
+	content: "\e60c";
+}
+.fp-ht-closed:before {
+	content: "\e60d";
+}
+.fp-ht-clothesiron:before {
+	content: "\e60e";
+}
+.fp-ht-coat-check:before {
+	content: "\e60f";
+}
+.fp-ht-cocktail:before {
+	content: "\e610";
+}
+.fp-ht-coffee:before {
+	content: "\e611";
+}
+.fp-ht-computer:before {
+	content: "\e612";
+}
+.fp-ht-creditcard:before {
+	content: "\e613";
+}
+.fp-ht-deskbell:before {
+	content: "\e614";
+}
+.fp-ht-digital:before {
+	content: "\e615";
+}
+.fp-ht-dollar:before {
+	content: "\e616";
+}
+.fp-ht-doorhanger:before {
+	content: "\e617";
+}
+.fp-ht-downarrow:before {
+	content: "\e618";
+}
+.fp-ht-dumbbell:before {
+	content: "\e619";
+}
+.fp-ht-elevator:before {
+	content: "\e61a";
+}
+.fp-ht-fastfood:before {
+	content: "\e61b";
+}
+.fp-ht-fireextinguisher:before {
+	content: "\e61c";
+}
+.fp-ht-fivestars:before {
+	content: "\e61d";
+}
+.fp-ht-food:before {
+	content: "\e61e";
+}
+.fp-ht-golf:before {
+	content: "\e61f";
+}
+.fp-ht-hairdryer:before {
+	content: "\e620";
+}
+.fp-ht-hairdresser:before {
+	content: "\e621";
+}
+.fp-ht-hamburger:before {
+	content: "\e622";
+}
+.fp-ht-hanger:before {
+	content: "\e623";
+}
+.fp-ht-hanger2:before {
+	content: "\e624";
+}
+.fp-ht-hanger3:before {
+	content: "\e625";
+}
+.fp-ht-hotel:before {
+	content: "\e626";
+}
+.fp-ht-icecream:before {
+	content: "\e627";
+}
+.fp-ht-info:before {
+	content: "\e628";
+}
+.fp-ht-key:before {
+	content: "\e629";
+}
+.fp-ht-key177:before {
+	content: "\e62a";
+}
+.fp-ht-keycard:before {
+	content: "\e62b";
+}
+.fp-ht-left-luggage:before {
+	content: "\e62c";
+}
+.fp-ht-luggage:before {
+	content: "\e62d";
+}
+.fp-ht-luggage6:before {
+	content: "\e62e";
+}
+.fp-ht-maid:before {
+	content: "\e62f";
+}
+.fp-ht-nosmoking:before {
+	content: "\e630";
+}
+.fp-ht-open:before {
+	content: "\e631";
+}
+.fp-ht-parking:before {
+	content: "\e632";
+}
+.fp-ht-plunger:before {
+	content: "\e633";
+}
+.fp-ht-pool:before {
+	content: "\e634";
+}
+.fp-ht-receptionist:before {
+	content: "\e635";
+}
+.fp-ht-receptionist2:before {
+	content: "\e636";
+}
+.fp-ht-restaurant:before {
+	content: "\e637";
+}
+.fp-ht-semicircle:before {
+	content: "\e638";
+}
+.fp-ht-smoking:before {
+	content: "\e639";
+}
+.fp-ht-soup:before {
+	content: "\e63a";
+}
+.fp-ht-sunumbrella:before {
+	content: "\e63b";
+}
+.fp-ht-surveillance:before {
+	content: "\e63c";
+}
+.fp-ht-sweep:before {
+	content: "\e63d";
+}
+.fp-ht-swimmingpool:before {
+	content: "\e63e";
+}
+.fp-ht-taxi:before {
+	content: "\e63f";
+}
+.fp-ht-telephone:before {
+	content: "\e640";
+}
+.fp-ht-tennis:before {
+	content: "\e641";
+}
+.fp-ht-thermometer:before {
+	content: "\e642";
+}
+.fp-ht-thermometer2:before {
+	content: "\e643";
+}
+.fp-ht-toilet:before {
+	content: "\e644";
+}
+.fp-ht-toothpaste:before {
+	content: "\e645";
+}
+.fp-ht-towel:before {
+	content: "\e646";
+}
+.fp-ht-tray:before {
+	content: "\e647";
+}
+.fp-ht-treestars:before {
+	content: "\e648";
+}
+.fp-ht-tv:before {
+	content: "\e649";
+}
+.fp-ht-uparrow:before {
+	content: "\e64a";
+}
+.fp-ht-waiter:before {
+	content: "\e64b";
+}
+.fp-ht-washingmachine:before {
+	content: "\e64c";
+}

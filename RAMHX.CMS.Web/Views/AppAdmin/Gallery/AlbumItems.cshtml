@@ -1,0 +1,143 @@
+﻿@{
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var aid = 0;
+    int.TryParse(Request.QueryString["albumid"], out aid);
+    var album = dbEntity.CoreModule_GalleryAlbums.FirstOrDefault(c => c.Id == aid);
+    var albumtype = "";
+    if (album.AlbumType == 1)
+    {
+        albumtype = "Photos";
+    }
+    else
+    {
+        albumtype = "Videos";
+    }
+}
+
+<input type="hidden" id="hdnAlbumType" value="@album.AlbumType" />
+<section class="content-header">
+    <h1>
+        @album.Name - @albumtype
+        <small>Maintain Album Items</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="/Gallery/">Album Items</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Album Items Details - Add</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group hide">
+                                    <label class="control-label">Album</label>
+                                    <select class="form-control" id="ddlAlbum"></select>
+                                </div>
+
+                                <div class="form-group hide">
+                                    <label class="control-label">Path</label>
+                                    <input type="text" class="form-control" id="txtItemPath" />
+                                    <a class="" href="javascript:void(0)" onclick="FileMngrDialog('Select Banner');"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a>
+                                </div>
+
+                                @if (album.AlbumType == 2)
+                                {
+                                    <div class="form-group">
+                                        <input type="radio" name="uploadRadio" id="uploadMyCmp" value="1" checked> My Computer
+                                        <input type="radio" name="uploadRadio" id="uploadYoutube" value="2"> Youtube
+                                    </div>
+
+                                    <div class="form-group" id="divyoutube">
+                                        <label class="control-label">YouTube Link</label>
+                                        <input type="text" name="YouTube" class="form-control" id="txtYouTube" />
+                                    </div>
+                                }
+                                <div class="form-group" id="divBrowsePhoto">
+                                    @if (album.AlbumType == 1)
+                                    {
+                                        <label class="control-label">Photo</label>
+
+                                    }
+                                    <div>
+                                        <img id="imgPhoto" />
+                                    </div>
+                                    <div>
+                                        <input type="file" name="updPhoto" id="updPhoto" />
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label">Name</label>
+                                    <input type="text" name="Name" class="form-control" id="txtName" />
+                                </div>
+
+
+                                <!-- <div class="form-group">
+                                    <a href="javascript:void(0)" onclick="thumbPathClick('Media Library');"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a>
+                                </div> -->
+
+                                <div class="form-group hide">
+                                    <label class="control-label">Status</label>
+                                    <div>
+                                        <input type="checkbox" name="Active" value="true" id="chkActive" />
+                                        <label class="control-label">Active</label>
+                                    </div>
+                                </div>
+                                <div class="form-group hide">
+                                    <label class="control-label">Access</label>
+                                    <div>
+                                        <select name="Access" class="form-control" id="ddlAccess">
+                                            <option value="1">Public</option>
+                                            <option value="2">Private</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnPopCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="dialogFileMngr" hidden="hidden" style="overflow:hidden" title="Media Library">
+    <iframe id="iFrmFileManager" height="100%" width="100%" style="border: 0px"></iframe>
+</div>
+
+
+<div id="popupPermissionWindow" class="hide">
+    <div id="divPermissions">Album Items Permissions</div>
+    <div style="overflow: auto;">
+        <iframe id="ifrPermissions" src="" height="400px" width="850px" style="border:0px"></iframe>
+    </div>
+</div>
+
+<script src="~/distadmin/js/AppAdmin/Gallery/AlbumItems.js?_=@DateTime.Now.Ticks"></script>

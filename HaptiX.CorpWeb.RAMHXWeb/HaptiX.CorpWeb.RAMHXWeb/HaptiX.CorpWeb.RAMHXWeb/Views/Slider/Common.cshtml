@@ -1,0 +1,29 @@
+﻿@using RAMHX.CMS.DataAccess;
+@{Layout = null;}
+<section class="inner-intro bg-image overlay-light parallax parallax-background1" data-background-img="/Assets/img/02.jpg">
+    <div class="container">
+        <div class="row title">
+            <h2 class="h2">@SiteContext.CurrentPage.PageTitle</h2>
+            <div class="page-breadcrumb">
+                @{
+                    List<cms_Pages> pages = new List<cms_Pages>();
+                    cms_Pages parent = SiteContext.CurrentPage.cms_ParentPage;
+
+                    while (parent.cms_ParentPage != null)
+                    {
+                        pages.Add(parent);
+                        parent = parent.cms_ParentPage;
+                    }
+                    pages.Add(parent);
+                    pages.Reverse();
+                }
+                @foreach (var item in pages)
+                {
+                     <a href="@item.FullPageUrl">@item.PageTitle</a>@Html.Raw("/");
+                }
+                @SiteContext.CurrentPage.PageTitle
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>

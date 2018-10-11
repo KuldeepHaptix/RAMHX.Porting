@@ -1,0 +1,67 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = "Products";
+    var products = SiteContext.CurrentPage.cms_SubPages.ToList();
+}
+
+<!-- SHOP -->
+<section class="padding-top-80 padding-bottom-80">
+
+    <!--======= PAGES INNER =========-->
+    <section class="section-p-30px pages-in">
+        <div class="container">
+            <div class="row">
+                <!--======= ITEMS =========-->
+
+
+                <div class="col-sm-9 animate fadeInLeft" data-wow-delay="0.2s">
+
+                    <!--======= Products =========-->
+                    <div class="popurlar_product">
+                        <ul class="row">
+
+
+                            @foreach (var item in products)
+                            {
+                  <!-- New Products -->
+                                <li class="col-sm-4 animate fadeIn" data-wow-delay="0.4s">
+                                    <div class="items-in">
+                                        @*<div class="shop-tags">NEW</div>*@
+                                        <!-- Image -->
+                                        <img src="@item.FieldValue("CategoryImage")" alt="">
+                                        <!-- Hover Details -->
+                                        <div class="over-item"> <a href="@item.FullPageUrl" class="btn">View Products</a> </div>
+                                    </div>
+                                    <!-- Item Name -->
+                                    <div class="details-sec"> <a href="#.">@item.FieldValue("CategoryName")</a>  </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-3 animate fadeInRight" data-wow-delay="0.2s">
+                    <div class="side-bar">
+
+                        <!-- Main Heading -->
+                        <div class="heading-side-bar margin-bottom-10">
+                            <h4>by Categoreis</h4>
+                        </div>
+                        <ul class="cate">
+                            @foreach (var category in products)
+                            {
+                                <li><a href="@category.FullPageUrl">@category.FieldValue("CategoryName")</a></li>
+                            }
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

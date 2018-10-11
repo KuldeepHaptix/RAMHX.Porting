@@ -1,0 +1,45 @@
+﻿@using RAMHX.CMS.DataAccess;
+@{
+    ViewBag.Title = "_ContentPageLayout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    RAMHX.CMS.Repository.RenderHtmlRepository htmlRepo = new RAMHX.CMS.Repository.RenderHtmlRepository();
+    Random rnd = new Random();
+    var sliderImage = "/Assets/img/full/" + @rnd.Next(1, 15).ToString("00") + ".jpg";
+}
+<section class="inner-intro bg-image overlay-light parallax parallax-background1" data-background-img="@sliderImage">
+    <div class="container">
+        <div class="row title">
+            <h2 class="h2">@SiteContext.CurrentPage.PageName</h2>
+            <div class="page-breadcrumb">
+                @{
+                    List<cms_Pages> pages = new List<cms_Pages>();
+                    cms_Pages parent = SiteContext.CurrentPage.cms_ParentPage;
+                    while (parent != null && parent.cms_ParentPage != null)
+                    {
+                        if (!parent.PageCode.ToLower().Contains("hidden"))
+                        {
+                            pages.Add(parent);
+                        }
+                        parent = parent.cms_ParentPage;
+                    }
+                    if (parent != null)
+                    {
+                        pages.Add(parent);
+                    }
+                    pages.Reverse();
+                }
+                @foreach (var item in pages)
+                {
+                    if (item != null)
+                    {
+                        <a href="@item.FullPageUrl">@item.PageName</a>@Html.Raw("/");
+                    }
+                }
+                @SiteContext.CurrentPage.PageName
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+@RenderBody()
+

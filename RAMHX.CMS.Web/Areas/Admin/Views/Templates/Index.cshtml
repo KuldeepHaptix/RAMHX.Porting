@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Templates";
+
+}
+
+<section class="content-header">
+    <h1>
+        Templates
+        <small>Maintain Templates</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Templates</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNewTemplate" class="btn btn btn-primary">
+                            Add New Template
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="Templatejqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div id="">Template Details - Add</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Template Name</label>
+                                    <input type="text" name="Name" class="form-control" id="txtTempName" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Template Code</label>
+                                    <input type="text" name="Name" class="form-control" id="txtTempCode" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Description</label>
+                                    <input type="text" name="Name" class="form-control" id="txtTempDescritpion" />
+                                </div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+    <script src="~/Areas/Admin/Assets/js/TemplateIndex.js"></script>
+
+}
+
+
+
+
+
+
+

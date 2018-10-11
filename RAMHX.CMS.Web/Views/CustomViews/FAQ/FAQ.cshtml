@@ -1,0 +1,58 @@
+﻿@using RAMHX.CMS.DataAccess;
+@{
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+
+    var faq = dbEntity.CoreModule_FAQMasters.ToList();
+    var catFaq = dbEntity.CoreModule_FAQCategories.OrderByDescending(C => C.DisplayOrder).ToList();
+    var count = 1;
+}
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">FAQ</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">FAQ</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section class="padding ">
+    <div class="container">
+        <div class="row">
+            <div class="demo-section">
+                <div class="col-md-12 padding-top-50">
+                    <h3 class="text-cap">Frequently Asked Questions</h3>
+                    <div class="left-icon-container">
+                        @foreach (var fq in faq)
+                        {
+                            <div class="col-md-12">
+                                <article class="media-style left-icon-item">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            @count.ToString("00.")
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="">@fq.Question</h4>
+                                            <p>
+                                                @fq.Answer
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                                @{ 
+                                    count++;
+                                }
+                            </div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Tabs -->

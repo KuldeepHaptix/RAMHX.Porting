@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HaptiX.CorpWeb.RAMHXWeb.Models.JobModel>
+@using HaptiX.CorpWeb.RAMHXWeb.Models;
+@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    // var jobs = new HaptiX.CorpWeb.RAMHXWeb.Repos.JobRepo().GetJobs();
+    //Model = jobs;
+    Layout = null;
+    ViewBag.Title = "Index";
+
+    var jobpage = SiteContext.Pages.FirstOrDefault(p => p.PageCode == "Current-Openings-data");
+}
+
+<!-- Accordian Section -->
+<section class="ptb ptb-sm-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-30">
+                <h3>Current Openings</h3>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Accordian1 -->
+            <div class="col-md-12 ">
+                <div class="accordion">
+
+                    @if (jobpage != null)
+                    {
+                        foreach (var item in jobpage.cms_SubPages.OrderBy(s => s.PageOrder))
+                        {
+
+                            var FieldValues = item.FieldValues();
+                            var fvJT = FieldValues.FirstOrDefault(fv => fv.FieldName == "JobTitle");
+                            var fvJD = FieldValues.FirstOrDefault(fv => fv.FieldName == "JobDescription");
+                            string jt = "";
+                            if (fvJT != null && !string.IsNullOrEmpty(fvJT.FieldValue))
+                            {
+                                jt = fvJT.FieldValue;
+                            }
+                            string jd = "";
+                            if (fvJD != null && !string.IsNullOrEmpty(fvJD.FieldValue))
+                            {
+                                jd = fvJD.FieldValue;
+                            }
+
+                            <div class="accordion-section">
+                                <h6 class="accordion-title">@jt</h6>
+                                <div class="accordion-content">
+                                    <p>@jd</p>
+                                    <a class="btn btn-md btn-color-b" href="@item.FullPageUrl">Apply Now!</a>
+                                </div>
+
+                            </div>
+
+
+                        }
+                    }
+                </div>
+            </div>
+            <!-- Accordian2 -->
+        </div>
+    </div>
+
+</section>
+<!-- End Accordian Section -->

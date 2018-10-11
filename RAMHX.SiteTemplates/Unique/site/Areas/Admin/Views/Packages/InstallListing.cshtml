@@ -1,0 +1,98 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.cms_PackageInstallations>
+
+@{
+    ViewBag.Title = "InstallListing";
+}
+
+@*@Html.ActionLink("Create New", "Create")*@
+
+    Status:
+<select class="form-control" id="StatusID" name="Status" onchange="FilterStatus()">
+    <option value="">Select Status</option>
+    @foreach (var item in ViewBag.stausList)
+    {
+        <option value="@item">@item</option>
+    }
+</select>
+<table class="table">
+    <tr>
+        <th>
+            Package
+        </th>
+        <th>
+            Created On
+        </th>
+        <th>
+            Created By
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Processing Started On
+        </th>
+        <th>
+            Last Processed On
+        </th>
+        <th>
+            Complated
+        </th>
+        <th>
+            Pages
+        </th>
+        <th>
+            Modules
+        </th>
+        <th>
+            Fields
+        </th>
+        <th>
+            Valid?
+        </th>
+        <th>
+            Errors
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPages)/@Html.DisplayFor(modelItem => item.ProcPages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalModules)/@Html.DisplayFor(modelItem => item.ProcModules)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTemplateFields)/@Html.DisplayFor(modelItem => item.ProcTemplateFields)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsValidPackage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValidationErrors)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,499 @@
+/*********  
+Bella Firenze - Restaurant Template
+Author: Petia Koleva
+Website: http://designify.me
+*********/
+
+/*********
+Contents  
+==========
+1.Global Styles 
+2.Main Navigation
+3.Scroll Affix
+4.Fullwidth Header
+5.Small Header
+6.Video Background Header
+7.Common Styles for Sections
+8.About us
+9.Chefs
+9.1.Chefs2
+10.Recommendations
+10.1.Recommendations2
+11.Specials
+11.1.Specials2
+12.Menu
+12.1.Menu2
+13.Events
+14.Locations
+15.Fresh Food CTA
+16.Happy Hour CTA
+17.Testimonilas
+18.Book a Table
+19.Contact
+20.Footer
+21.Social Icons
+22.Buttons
+23.Boxed Layout Adjustments
+24.Paddings
+25.Margins
+26.Menu Page 
+27.Ribbons 
+*********/
+
+/*********  
+1.Global Styles 
+*********/
+html, body {width:100%; height:100%;}
+body {font-family: 'Raleway', sans-serif;color:#2d3035; background:#FFF;}
+.lead-sm {font-size:18px}
+.bg-white {background:rgba(255,255,255,1)}
+.bg-darkblue {background:rgba(45,48,53,0.7)}
+.bg-main {background:#bda881}
+.white {color:#FFF}
+.dark {color:#2d3035}
+.text-bold {font-weight:900}
+.label {border-radius:0; font-weight:500}
+.accent {color:#bda881;font-weight:900}
+.accent-price {color:#bda881;font-weight:900; border-bottom:1px solid #bda881; padding-bottom:5px}
+.no-padding {padding:0}
+hr.separator {border:0; height:1px; background:#bda881;}
+
+
+/*********  
+2.Main Navigation
+*********/
+#mainnavigation{background:#2d3035}
+.navbar{min-height:80px;margin-bottom:20px;border:0 solid transparent}
+.nav > li > a:hover, .nav > li > a:focus {text-decoration: none;background-color: rgba(32, 36, 41)}
+@media (min-width: 768px) {
+.navbar-nav > li > a{color:#FFF;text-transform:uppercase;font-weight:500;padding:40px 10px;font-size:12px}
+.nav > li > a:hover, .nav > li > a:focus {text-decoration:none;color:#bda881;background-color:transparent}
+.navbar-toggle{position:relative;float:right;margin-right:15px;padding:20px 10px;margin-top:8px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}
+.navbar #bellafirenze-lg{display:block;background:url(../images/logo/bella-firenze-logo-light.svg) no-repeat center center;width:100%;height:90px}
+.navbar #bellafirenze-sm{display:block;background:url(../images/logo/bella-firenze-logo.svg) no-repeat top left;width:200px;height:100px}
+}
+.navbar-brand{float:left;margin-left:auto;margin-right:auto;display:block;background:url(../images/logo/bella-firenze-logo-sm.svg) no-repeat top left;width:200px;height:70px;font-family:'Engagement',cursive;color:#bda881}
+@media only screen and (max-width: 768px) {
+.navbar #bellafirenze-lg{display:block;background:url(../images/logo/bella-firenze-logo.svg) no-repeat top left;width:220px;background-size:cover;height:90px}
+.navbar{min-height:60px}
+.navbar-toggle{margin-right:15px;padding:20px 10px}
+}
+.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;background:#bda881}
+@media only screen and (max-width: 767px) {
+.navbar #bellafirenze-lg{display:block;background:url(../images/logo/bella-firenze-logo.svg) no-repeat top left;height:60px;width:220px;height:90px}
+.navbar-nav > li > a{color:#bda881;text-align:center;text-transform:uppercase}
+.navbar-nav{margin:0 -15px}
+.navbar-collapse{border-top:0 solid transparent}
+}
+
+
+/*********  
+3.Scroll Affix
+*********/
+.affix{padding:0;-webkit-transition:padding .2s linear;-moz-transition:padding .2s linear;-o-transition:padding .2s linear;transition:padding .2s linear;background-color:rgba(45,48,53,1);-webkit-box-shadow:0 1px 5px 0 rgba(0,0,0,0.2);-moz-box-shadow:0 1px 5px 0 rgba(0,0,0,0.2);box-shadow:0 1px 5px 0 rgba(0,0,0,0.2);}
+.affix-top{padding-top:15px;padding-bottom:15px;-webkit-transition:padding .5s linear;-moz-transition:padding .5s linear;-o-transition:padding .5s linear;transition:padding .5s linear}
+@media only screen and (max-width: 767px) {
+.affix{padding:0;-webkit-transition:padding .2s linear;-moz-transition:padding .2s linear;-o-transition:padding .2s linear;transition:padding .2s linear;background-color:rgba(45,48,53,1) -webkit-box-shadow: #0px #1px #5px #0px rgba(0,0,0,0.5);-moz-box-shadow:0 1px 5px 0 rgba(0,0,0,0.5);box-shadow:0 1px 5px 0 rgba(0,0,0,0.5)}
+.affix-top{padding-top:15px;padding-bottom:15px;-webkit-transition:padding .5s linear;-moz-transition:padding .5s linear;-o-transition:padding .5s linear;transition:padding .5s linear;
+background-color:rgba(45,48,53,1)}
+}
+
+/*********  
+4.Fullwidth Header
+*********/
+header#fullwidth {color:#FFF}
+header#fullwidth{background-position:center center;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; background-attachment:fixed}
+header#fullwidth .header-text{padding-top:180px;padding-bottom:50px}
+header#fullwidth h1 { font-size:64px; color:#4AA8D3}
+header#fullwidth h2{ font-size:28px;}
+@media(min-width:768px) {
+header#fullwidth .header-text {padding-top: 300px;padding-bottom: 200px;}
+}
+header#fullwidth{min-height: 100%; /* min. height for modern browser */ height:auto !important; /* important rule for modern Browser */   height:100%; /* min. height for IE */ overflow: hidden !important; /* FF scroll-bar */}
+@media(max-width:768px) {
+header#fullwidth h1 { font-size:34px; color:#4AA8D3}
+header#fullwidth h2{ font-size:21px;}
+p.details  {text-align:center !important; font-size:16px;font-weight:500;line-height:1.5}
+}
+header#fullwidth .form-inline .form-control {border-radius: 0;margin-right: 10px;    height:45px; min-width: 260px; background:rgba(255,255,255,0.9);color:#1c1e21;}	
+header#fullwidth .lightform .form-control {border-radius: 0;margin-right: 10px; margin-bottom:10px;   height:45px; min-width: 260px; background:rgba(255,255,255,0.1);color:#fff; border:2px solid #4AA8D3;}	
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+header#fullwidth .header-text {padding-top: 240px;padding-bottom: 160px;}
+}
+/* Change Header Image Here */
+.bellafirenze {background-image:url(../images/headers/bella-firenze-header.jpg); background-position:bottom left}
+.bellafirenze-boxed {background-image: url(../images/headers/bella-firenze-header01.jpg); background-position:bottom left}
+
+/*********  
+5.Small Header
+*********/
+header#small {color:#FFF}
+header#small{background-position:center center;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; background-attachment:fixed}
+header#small .header-text{padding-top:180px;padding-bottom:50px}
+header#small h1 { font-size:64px; color:#4AA8D3}
+header#small h2{ font-size:28px;}
+@media(min-width:768px) {
+header#small .header-text {padding-top: 200px;padding-bottom: 150px;}
+}
+header#small{min-height: 650px; /* min. height for modern browser */ height:auto !important; /* important rule for modern Browser */   height:650px; /* min. height for IE */ overflow: hidden !important; /* FF scroll-bar */}
+@media(max-width:768px) {
+header#small h1 { font-size:34px; color:#4AA8D3}
+header#small h2{ font-size:21px;}
+p.details  {text-align:center !important; font-size:16px;font-weight:500;line-height:1.5}
+}
+header#small .form-inline .form-control {border-radius: 0;margin-right: 10px;    height:45px; min-width: 260px; background:rgba(255,255,255,0.9);color:#1c1e21;}	
+header#small .lightform .form-control {border-radius: 0;margin-right: 10px; margin-bottom:10px;   height:45px; min-width: 260px; background:rgba(255,255,255,0.1);color:#fff; border:2px solid #4AA8D3;}	
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+header#small .header-text {padding-top: 240px;padding-bottom: 160px;}
+}
+
+
+/*********  
+6.Video Background Header
+*********/
+.videobg{position:relative;padding:0;top:0;left:0;width:100%;height:100%;overflow:hidden;background:rgba(0,0,0,1)}
+.videobg-wrap{z-index:0;background:rgba(0,0,0,1);opacity:.8}
+.videobg-overlay{background-color:#000;opacity:.4;position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%}
+.videobg-video-credit{position:absolute;bottom:0;right:0;color:#fff;opacity:.6;font-size:12px;font-weight:600;letter-spacing:-.02em;padding-right:10px;bottom:10px;text-decoration:none;text-align:right;line-height:1.5;-webkit-transition:.2s ease all;-moz-transition:.2s ease all;transition:.2s ease all}
+.videobg-video-credit span{display:block}
+.videobg-video-credit:hover{opacity:1}
+.videobg-arrow{position:absolute;bottom:25px;left:0;right:0;margin:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);width:30px;height:30px;border-right:2px solid #fff;border-bottom:2px solid #fff;opacity:1}
+.videobg .header-text{position:absolute;width:100%;font-weight:700;font-size:18px;text-align:center;line-height:1;top:300px;bottom:0;margin:auto;color:#fff}
+@media only screen (min-width: 641px) and (max-width: 767px){
+.videobg .header-text{position:absolute;width:100%;font-weight:700;font-size:18px;text-align:center;line-height:1;top:200px;bottom:0;margin:auto;color:#fff}
+p.details  {text-align:center !important; font-size:16px;font-weight:500; line-height:1.5}
+}
+@media only screen and (max-width:640px) {
+.videobg .header-text{position:absolute;width:100%;font-weight:700;font-size:18px;text-align:center;line-height:1;top:160px;bottom:0;margin:auto;color:#fff}
+p.details  {text-align:center !important; font-size:15px;font-weight:500; line-height:1.5; padding:0 20px;}
+img.logo-badge {width:75%}
+}
+
+
+
+/*********  
+7.Common styles for sections
+*********/
+section {padding:100px 0;}
+section h2 {font-family: 'Engagement', cursive; font-size:72px}
+
+
+/*********  
+8.About us
+*********/
+section#about {background:#f9f9f9;max-width: 100%; overflow:hidden}
+
+/*********  
+9.Chefs
+*********/
+section#chefs {background:#f9f7f3 url(../images/backgrounds/bf-events-bg.jpg);background-attachment:fixed;}
+section#chefs h3 {text-transform:uppercase; font-weight:400}
+section#chefs h4 {text-transform:uppercase; font-weight:400}
+section#chefs .chefitem {border:1px solid #bda881}
+section#chefs .chef {margin-bottom:30px;}
+
+/*********  
+9.1.Chefs2
+*********/
+section#chefs2 {background:#f9f7f3 url(../images/backgrounds/bf-events-bg.jpg);background-attachment:fixed;}
+section#chefs2 h3 {font-weight:400;font-family: 'Engagement', cursive; font-size:42px}
+section#chefs2 h4 {text-transform:uppercase; font-weight:400}
+section#chefs2 .chefitem {border:1px solid #bda881}
+
+/*********  
+10.Recommendations
+*********/
+section#recommendations {background:#2d3035 url(../images/backgrounds/bf-recommend-bg.jpg);background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF; padding:30px 0}
+section#recommendations h3 {text-transform:uppercase; font-weight:400;}
+section#recommendations h4 {text-transform:uppercase; font-weight:500;font-size:14px;color:#2d3035;margin:20px 0}
+
+/*********  
+10.1.Recommendations2
+*********/
+section#recommendations2 {background:#2d3035 url(../images/backgrounds/bf-recommend-bg.jpg);background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF; padding:30px 0}
+section#recommendations2 h3 {text-transform:uppercase; font-weight:400;}
+section#recommendations2 h4 {text-transform:uppercase; font-weight:500;font-size:18px;color:#2d3035;margin:20px 0}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+section#recommendations2 h4 {text-transform:uppercase; font-weight:500;font-size:16px;color:#2d3035;margin:20px 0}
+}
+
+/*********  
+11.Specials
+*********/
+section#specials {color:#FFF;}
+section#specials {background: url(../images/dishes/bf-dishes-06.jpg); background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover}
+section#specials .label-dishitem {background:#bda881; text-transform:uppercase; font-size:14px}
+
+/*********  
+11.1.Specials2
+*********/
+section#specials2 {background: url(../images/backgrounds/bf-events-bg.jpg); background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover}
+section#specials2 .label-dishitem {background:#bda881; text-transform:uppercase; font-size:14px}
+ 
+/*********  
+12.Menu
+*********/
+section#menu {background: url(../images/backgrounds/bf-menu-bg.jpg) no-repeat;background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF}
+section#menu h3 {font-size:18px;font-weight:500; text-transform:uppercase; border-bottom:1px solid #bda881; padding-bottom:10px}
+section#menu .label-menugroup {background:#bda881; text-transform:uppercase; font-size:21px;}
+
+/*********  
+12.1.Menu2
+*********/
+section#menu2 {background: url(../images/backgrounds/bf-menu2-bg.jpg) no-repeat;background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF}
+section#menu2 h3 {font-size:18px;font-weight:500; text-transform:uppercase; border-bottom:1px solid #bda881; padding-bottom:10px}
+section#menu2 .label-menugroup {background:#bda881; text-transform:uppercase; font-size:21px;}
+section#menu2 .item {background:rgba(0,0,0,0.6); padding:30px;margin: 10px;}
+
+/*********  
+13.Events
+*********/
+section#events {background:url(../images/backgrounds/bf-events-bg.jpg) no-repeat;background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover}
+section#events .event-photo {margin-top:10px;}
+section#events h4 {text-transform:uppercase}
+
+/*********  
+14.Locations
+*********/
+section#locations {background:#FFF}
+section#locations h3 {text-transform:uppercase; font-size:16px; font-weight:400}
+section#locations img.location {border:1px solid #bda881}
+
+/*********  
+15.Fresh Food CTA
+*********/
+section#fresh-food {background: #2d3035 url(../images/backgrounds/bf-fresh-food-bg.jpg); background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF;}
+
+/*********  
+16.Happy Hour CTA
+*********/
+section#happy-hour {background: #2d3035 url(../images/backgrounds/bf-happy-hour-bg.jpg); background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF; padding:75px 0}
+
+/*********  
+17.Testimonials
+*********/
+section#testimonials { background:#2d3035 url(../images/backgrounds/bf-chefs-bg.jpg); background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF;}
+section#testimonials h3 {text-transform:uppercase; margin-top:20px;}
+@media(max-width:640px) {
+section#testimonials .item {text-align:center}
+}
+
+/*********  
+18.Book a table
+*********/
+section#booktable {background:#2d3035;color:#FFF}
+section#booktable .form-group {margin-bottom: 20px;}
+section#booktable .form-group input, section#booktable .form-group textarea {padding: 15px 20px 15px 20px;}
+section#booktable select.form-control {padding: 15px 20px 15px 20px;}
+section#booktable .form-group select.form-control {height: auto;}
+section#booktable .form-group input.form-control {height: auto;}
+section#booktable .form-group textarea.form-control {min-height:120px;}
+section#booktable .form-control {border: 1px solid #eee;-webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075);box-shadow: inset 0 0px 0px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;border-radius:0}
+section#booktable .form-control:focus {border-color: #bda881;box-shadow: none;}
+section#booktable::-webkit-input-placeholder {text-transform: uppercase;font-weight: 700;color: #bbb;}
+section#booktable:-moz-placeholder {text-transform: uppercase;font-weight: 700;color: #bbb;}
+section#booktable::-moz-placeholder {text-transform: uppercase;font-weight: 700; color: #bbb;}
+section#booktable:-ms-input-placeholder {text-transform: uppercase;  font-weight: 700; color: #bbb;}
+section#booktable .text-danger {color: #7f1c11;}
+
+/*********  
+19.Contact
+*********/
+section#contact {background:#bda881;color:#FFF}
+section#contact h3 {text-transform:uppercase}
+section#contact .list-unstyled {margin-top:20px}
+section#contact .list-unstyled li {margin-bottom:5px; font-size:18px}
+section#contact .weekdays {text-transform:uppercase}
+section#contact a {color:#FFF;}
+section#contact a:hover {color:#2d3035;text-decoration:none}
+
+/*********  
+20.Footer
+*********/
+footer {background:#FFF;padding: 15px 0; text-align:center}
+footer h2 {font-family: 'Engagement', cursive; font-size:50px}
+footer ul.social-buttons {margin-bottom: 0;}
+footer ul.social-buttons li a {display: block;width: 40px;height: 40px;border-radius: 0%;font-size: 20px;line-height: 40px;outline: 0;color: #2d3035;border: 2px solid #2d3035;margin-bottom:10px;	background-color: transparent;-webkit-transition: all .3s;-moz-transition: all .3s;transition: all .3s;}
+footer ul.social-buttons li a:hover, footer ul.social-buttons li a:focus, footer ul.social-buttons li a:active {background-color: transparent;border: 2px solid #bda881;color: #bda881;}
+
+/*********  
+21.Social Icons
+*********/
+ ul.social-buttons {margin-bottom: 30px;}
+ ul.social-buttons li a {display: block;width: 40px;height: 40px;border-radius: 0%;font-size: 20px;line-height: 40px;outline: 0;color: #2d3035;border: 2px solid #2d3035;margin-bottom:10px;	background-color: transparent;-webkit-transition: all .3s;-moz-transition: all .3s;transition: all .3s;}
+ ul.social-buttons li a:hover,  ul.social-buttons li a:focus,  ul.social-buttons li a:active {background-color: transparent;border: 2px solid #bda881;color: #bda881;}
+
+/*********  
+22.Buttons
+*********/
+.btn-lg,.btn-group-lg > .btn{padding:10px 30px;font-size:14px;line-height:1.3333333;border-radius:6px}
+.btn-sm,.btn-group-sm > .btn{padding:5px 20px;font-size:12px;line-height:1.5;border-radius:3px}
+/* Main Button */
+.btn-main{color:#bda881;background-color:transparent;border-color:#bda881;border:2px solid;border-radius:0;text-transform:uppercase;font-weight:500}
+.btn-main:focus,.btn-main.focus{color:#FFF;background-color:#bda881;border-color:#bda881}
+.btn-main:hover{color:#FFF;background-color:#bda881;border-color:#bda881}
+.btn-main:active,.btn-main.active{color:#FFF;background-color:#bda881;border-color:#bda881}
+/* Main White Button */
+.btn-main-white{color:#FFF;background-color:transparent;border-color:#FFF;border:2px solid;border-radius:0;text-transform:uppercase;font-weight:500}
+.btn-main-white:focus,.btn-main-white.focus{color:#bda881;background-color:#FFF;border-color:#FFF}
+.btn-main-white:hover{color:#bda881;background-color:#FFF;border-color:#FFF}
+.btn-main-white:active,.btn-main-white.active{color:#bda881;background-color:#FFF;border-color:#FFF}
+
+/*********  
+23.Boxed Layout Adjustments  
+*********/
+#wrapper {position: relative;z-index: 1;max-width: 1200px;margin: 0 auto;overflow: hidden;-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);}
+.boxed-pattern {background:#f6efe3 url(../images/patterns/pattern01.jpg);background-attachment:fixed}
+
+/*********  
+24.Paddings 
+*********/
+.pddn-neg-10-top {padding-top: -10px}
+.pddn-0 {padding: 0px !important}
+.pddn-10 {padding: 10px}
+.pddn-20 {padding: 20px}
+.pddn-30 {padding: 30px}
+.pddn-40 {padding: 40px}
+.pddn-50 {padding: 50px}
+.pddn-60 {padding: 60px}
+.pddn-70 {padding: 70px}
+.pddn-80 {padding: 80px}
+.pddn-90 {padding: 90px}
+.pddn-100 {padding: 100px}
+.pddn-10-top {padding-top: 10px}
+.pddn-20-top {padding-top: 20px}
+.pddn-30-top {padding-top: 30px}
+.pddn-40-top {padding-top: 40px}
+.pddn-50-top {padding-top: 50px}
+.pddn-60-top {padding-top: 60px}
+.pddn-70-top {padding-top: 70px}
+.pddn-80-top {padding-top: 80px}
+.pddn-90-top {padding-top: 90px}
+.pddn-100-top {padding-top: 100px}
+.pddn-10-btm {padding-bottom: 10px}
+.pddn-20-btm {padding-bottom: 20px}
+.pddn-30-btm {padding-bottom: 30px}
+.pddn-40-btm {padding-bottom: 40px}
+.pddn-50-btm {padding-bottom: 50px}
+.pddn-60-btm {padding-bottom: 60px}
+.pddn-70-btm {padding-bottom: 70px}
+.pddn-80-btm {padding-bottom: 80px}
+.pddn-90-btm {padding-bottom: 90px}
+.pddn-100-btm {padding-bottom: 100px}
+.pddn-0-top-btm {padding:0}
+.pddn-10-top-btm {padding: 10px 0}
+.pddn-20-top-btm {padding: 20px 0}
+.pddn-30-top-btm {padding: 30px 0}
+.pddn-40-top-btm {padding: 40px 0}
+.pddn-50-top-btm {padding: 50px 0}
+.pddn-60-top-btm {padding: 60px 0}
+.pddn-70-top-btm {padding: 70px 0}
+.pddn-80-top-btm {padding: 80px 0}
+.pddn-90-top-btm {padding: 90px 0}
+.pddn-100-top-btm {padding: 100px 0}
+
+/*********  
+25.Margins 
+*********/
+.mrgn-10-top {margin-top: 10px}
+.mrgn-15-top {margin-top: 15px}
+.mrgn-20-top {margin-top: 20px}
+.mrgn-30-top {margin-top: 30px}
+.mrgn-40-top {margin-top: 40px}
+.mrgn-50-top {margin-top: 50px}
+.mrgn-60-top {margin-top: 60px}
+.mrgn-70-top {margin-top: 70px}
+.mrgn-80-top {margin-top: 80px}
+.mrgn-90-top {margin-top: 90px}
+.mrgn-100-top {margin-top: 100px}
+.mrgn-10-btm {margin-bottom: 10px}
+.mrgn-20-btm {margin-bottom: 20px}
+.mrgn-30-btm {margin-bottom: 30px}
+.mrgn-40-btm {margin-bottom: 40px}
+.mrgn-50-btm {margin-bottom: 50px}
+.mrgn-60-btm {margin-bottom: 60px}
+.mrgn-10-top-btm {margin: 10px 0}
+.mrgn-20-top-btm {margin: 20px 0}
+.mrgn-30-top-btm {margin: 30px 0}
+.mrgn-40-top-btm {margin: 40px 0}
+.mrgn-50-top-btm {margin: 50px 0}
+.mrgn-60-top-btm {margin: 60px 0}
+
+/*********  
+26.Menu Page 
+*********/
+section#menu-header {padding: 150px 0 50px;}
+section#menu-header {background:#2d3035 url(../images/backgrounds/bf-menu-header.jpg); background-attachment:fixed;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover; color:#FFF;}
+
+/********* 
+Menu Styles for the filter & items 
+*********/
+section#menu-list {background:#FFF;}
+#menu-list .menu-filter-area{margin-bottom:5%}
+@media(min-width:768px) {
+#menu .menu-filter-area{margin-bottom:2%}
+}
+#menu-list .menu-filter{padding:0;margin:0}
+#menu-list .menu-filter li{list-style:none;display:inline-block;margin:3px}
+#menu-list .menu-filter li a{display:block;padding:10px 15px 7px;background:transparent;color:#bda881;font-family: 'Catamaran', sans-serif; font-weight:400;font-size:16px;line-height:1;text-decoration:none;outline:none;text-transform:uppercase;border:2px solid #bda881;-webkit-transition:all .3s;transition:all .3s}
+#menu-list .menu-filter li.active a,#menu-list .menu-filter li.active a:hover{background-color:#bda881;border-color:#bda881;color:#fff}
+#menu-list .menu-filter li a:hover{background-color:#bda881;border-color:#bda881;color:#fff}
+#menu-list .menu-items{margin:-8px;-webkit-transition:all .6s ease;transition:all .6s ease;-webkit-transition-delay:.6s;transition-delay:.6s}
+#menu-list .single-item{display:block;width:50%;padding:5px;float:left;position:relative;margin-bottom:20px;}
+#menu-list .single-item a{display:block;-webkit-transition:none!important;transition:none!important;}
+.menu-image{position:relative;width:100%;overflow:hidden;background:#bda881}
+#menu-list .single-item h3 {margin-top:0;text-transform:uppercase; font-size:21px}
+#menu-list .menu-image img{max-width:inherit;width:100%;-webkit-transition:all .45s ease-out;transition:all .45s ease-out;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}
+#menu-list .menu-content{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;filter:alpha(opacity=0);-webkit-transition:all .45s ease;transition:all .45s ease;padding:40px 20px;background-color:rgba(0,0,0,0.8);text-align:center}
+#menu-list .menu-content-inner{position:relative;width:100%}
+#menu-list .p-title{font-size:24px;letter-spacing:1px;text-transform:uppercase;margin:0;font-family: 'Catamaran', sans-serif; font-weight:400;position:relative;margin-bottom:5px;color:#bda881;padding-bottom:10px;border-bottom:2px solid #bda881}
+#menu-list .menu-content-inner p{color:#bda881}
+#menu-list .single-item:hover img{-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1)}
+#menu-list .single-item:hover .menu-content{opacity:1;filter:alpha(opacity=100)}
+}
+/********* 
+Laptop 
+*********/
+@media (max-width: 1400px) {
+#menu-list .single-item {width: 50%;}
+}
+
+/********* 
+Small Tablet 
+********/
+@media (max-width: 991px) {
+#menu-list .single-item {width: 100%;}
+#menu-list .menu-filters-area {margin-bottom: 10%;}
+}
+
+/********* 
+Smallest Tablet & Mobile 
+*********/
+@media (max-width: 767px) {
+#menu-list .single-item .menu-content, #menu-list  .single-item:hover .menu-content {opacity: 0 !important;filter: alpha(opacity=0);}
+}
+
+/*********  
+Small Mobile 
+*********/
+@media (max-width: 500px) {
+#menu-list .single-item {width: 100%;}
+#menu-list .menu-filters li a {padding: 2px 8px;}
+#menu-list .menu-filter li{list-style:none;display:block;margin:3px}
+}
+
+/*********  
+27.Ribbons
+*********/
+
+.ribbon{margin:50px auto;width:280px;height:370px;background:#fff;border-radius:10px;-webkit-box-shadow:0 0 8px rgba(0,0,0,0.3);-moz-box-shadow:0 0 8px rgba(0,0,0,0.3);box-shadow:0 0 8px rgba(0,0,0,0.3);position:relative;z-index:90}
+.ribbon-wrapper-dark{width:90px;height:90px;overflow:hidden;position:absolute;top:0;left:0;z-index:9}
+.ribbon-dark{color:#333;text-align:center;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:relative;padding:4px 0;right:27px;top:19px;width:120px;background-color:#2d3035;color:#bda881;-webkit-box-shadow:0 0 3px rgba(0,0,0,0.3);-moz-box-shadow:0 0 3px rgba(0,0,0,0.3);box-shadow:0 0 3px rgba(0,0,0,0.3);text-transform:uppercase}
+.ribbon-dark:before,.ribbon-dark:after{content:"";border-top:4px solid #1f2124;border-left:4px solid transparent;border-right:4px solid transparent;position:absolute;bottom:-3px}
+.ribbon-dark:before{left:0}
+.ribbon-dark:after{right:0}
+.ribbon-wrapper-light{width:90px;height:90px;overflow:hidden;position:absolute;top:0;left:0;z-index:9}
+.ribbon-light{color:#333;text-align:center;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);position:relative;padding:4px 0;right:27px;top:19px;width:120px;background-color:#bda881;bda881color:#2d3035;-webkit-box-shadow:0 0 3px rgba(0,0,0,0.3);-moz-box-shadow:0 0 3px rgba(0,0,0,0.3);box-shadow:0 0 3px rgba(0,0,0,0.3);text-transform:uppercase}
+.ribbon-light:before,.ribbon-light:after{content:"";border-top:4px solid #a6916b;border-left:4px solid transparent;border-right:4px solid transparent;position:absolute;bottom:-3px}
+.ribbon-light:before{left:0}
+.ribbon-light:after{right:0}

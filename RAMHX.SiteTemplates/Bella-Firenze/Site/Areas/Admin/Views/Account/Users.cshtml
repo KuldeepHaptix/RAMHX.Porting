@@ -1,0 +1,117 @@
+﻿@*@model IEnumerable<RAMHX.CMS.DataAccess.AspNetUser>*@
+@model  IEnumerable<RAMHX.CMS.Repository.UserModel>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users</h2>
+<p>
+    @Html.ActionLink("New User", "Register") | @Html.ActionLink("Roles", "Index", "Roles", new { area = "admin" }, new { @class = "" })
+</p>
+<table class="table" id="userrolelist">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasswordHash)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecurityStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessFailedCount)
+            </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.UserName)*@
+            User
+        </th>
+        <th>Roles</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecurityStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetRoles)
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedRoles)
+            </td>
+            <td>
+                @Html.ActionLink("Reset Password", "Manage", new { id = item.Users.Id })
+                | <a href="" id='@item.Users.Id' class="userrole">Roles</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<h6>*NOTE: Please refresh page after changes roles to any users</h6>
+
+
+<div id="dialogUserRoles" hidden="hidden" style="overflow:hidden" title="Media Library">
+    <iframe id="iFrmPageRoles" height="100%" width="100%" style="border: 0px"></iframe>
+</div>
+
+@section Scripts{
+    <script src="~/Areas/Admin/Assets/js/User.Roles.js"></script>
+    <script src="~/Areas/Admin/Assets/js/Page.Roles.js"></script>
+}

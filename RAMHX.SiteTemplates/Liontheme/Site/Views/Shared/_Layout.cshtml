@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="@SiteContext.CurrentPage.PageMetaKeywords" />
+    <meta name="description" content="@SiteContext.CurrentPage.PageMetaKeywords" />
+    <title>@SiteContext.CurrentPage.PageTitle - RAMHX CMS</title>
+    <link href="~/Assets/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+            @RenderBody()
+    <!-- LOAD JS FILES -->
+    <script src="/Assets/js/jquery.min.js"></script>
+    <script src="/Assets/js/bootstrap.min.js"></script>
+    <script src="/Assets/js/jquery.isotope.min.js"></script>
+    <script src="/Assets/js/jquery.prettyPhoto.js"></script>
+    <script src="/Assets/js/easing.js"></script>
+    <script src="/Assets/js/jquery.lazyload.js"></script>
+    <script src="/Assets/js/jquery.ui.totop.js"></script>
+    <script src="/Assets/js/selectnav.js"></script>
+    <script src="/Assets/js/ender.js"></script>
+    <script src="/Assets/js/responsiveslides.min.js"></script>
+    <script src="/Assets/js/jquery.flexslider-min.js"></script>
+    <script src="/Assets/js/bootstrap-datepicker.js"></script>
+    <script src="/Assets/js/owl.carousel.min.js"></script>
+    <script src="/Assets/js/custom.js"></script>
+    <!-- datepicker js -->
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('#checkin').datepicker();
+            jQuery('#checkout').datepicker();
+        });
+    </script>
+</body>
+</html>

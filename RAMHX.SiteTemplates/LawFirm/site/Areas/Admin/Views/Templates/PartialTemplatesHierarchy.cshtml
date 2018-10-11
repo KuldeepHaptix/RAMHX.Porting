@@ -1,0 +1,17 @@
+﻿@model IEnumerable<RAMHX.CMS.Web.Areas.Admin.Models.TemplatesHierarchy>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @Html.ActionLink("LoadChild", "Master", new { item.TemplateId })
+            @if (item.ChildNood.Count > 0)
+            {
+                @Html.Partial("PartialUserHierarchy", item.ChildNood)
+            }
+        </li>
+    </ul>
+}
+
+
+

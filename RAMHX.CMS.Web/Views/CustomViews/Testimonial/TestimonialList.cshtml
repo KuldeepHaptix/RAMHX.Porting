@@ -1,0 +1,59 @@
+﻿@using RAMHX.CMS.DataAccess;
+
+@{
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var testimonial = (from a in dbEntity.CoreModule_TestimonialMasters
+                       select a).OrderByDescending(gal => gal.Id).ToList();
+
+    var offers = dbEntity.CoreModule_TestimonialCategories.ToList();
+}
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-about fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Testimonial</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="javascript:;">Home</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Testimonial</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section class="padding padding-bottom-0">
+    <div class="container">
+        <div class="row">
+            <h2 class="title text-cap">What Our Client Says</h2>
+            <div class="divider divider-1">
+                <svg class="svg-triangle-icon-container">
+                    <polygon class="svg-triangle-icon" points="6 11,12 0,0 0"></polygon>
+                </svg>
+            </div>
+            <!-- End Title -->
+            <div class="testimonial-warp testimonial-2-col testimonial-2-col-about">
+               
+                    @foreach (var tt in testimonial)
+                    {
+                        <div class="item col-md-6">
+                            <div class="item-testimonials  item-testimonials-about text-left">
+                                <p class="quote-icon">“</p>
+                                <p><i>@tt.EXPERIENCE</i></p>
+                                <div class="avatar-testimonials">
+                                    <img src="@tt.PhotoPath" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials text-cap">@tt.Name</h4>
+                                @*<span class="job-testimonials">CEO Finanace Theme Group</span>*@
+                            </div>
+                            
+                        </div>
+                    }
+                    
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Section Owl Testimonials -->

@@ -1,0 +1,47 @@
+﻿@model RAMHX.CMS.DataAccess.cms_301Redirection
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>301 Redirection</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            From Url
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromUrl)
+        </dd>
+
+        <dt>
+           To Url
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

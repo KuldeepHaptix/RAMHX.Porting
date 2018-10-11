@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eDoctorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DoctorId" Type="uniqueidentifier" />
+          <Property Name="LocationId" Type="uniqueidentifier" />
+          <Property Name="Status" Type="int" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" />
+          <Property Name="ApplicationOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="uniqueidentifier" />
+          <Property Name="PatientId" Type="uniqueidentifier" />
+          <Property Name="AppointmentOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="AvailabilityId" />
+          </Key>
+          <Property Name="AvailabilityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DoctorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LocationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="DurationInMinute" Type="int" Nullable="false" />
+          <Property Name="OnSunday" Type="bit" Nullable="false" />
+          <Property Name="SundayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SundayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SundayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SundayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OnMonday" Type="bit" Nullable="false" />
+          <Property Name="MondayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="MondayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="MondayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="MondayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OnTuesday" Type="bit" Nullable="false" />
+          <Property Name="TuesdayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TuesdayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TuesdayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TuesdayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OnWednesday" Type="bit" Nullable="false" />
+          <Property Name="WednesdayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="WednesdayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="WednesdayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="WednesdayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OnThursday" Type="bit" Nullable="false" />
+          <Property Name="ThursdayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ThursdayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ThursdayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ThursdayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OnFriday" Type="bit" Nullable="false" />
+          <Property Name="FridayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="FridayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="FridayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="FridayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OnSaturday" Type="bit" Nullable="false" />
+          <Property Name="SaturdayMorningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SaturdayMorningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SaturdayEveningStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SaturdayEveningEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="25" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" />
+          <Property Name="PhotoUrl" Type="varchar" MaxLength="200" />
+          <Property Name="About" Type="varchar" MaxLength="2000" />
+          <Property Name="AboutFullDetail" Type="text" />
+          <Property Name="Educations" Type="varchar" MaxLength="200" />
+          <Property Name="Specializations" Type="varchar" MaxLength="200" />
+          <Property Name="Experience" Type="varchar" MaxLength="50" />
+          <Property Name="AwardAndRecognitions" Type="varchar" MaxLength="2000" />
+          <Property Name="Memberships" Type="varchar" MaxLength="2000" />
+          <Property Name="Registrations" Type="varchar" MaxLength="2000" />
+          <Property Name="ServiceId" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DoctorLocation">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="DoctorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LocationId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayId" />
+          </Key>
+          <Property Name="HolidayId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HolidayDate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveId" />
+          </Key>
+          <Property Name="LeaveId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBY" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="500" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="PinCode" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="25" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="PhotoUrl" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="eDoctorModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorLocation" EntityType="Self.DoctorLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eDoctorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="eDoctorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="eDoctorModel.Appointment" />
+          <EntitySet Name="Doctors" EntityType="eDoctorModel.Doctor" />
+          <EntitySet Name="Availabilities" EntityType="eDoctorModel.Availability" />
+          <EntitySet Name="Locations" EntityType="eDoctorModel.Location" />
+          <EntitySet Name="DoctorLocations" EntityType="eDoctorModel.DoctorLocation" />
+          <EntitySet Name="Services" EntityType="eDoctorModel.Service" />
+          <EntitySet Name="Leaves" EntityType="eDoctorModel.Leave" />
+          <EntitySet Name="Holidays" EntityType="eDoctorModel.Holiday" />
+          <EntitySet Name="Patients" EntityType="eDoctorModel.Patient" />
+        </EntityContainer>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="Guid" Nullable="false" />
+          <Property Name="DoctorId" Type="Guid" />
+          <Property Name="LocationId" Type="Guid" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ApplicationOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Guid" />
+          <Property Name="PatientId" Type="Guid" />
+          <Property Name="AppointmentOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="About" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="AboutFullDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Educations" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Specializations" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AwardAndRecognitions" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Memberships" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Registrations" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="AvailabilityId" />
+          </Key>
+          <Property Name="AvailabilityId" Type="Guid" Nullable="false" />
+          <Property Name="DoctorId" Type="Guid" Nullable="false" />
+          <Property Name="LocationId" Type="Guid" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DurationInMinute" Type="Int32" Nullable="false" />
+          <Property Name="OnSunday" Type="Boolean" Nullable="false" />
+          <Property Name="SundayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SundayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SundayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SundayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OnMonday" Type="Boolean" Nullable="false" />
+          <Property Name="MondayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="MondayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="MondayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="MondayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OnTuesday" Type="Boolean" Nullable="false" />
+          <Property Name="TuesdayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TuesdayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TuesdayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TuesdayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OnWednesday" Type="Boolean" Nullable="false" />
+          <Property Name="WednesdayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="WednesdayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="WednesdayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="WednesdayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OnThursday" Type="Boolean" Nullable="false" />
+          <Property Name="ThursdayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="ThursdayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="ThursdayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="ThursdayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OnFriday" Type="Boolean" Nullable="false" />
+          <Property Name="FridayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="FridayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="FridayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="FridayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OnSaturday" Type="Boolean" Nullable="false" />
+          <Property Name="SaturdayMorningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SaturdayMorningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SaturdayEveningStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SaturdayEveningEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FullAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PinCode" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Guid" />
+        </EntityType>
+        <EntityType Name="DoctorLocation">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="DoctorId" Type="Guid" Nullable="false" />
+          <Property Name="LocationId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveId" />
+          </Key>
+          <Property Name="LeaveId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBY" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayId" />
+          </Key>
+          <Property Name="HolidayId" Type="Guid" Nullable="false" />
+          <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eDoctorModelStoreContainer" CdmEntityContainer="eDoctorEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="eDoctorModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="AppointmentOrder" ColumnName="AppointmentOrder" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ApplicationOn" ColumnName="ApplicationOn" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="eDoctorModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="Registrations" ColumnName="Registrations" />
+                <ScalarProperty Name="Memberships" ColumnName="Memberships" />
+                <ScalarProperty Name="AwardAndRecognitions" ColumnName="AwardAndRecognitions" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Specializations" ColumnName="Specializations" />
+                <ScalarProperty Name="Educations" ColumnName="Educations" />
+                <ScalarProperty Name="AboutFullDetail" ColumnName="AboutFullDetail" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Availabilities">
+            <EntityTypeMapping TypeName="eDoctorModel.Availability">
+              <MappingFragment StoreEntitySet="Availability">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SaturdayEveningEnd" ColumnName="SaturdayEveningEnd" />
+                <ScalarProperty Name="SaturdayEveningStart" ColumnName="SaturdayEveningStart" />
+                <ScalarProperty Name="SaturdayMorningEnd" ColumnName="SaturdayMorningEnd" />
+                <ScalarProperty Name="SaturdayMorningStart" ColumnName="SaturdayMorningStart" />
+                <ScalarProperty Name="OnSaturday" ColumnName="OnSaturday" />
+                <ScalarProperty Name="FridayEveningEnd" ColumnName="FridayEveningEnd" />
+                <ScalarProperty Name="FridayEveningStart" ColumnName="FridayEveningStart" />
+                <ScalarProperty Name="FridayMorningEnd" ColumnName="FridayMorningEnd" />
+                <ScalarProperty Name="FridayMorningStart" ColumnName="FridayMorningStart" />
+                <ScalarProperty Name="OnFriday" ColumnName="OnFriday" />
+                <ScalarProperty Name="ThursdayEveningEnd" ColumnName="ThursdayEveningEnd" />
+                <ScalarProperty Name="ThursdayEveningStart" ColumnName="ThursdayEveningStart" />
+                <ScalarProperty Name="ThursdayMorningEnd" ColumnName="ThursdayMorningEnd" />
+                <ScalarProperty Name="ThursdayMorningStart" ColumnName="ThursdayMorningStart" />
+                <ScalarProperty Name="OnThursday" ColumnName="OnThursday" />
+                <ScalarProperty Name="WednesdayEveningEnd" ColumnName="WednesdayEveningEnd" />
+                <ScalarProperty Name="WednesdayEveningStart" ColumnName="WednesdayEveningStart" />
+                <ScalarProperty Name="WednesdayMorningEnd" ColumnName="WednesdayMorningEnd" />
+                <ScalarProperty Name="WednesdayMorningStart" ColumnName="WednesdayMorningStart" />
+                <ScalarProperty Name="OnWednesday" ColumnName="OnWednesday" />
+                <ScalarProperty Name="TuesdayEveningEnd" ColumnName="TuesdayEveningEnd" />
+                <ScalarProperty Name="TuesdayEveningStart" ColumnName="TuesdayEveningStart" />
+                <ScalarProperty Name="TuesdayMorningEnd" ColumnName="TuesdayMorningEnd" />
+                <ScalarProperty Name="TuesdayMorningStart" ColumnName="TuesdayMorningStart" />
+                <ScalarProperty Name="OnTuesday" ColumnName="OnTuesday" />
+                <ScalarProperty Name="MondayEveningEnd" ColumnName="MondayEveningEnd" />
+                <ScalarProperty Name="MondayEveningStart" ColumnName="MondayEveningStart" />
+                <ScalarProperty Name="MondayMorningEnd" ColumnName="MondayMorningEnd" />
+                <ScalarProperty Name="MondayMorningStart" ColumnName="MondayMorningStart" />
+                <ScalarProperty Name="OnMonday" ColumnName="OnMonday" />
+                <ScalarProperty Name="SundayEveningEnd" ColumnName="SundayEveningEnd" />
+                <ScalarProperty Name="SundayEveningStart" ColumnName="SundayEveningStart" />
+                <ScalarProperty Name="SundayMorningEnd" ColumnName="SundayMorningEnd" />
+                <ScalarProperty Name="SundayMorningStart" ColumnName="SundayMorningStart" />
+                <ScalarProperty Name="OnSunday" ColumnName="OnSunday" />
+                <ScalarProperty Name="DurationInMinute" ColumnName="DurationInMinute" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="AvailabilityId" ColumnName="AvailabilityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="eDoctorModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorLocations">
+            <EntityTypeMapping TypeName="eDoctorModel.DoctorLocation">
+              <MappingFragment StoreEntitySet="DoctorLocation">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="eDoctorModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves">
+            <EntityTypeMapping TypeName="eDoctorModel.Leave">
+              <MappingFragment StoreEntitySet="Leave">
+                <ScalarProperty Name="UpdatedBY" ColumnName="UpdatedBY" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="eDoctorModel.Holiday">
+              <MappingFragment StoreEntitySet="Holiday">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+                <ScalarProperty Name="HolidayId" ColumnName="HolidayId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="eDoctorModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

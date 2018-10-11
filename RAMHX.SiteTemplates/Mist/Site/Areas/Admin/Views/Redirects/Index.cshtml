@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.cms_301Redirection>
+
+@{
+    ViewBag.Title = "301 Redirections";
+}
+
+<h2>301 Redirections</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            From Url
+        </th>
+        <th>
+            To Url
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fromUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.toUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.rid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.rid })
+        </td>
+    </tr>
+}
+
+</table>

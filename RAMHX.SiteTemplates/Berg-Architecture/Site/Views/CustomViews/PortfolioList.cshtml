@@ -1,0 +1,124 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    Page.Title = "Portfolio";
+    var portfolio = SiteContext.CurrentPage.cms_SubPages.OrderBy(p => p.PageOrder).ToList();
+}
+<!-- Inside Title -->
+<div class="inside_title image_bck grey_border" data-image="/Assets/images/furn2.jpg ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><h1>Portfolio</h1></div>
+            <div class="col-md-6 text-right"><div class="breadcrumbs"><a href="/">Home</a><a href="#">Portfolio</a>Portfolio Masonry </div></div>
+        </div>
+    </div>
+</div>
+<!-- Inside Title End -->
+<!-- Content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="bordered_block col-md-12 grey_border">
+
+                <div class="container">
+                    <div class="row">
+
+                        <!--Sidebar-->
+                        <div class="col-md-12 col-xs-12">
+                            <div class="masonry row">
+
+                                <div class="col-sm-6 post-snippet masonry-item">
+                                    <a href="@portfolio[0].FullPageUrl">
+                                        <img alt="" src="@portfolio[0].FieldValue("Image")" />
+                                        <span class="potfolio_txt">
+                                            <span class="portfolio_cont text-center">
+                                                <span class="portfolio_title">@portfolio[0].FieldValue("Title") </span>
+                                                @*<span class="portfolio_subtitle">Item Category</span>*@
+                                                <span class="ti ti-link"></span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-6 post-snippet masonry-item">
+                                    <a href="@portfolio[1].FullPageUrl">
+                                        <img alt="" src="@portfolio[1].FieldValue("Image")" />
+                                        <span class="potfolio_txt">
+                                            <span class="portfolio_cont text-center">
+                                                <span class="portfolio_title">@portfolio[1].FieldValue("Title") </span>
+                                                <span class="ti ti-link"></span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-6 post-snippet masonry-item">
+                                    <a href="@portfolio[2].FullPageUrl">
+                                        <img alt="" src="@portfolio[2].FieldValue("Image")" />
+                                        <span class="potfolio_txt">
+                                            <span class="portfolio_cont text-center">
+                                                <span class="portfolio_title">@portfolio[2].FieldValue("Title") </span>
+                                                <span class="ti ti-link"></span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-6 post-snippet masonry-item">
+                                    <a href="@portfolio[3].FullPageUrl">
+                                        <img alt="" src="@portfolio[3].FieldValue("Image")" />
+                                        <span class="potfolio_txt">
+                                            <span class="portfolio_cont text-center">
+                                                <span class="portfolio_title">@portfolio[3].FieldValue("Title") </span>
+                                                <span class="ti ti-link"></span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-6 post-snippet masonry-item">
+                                    <a href="@portfolio[4].FullPageUrl">
+                                        <img alt="" src="@portfolio[4].FieldValue("Image")" />
+                                        <span class="potfolio_txt">
+                                            <span class="portfolio_cont text-center">
+                                                <span class="portfolio_title">@portfolio[4].FieldValue("Title") </span>
+                                                <span class="ti ti-link"></span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <div class="col-sm-6 post-snippet masonry-item">
+                                    <a href="@portfolio[5].FullPageUrl">
+                                        <img alt="" src="@portfolio[5].FieldValue("Image")" />
+                                        <span class="potfolio_txt">
+                                            <span class="portfolio_cont text-center">
+                                                <span class="portfolio_title">@portfolio[5].FieldValue("Title")</span>
+                                                <span class="ti ti-link"></span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!--Sidebar End-->
+
+
+
+
+                    </div>
+                    <!--Row End-->
+
+                </div>
+            </div>
+        </div>
+        <!-- Row End -->
+
+
+    </div>
+</div>
+<!-- Content End -->

@@ -1,0 +1,136 @@
+﻿@using RAMHX.CMS.DataAccess;
+@{
+    var jobId = Convert.ToInt32(Request.QueryString["jobId"]);
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+
+    var jobs = dbEntity.CoreModule_JobMasters.ToList();
+    var catJobs = dbEntity.CoreModule_JobCategories.OrderByDescending(C => C.DisplayOrder).ToList();
+    var curJob = dbEntity.CoreModule_JobMasters.FirstOrDefault(j => j.Id == jobId);
+    var hideJobDdl = "";
+    if (jobId > 0 || curJob != null)
+    {
+        hideJobDdl = "hide";
+    }
+
+}
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-contact fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Apply Job</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="active">Jobs</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<!-- End Section Sub Header -->
+<!-- Section form contact -->
+<section class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="contact-warp">
+                @if (curJob != null)
+                {
+                    <h2>Post - @curJob.JobTitle</h2>
+                }
+
+                <div class="col-md-6 ">
+                    <div class="left-contact">
+                        <h3 class="text-cap"> Apply Your Jobs </h3>
+                        <form id="frmApplyJob">
+                            <div class="row">
+                                <div class="form-group col-sm-12" id="dNameJob">
+                                    <input class="form-control" id="txtName" name="txtName" placeholder="Your Name" type="text" isrequired="1" errorspan="sNamejobError" divcontainer="dNameJob" defaultvalue="" />
+                                    <span class="help-block hide error" id="sNamejobError">Please Enter Your Name</span>
+                                </div>
+
+                                <div class="form-group col-sm-12" id="dEmailJob">
+                                    <input class="form-control" id="txtFromEmail" name="txtFromEmail" placeholder="Your Email" type="email" isrequired="1" errorspan="sEmailJobError" divcontainer="dEmailJob" defaultvalue="" />
+                                    <span class="help-block hide error" id="sEmailJobError">Please Enter Your Email</span>
+                                </div>
+
+                                <div class="form-group col-sm-12" id="dPh">
+                                    <input class="form-control" id="txtPhNumber" name="txtPhNumber" placeholder="Contact number" type="text" isrequired="1" errorspan="sPhError" divcontainer="dPh" defaultvalue="" />
+                                    <span class="help-block hide error" id="sPhError">Please Enter Phone Number</span>
+                                </div>
+
+                                <div class="form-group col-sm-12" id="dQualification">
+                                    <input class="form-control" id="txtQualification" name="txtQualification" placeholder="Qualification" type="text" isrequired="1" errorspan="sQualificationError" divcontainer="dQualification" defaultvalue="" />
+                                    <span class="help-block hide error" id="sQualificationError">Please Enter Qualification</span>
+                                </div>
+
+                                <div class="form-group col-sm-12" id="dExperience">
+                                    <input class="form-control" id="txtExperience" name="txtExperience" placeholder="Experience" type="text" isrequired="1" errorspan="sExperienceError" divcontainer="dExperience" defaultvalue="" />
+                                    <span class="help-block hide error" id="sExperienceError">Please Enter Experience</span>
+                                </div>
+
+                                <div class="form-group col-sm-12" id="dFile">
+                                    <input class="form-control" id="txtFile" name="txtResume" placeholder="Upload Resume" type="file" isrequired="1" errorspan="sFileError" divcontainer="dFile" defaultvalue="" />
+                                    <span class="help-block hide error" id="sFileError">Please Select a File</span>
+                                </div>
+
+                                <div class="form-group col-sm-12 @hideJobDdl" id="dPost">
+                                    <select class="form-control" id="txtPostApplied" name="txtPostApplied" placeholder="Post Applied" type="text" isrequired="1" errorspan="sPostError" divcontainer="dPost" defaultvalue="0">
+
+                                        <option value="0"> -- Select Job -- </option>
+                                        @foreach (var jbc in catJobs)
+                                        {
+
+                                            <option value="@jbc.JobCategoryName" disabled="disabled">_______@jbc.JobCategoryName _____ </option>
+
+                                            foreach (var jb in jobs.Where(j => j.CategoryId == jbc.Id).OrderByDescending(C => C.DisplayOrder))
+                                            {
+                                                if (jobId == jb.Id)
+                                                {
+                                                    <option value="@jb.JobTitle" selected>@jb.JobTitle</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@jb.JobTitle">@jb.JobTitle</option>
+                                                }
+
+                                            }
+                                        }
+                                    </select>
+                                    <span class="help-block hide error" id="sPostError">Please Select Post</span>
+                                </div>
+
+                            </div>
+                            <div class="input-content">
+                                <div class="form-group form-textarea"><textarea class="form-control" id="txtAddress" name="txtAddress" placeholder="Your Address" rows="6"></textarea></div>
+                            </div>
+
+                            <button class="ot-btn btn-main-color btn-long text-cap btn-submit" id="btnSendEmail">Submit</button>
+                            <input type="hidden" name="txtTemplate" value="ApplyJob" />
+                            <input type="hidden" name="txtEmailSubject" value="Cityspace - Apply Job" />
+                            <input type="hidden" name="txtToEmail" value="ashish.haptix@gmail.com" />
+
+                        </form>
+                    </div> <!-- End col -->
+                </div>
+
+
+                <div class="col-md-6">
+                    @if (curJob != null)
+                    {
+                        <h3 class="text-cap"> Job Details </h3>
+                        <blockquote>
+                            <p>Job Title: @curJob.JobTitle</p>
+                            <p>Qualification: @curJob.Qualification</p>
+                            <p>SPECIALIZATION: @curJob.SPECIALIZATION</p>
+                            <p>EXPERIENCE: @curJob.EXPERIENCE</p>
+                        </blockquote>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Section -->
+<script src="~/distfrontend/js/Job_Form.js"></script>

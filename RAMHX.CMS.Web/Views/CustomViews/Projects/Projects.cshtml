@@ -1,0 +1,56 @@
+﻿@using RAMHX.CMS.DataAccess;
+
+@{
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var pritems = (from a in dbEntity.CoreModule_ProjectMasters
+
+                   select a).OrderByDescending(pr => pr.Id).ToList();
+
+    var cats = dbEntity.CoreModule_ProjectCategories.ToList();
+}
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Projects</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">Projects</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<!-- End Section Sub Header -->
+<section class="padding bg-grey padding-bottom-0">
+    <div class="container">
+        <div class="row">
+
+            <h3 class="text-cap">Our Work</h3>
+            <div class="lastest-project-warp portfolio-grid-2-warp clearfix">
+                <!-- End Project Fillter -->
+                @foreach (var item in cats)
+                {
+                    <div class="">
+                        <h4> @item.ProjCategoryName</h4>
+                    </div>
+                    <div class="clearfix projectContainer portfolio-grid-2-container">
+                        @foreach (CoreModule_ProjectMaster cs in pritems.Where(p => p.CategoryId == item.Id))
+                {
+                            <div class="element-item">
+                                <a class="portfolio-img-demo" href="javascript:;"><img src="/ImageThumbHandler.ashx?s=200&f=@cs.ImageUrl" class="img-responsive" alt="@cs.ProjName" style="width:100%; height:200px;"></a>
+                                <div class="project-info">
+                                    <a href="javascript:;">
+                                        <h4 class="title-project text-cap text-cap">@cs.ProjName</h4>
+                                    </a>
+                                    <a href="javascript:;" class="cateProject">@cs.ShortDesc</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

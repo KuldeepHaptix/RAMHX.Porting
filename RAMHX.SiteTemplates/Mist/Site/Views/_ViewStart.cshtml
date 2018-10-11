@@ -1,0 +1,10 @@
+@*@{
+    if (Request.Url.PathAndQuery.ToLower().Contains("/account/"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}*@

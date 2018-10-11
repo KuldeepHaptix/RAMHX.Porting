@@ -1,0 +1,49 @@
+﻿@using RAMHX.CMS.DataAccess;
+@{
+
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+
+    var testimonial = dbEntity.CoreModule_TestimonialMasters.OrderByDescending(C => C.DisplayOrder).Take(5).ToList();
+
+}
+<section class="bg-parallax section-dark-testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="title-block">
+                <h2 class="title text-cap">What Our Client Says</h2>
+
+                <div class="divider divider-2"><svg class="svg-triangle-icon-container"> <polygon class="svg-triangle-icon" points="6 11,12 0,0 0"></polygon> </svg></div>
+            </div>
+            <!-- End Title -->
+
+            <div class="testimonial-warp testimonial-2-col">
+                <div class="customNavigation"><a class="btn prev-testimonials-2-columns"><i class="fa fa-angle-left"></i></a> <a class="btn next-testimonials-2-columns"><i class="fa fa-angle-right"></i></a></div>
+                <div class="owl-carousel owl-theme clearfix" id="owl-testimonials-2-columns">
+                    @foreach (var tt in testimonial)
+                    {
+
+                        <div class="item item-testimonials text-left">
+                            <p class="quote-icon">&ldquo;</p>
+
+                            <p><i>@tt.EXPERIENCE</i></p>
+
+                            <div class="avatar-testimonials"><img alt="Image" class="img-responsive" src="@tt.PhotoPath" /></div>
+
+                            <h4 class="name-testimonials text-cap">@tt.Name</h4>
+                            @*<span class="job-testimonials">CEO Finanace Theme Group</span>*@
+                        </div>
+                        <!-- end item -->
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+        <div class="text-center">
+            <a href="/testimonial" class="ot-btn text-cap  btn-rounded btn-main-color text-center">More Customer Experiences</a>
+        </div>
+    </div>
+</section>
+<!-- End Section Owl Testimonials -->

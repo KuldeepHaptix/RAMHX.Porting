@@ -1,0 +1,53 @@
+﻿@model RAMHX.CMS.DataAccess.HtmlModule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Page Content</h2>
+
+<div>
+    <h4>Page content details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlModuleName) - @Html.DisplayFor(model => model.HtmlModuleCode)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlModuleDescription)
+        </dd>
+
+        <dt>
+            Page Reference
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageName)
+        </dd>
+        <dt>
+            HTML Preview
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.HtmlModuleHTML)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HTMLModuleId }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @id = "goback" })
+</p>
+
+@section scripts{
+    <script src="~/Areas/Admin/Assets/js/common.js"></script>
+    <script src="~/Areas/Admin/Assets/js/HtmlModule.Create.js"></script>
+}

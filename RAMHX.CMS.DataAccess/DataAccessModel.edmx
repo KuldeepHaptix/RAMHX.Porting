@@ -1,0 +1,2423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RAMHX.CMS.DataAccess.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="app_Configs">
+          <Key>
+            <PropertyRef Name="GroupId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="200" />
+          <Property Name="ItemDesc" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="300" />
+          <Property Name="ItemCode" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppForgotPasswordToken">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CodeToken" Type="varchar" MaxLength="6" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="ExpireDateTime" Type="datetime" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="cms_301Redirection">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fromUrl" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="toUrl" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cms_PackageInstallations">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PackagePath" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ComplatedDate" Type="datetime" />
+          <Property Name="TotalPages" Type="int" />
+          <Property Name="TotalModules" Type="int" />
+          <Property Name="TotalTemplateFields" Type="int" />
+          <Property Name="ProcPages" Type="int" />
+          <Property Name="ProcModules" Type="int" />
+          <Property Name="ProcTemplateFields" Type="int" />
+          <Property Name="IsValidPackage" Type="bit" Nullable="false" />
+          <Property Name="ValidationErrors" Type="text" />
+        </EntityType>
+        <EntityType Name="cms_PageFieldValues">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="TemplateId" />
+            <PropertyRef Name="TemplateFieldId" />
+          </Key>
+          <Property Name="PageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TemplateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TemplateFieldId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FieldValue" Type="ntext" />
+        </EntityType>
+        <EntityType Name="cms_PageHTMLModules">
+          <Key>
+            <PropertyRef Name="PageHTMLModuleId" />
+          </Key>
+          <Property Name="PageHTMLModuleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PageID" Type="uniqueidentifier" />
+          <Property Name="HTMLModuleId" Type="uniqueidentifier" />
+          <Property Name="OrderIndex" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="cms_PageRoles">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="PageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cms_Pages">
+          <Key>
+            <PropertyRef Name="PageID" />
+          </Key>
+          <Property Name="PageID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentPageID" Type="uniqueidentifier" />
+          <Property Name="PageOrder" Type="int" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PageCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="512" />
+          <Property Name="PageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PageMetaKeywords" Type="nvarchar(max)" />
+          <Property Name="PageMetaDescription" Type="nvarchar(max)" />
+          <Property Name="PageLayoutPath" Type="varchar" MaxLength="500" />
+          <Property Name="ShowInNavigation" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cms_PageTemplate">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="PageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TemplateId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cms_TemplateFields">
+          <Key>
+            <PropertyRef Name="TemplateFieldId" />
+          </Key>
+          <Property Name="TemplateFieldId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FieldTypeId" Type="int" />
+          <Property Name="FieldDisplayOrder" Type="int" />
+          <Property Name="DefaultValue" Type="nvarchar(max)" />
+          <Property Name="TemplateId" Type="uniqueidentifier" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="cms_Templates">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="TemplateCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="512" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="cms_UpgradeHistory">
+          <Key>
+            <PropertyRef Name="Script" />
+          </Key>
+          <Property Name="Script" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ReleasedDate" Type="varchar" MaxLength="50" />
+          <Property Name="InstalledDate" Type="datetime" Nullable="false" />
+          <Property Name="ReleasedNote" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CoreModule_BlogCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_Blogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogCategoryId" Type="int" />
+          <Property Name="BlogTitle" Type="varchar" MaxLength="100" />
+          <Property Name="BlogShortDesc" Type="varchar" MaxLength="1000" />
+          <Property Name="LongDesc" Type="text" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="PublishDate" Type="datetime" />
+          <Property Name="Author" Type="varchar" MaxLength="200" />
+          <Property Name="Tags" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_EventCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_Events">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventCategoryId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
+          <Property Name="EventDateTime" Type="datetime" />
+          <Property Name="EventRegistrationStartsOn" Type="datetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="PhotoUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="RegistrationEndOn" Type="datetime" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_FAQCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_FAQMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="varchar(max)" />
+          <Property Name="Answer" Type="varchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_GalleryAlbum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ThumbnailPath" Type="varchar" MaxLength="1000" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="AlbumType" Type="int" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_GalleryAlbumItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="AlbumId" Type="int" />
+          <Property Name="ItemPath" Type="varchar" MaxLength="1000" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="AccessType" Type="int" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="UploadType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_GalleryCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_JobCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_JobMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="500" />
+          <Property Name="Qualification" Type="varchar" MaxLength="500" />
+          <Property Name="EXPERIENCE" Type="varchar(max)" />
+          <Property Name="SPECIALIZATION" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsCategoryId" Type="int" />
+          <Property Name="NewsTitle" Type="varchar" MaxLength="100" />
+          <Property Name="NewsShortDesc" Type="varchar" MaxLength="1000" />
+          <Property Name="LongDesc" Type="text" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="NewsDate" Type="datetime" />
+          <Property Name="AttachmentPath" Type="varchar" MaxLength="1000" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_NewsCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_PackageCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_PackageMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackName" Type="varchar" MaxLength="500" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
+          <Property Name="Usage" Type="varchar" MaxLength="500" />
+          <Property Name="MRP" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="OfferPrice" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProdCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProdName" Type="varchar" MaxLength="500" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
+          <Property Name="Usage" Type="varchar" MaxLength="500" />
+          <Property Name="MRP" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="OfferPrice" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProjectCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProjectMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjName" Type="varchar" MaxLength="500" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="500" />
+          <Property Name="LongDesc" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_SliderItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderId" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="FirstLine" Type="varchar" MaxLength="200" />
+          <Property Name="SecondLine" Type="varchar" MaxLength="200" />
+          <Property Name="ThirdLine" Type="varchar" MaxLength="200" />
+          <Property Name="ForthLine" Type="varchar" MaxLength="200" />
+          <Property Name="FirstButtonText" Type="varchar" MaxLength="200" />
+          <Property Name="SecondButtonText" Type="varchar" MaxLength="200" />
+          <Property Name="FirstButtonLink" Type="varchar" MaxLength="1000" />
+          <Property Name="SecondButtonLink" Type="varchar" MaxLength="1000" />
+          <Property Name="SliderImagePath" Type="varchar" MaxLength="1000" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_Sliders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderCode" Type="varchar" MaxLength="20" />
+          <Property Name="SliderName" Type="varchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_SMSQueue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMSNumber" Type="varchar" MaxLength="15" />
+          <Property Name="SMSText" Type="varchar" MaxLength="500" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="SenderName" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CoreModule_TestimonialCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestimonialCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_TestimonialMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXPERIENCE" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="PhotoPath" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HtmlModule">
+          <Key>
+            <PropertyRef Name="HTMLModuleId" />
+          </Key>
+          <Property Name="HTMLModuleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HtmlModuleCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HtmlModuleName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="HtmlModuleDescription" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="HtmlModuleHTML" Type="ntext" Nullable="false" />
+          <Property Name="PageName" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedUserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ModifiedUserName" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <Association Name="FK__cms_PageF__PageI__619B8048">
+          <End Role="cms_Pages" Type="Self.cms_Pages" Multiplicity="1" />
+          <End Role="cms_PageFieldValues" Type="Self.cms_PageFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Pages">
+              <PropertyRef Name="PageID" />
+            </Principal>
+            <Dependent Role="cms_PageFieldValues">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageF__Templ__628FA481">
+          <End Role="cms_Templates" Type="Self.cms_Templates" Multiplicity="1" />
+          <End Role="cms_PageFieldValues" Type="Self.cms_PageFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="cms_PageFieldValues">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageF__Templ__6383C8BA">
+          <End Role="cms_TemplateFields" Type="Self.cms_TemplateFields" Multiplicity="1" />
+          <End Role="cms_PageFieldValues" Type="Self.cms_PageFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_TemplateFields">
+              <PropertyRef Name="TemplateFieldId" />
+            </Principal>
+            <Dependent Role="cms_PageFieldValues">
+              <PropertyRef Name="TemplateFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_Pages__Paren__4F7CD00D">
+          <End Role="cms_Pages" Type="Self.cms_Pages" Multiplicity="0..1" />
+          <End Role="cms_Pages1" Type="Self.cms_Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Pages">
+              <PropertyRef Name="PageID" />
+            </Principal>
+            <Dependent Role="cms_Pages1">
+              <PropertyRef Name="ParentPageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageT__PageI__5AEE82B9">
+          <End Role="cms_Pages" Type="Self.cms_Pages" Multiplicity="1" />
+          <End Role="cms_PageTemplate" Type="Self.cms_PageTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Pages">
+              <PropertyRef Name="PageID" />
+            </Principal>
+            <Dependent Role="cms_PageTemplate">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageT__Templ__5BE2A6F2">
+          <End Role="cms_Templates" Type="Self.cms_Templates" Multiplicity="1" />
+          <End Role="cms_PageTemplate" Type="Self.cms_PageTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="cms_PageTemplate">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_Templ__Templ__5EBF139D">
+          <End Role="cms_Templates" Type="Self.cms_Templates" Multiplicity="0..1" />
+          <End Role="cms_TemplateFields" Type="Self.cms_TemplateFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="cms_TemplateFields">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddAspNetUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="nvarchar" Mode="In" />
+          <Parameter Name="roleid" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteAspNetUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAspNetUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="RAMHXCMSDataAccessStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="app_Configs" EntityType="Self.app_Configs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppForgotPasswordToken" EntityType="Self.AppForgotPasswordToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_301Redirection" EntityType="Self.cms_301Redirection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_PackageInstallations" EntityType="Self.cms_PackageInstallations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_PageFieldValues" EntityType="Self.cms_PageFieldValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_PageHTMLModules" EntityType="Self.cms_PageHTMLModules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_PageRoles" EntityType="Self.cms_PageRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_Pages" EntityType="Self.cms_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_PageTemplate" EntityType="Self.cms_PageTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_TemplateFields" EntityType="Self.cms_TemplateFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_Templates" EntityType="Self.cms_Templates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_UpgradeHistory" EntityType="Self.cms_UpgradeHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_BlogCategory" EntityType="Self.CoreModule_BlogCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_Blogs" EntityType="Self.CoreModule_Blogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_EventCategory" EntityType="Self.CoreModule_EventCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_Events" EntityType="Self.CoreModule_Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_FAQCategory" EntityType="Self.CoreModule_FAQCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_FAQMaster" EntityType="Self.CoreModule_FAQMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_GalleryAlbum" EntityType="Self.CoreModule_GalleryAlbum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_GalleryAlbumItem" EntityType="Self.CoreModule_GalleryAlbumItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_GalleryCategory" EntityType="Self.CoreModule_GalleryCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_JobCategory" EntityType="Self.CoreModule_JobCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_JobMaster" EntityType="Self.CoreModule_JobMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_News" EntityType="Self.CoreModule_News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_NewsCategory" EntityType="Self.CoreModule_NewsCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_PackageCategory" EntityType="Self.CoreModule_PackageCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_PackageMaster" EntityType="Self.CoreModule_PackageMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_ProductCategory" EntityType="Self.CoreModule_ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_ProductMaster" EntityType="Self.CoreModule_ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_ProjectCategory" EntityType="Self.CoreModule_ProjectCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_ProjectMaster" EntityType="Self.CoreModule_ProjectMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_SliderItems" EntityType="Self.CoreModule_SliderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_Sliders" EntityType="Self.CoreModule_Sliders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_SMSQueue" EntityType="Self.CoreModule_SMSQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_TestimonialCategory" EntityType="Self.CoreModule_TestimonialCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreModule_TestimonialMaster" EntityType="Self.CoreModule_TestimonialMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HtmlModule" EntityType="Self.HtmlModule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__cms_PageF__PageI__619B8048" Association="Self.FK__cms_PageF__PageI__619B8048">
+            <End Role="cms_Pages" EntitySet="cms_Pages" />
+            <End Role="cms_PageFieldValues" EntitySet="cms_PageFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageF__Templ__628FA481" Association="Self.FK__cms_PageF__Templ__628FA481">
+            <End Role="cms_Templates" EntitySet="cms_Templates" />
+            <End Role="cms_PageFieldValues" EntitySet="cms_PageFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageF__Templ__6383C8BA" Association="Self.FK__cms_PageF__Templ__6383C8BA">
+            <End Role="cms_TemplateFields" EntitySet="cms_TemplateFields" />
+            <End Role="cms_PageFieldValues" EntitySet="cms_PageFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_Pages__Paren__4F7CD00D" Association="Self.FK__cms_Pages__Paren__4F7CD00D">
+            <End Role="cms_Pages" EntitySet="cms_Pages" />
+            <End Role="cms_Pages1" EntitySet="cms_Pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageT__PageI__5AEE82B9" Association="Self.FK__cms_PageT__PageI__5AEE82B9">
+            <End Role="cms_Pages" EntitySet="cms_Pages" />
+            <End Role="cms_PageTemplate" EntitySet="cms_PageTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageT__Templ__5BE2A6F2" Association="Self.FK__cms_PageT__Templ__5BE2A6F2">
+            <End Role="cms_Templates" EntitySet="cms_Templates" />
+            <End Role="cms_PageTemplate" EntitySet="cms_PageTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_Templ__Templ__5EBF139D" Association="Self.FK__cms_Templ__Templ__5EBF139D">
+            <End Role="cms_Templates" EntitySet="cms_Templates" />
+            <End Role="cms_TemplateFields" EntitySet="cms_TemplateFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RAMHX.CMS.DataAccess" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="aspnet_AnyDataInTables" ReturnType="Collection(String)">
+            <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Applications_CreateApplication">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_CheckSchemaVersion">
+            <Parameter Name="Feature" Mode="In" Type="String" />
+            <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_ChangePasswordQuestionAndAnswer">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="NewPasswordQuestion" Mode="In" Type="String" />
+            <Parameter Name="NewPasswordAnswer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_CreateUser">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PasswordQuestion" Mode="In" Type="String" />
+            <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+            <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+            <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_FindUsersByEmail">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="EmailToMatch" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_FindUsersByName">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetAllUsers">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetNumberOfUsersOnline">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="MinutesSinceLastInActive" Mode="In" Type="Int32" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetPassword" ReturnType="Collection(RAMHX.CMS.DataAccess.aspnet_Membership_GetPassword_Result)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+            <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetPasswordWithFormat" ReturnType="Collection(RAMHX.CMS.DataAccess.aspnet_Membership_GetPasswordWithFormat_Result)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetUserByEmail" ReturnType="Collection(String)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetUserByName" ReturnType="Collection(RAMHX.CMS.DataAccess.aspnet_Membership_GetUserByName_Result)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_GetUserByUserId" ReturnType="Collection(RAMHX.CMS.DataAccess.aspnet_Membership_GetUserByUserId_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_ResetPassword">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="NewPassword" Mode="In" Type="String" />
+            <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+            <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+            <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+            <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_SetPassword">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="NewPassword" Mode="In" Type="String" />
+            <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_UnlockUser">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_UpdateUser">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+            <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+            <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Membership_UpdateUserInfo">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="IsPasswordCorrect" Mode="In" Type="Boolean" />
+            <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+            <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+            <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+            <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Paths_CreatePath">
+            <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="PathId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Personalization_GetApplicationId">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAdministration_DeleteAllState">
+            <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Count" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAdministration_FindState">
+            <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAdministration_GetCountOfState">
+            <Parameter Name="Count" Mode="InOut" Type="Int32" />
+            <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAdministration_ResetSharedState">
+            <Parameter Name="Count" Mode="InOut" Type="Int32" />
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAdministration_ResetUserState">
+            <Parameter Name="Count" Mode="InOut" Type="Int32" />
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAllUsers_GetPageSettings" ReturnType="Collection(Binary)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAllUsers_ResetPageSettings">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationAllUsers_SetPageSettings">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationPerUser_GetPageSettings" ReturnType="Collection(Binary)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationPerUser_ResetPageSettings">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_PersonalizationPerUser_SetPageSettings">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Profile_DeleteInactiveProfiles" ReturnType="Collection(Int32)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+            <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Profile_DeleteProfiles" ReturnType="Collection(Int32)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserNames" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Profile_GetNumberOfInactiveProfiles" ReturnType="Collection(Int32)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+            <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Profile_GetProfiles">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+            <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Profile_GetProperties" ReturnType="Collection(RAMHX.CMS.DataAccess.aspnet_Profile_GetProperties_Result)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Profile_SetProperties">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="PropertyNames" Mode="In" Type="String" />
+            <Parameter Name="PropertyValuesString" Mode="In" Type="String" />
+            <Parameter Name="PropertyValuesBinary" Mode="In" Type="Binary" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_RegisterSchemaVersion">
+            <Parameter Name="Feature" Mode="In" Type="String" />
+            <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+            <Parameter Name="IsCurrentVersion" Mode="In" Type="Boolean" />
+            <Parameter Name="RemoveIncompatibleSchema" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Roles_CreateRole">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Roles_DeleteRole">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+            <Parameter Name="DeleteOnlyIfRoleIsEmpty" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Roles_GetAllRoles" ReturnType="Collection(String)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Roles_RoleExists">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Setup_RemoveAllRoleMembers">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Setup_RestorePermissions">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UnRegisterSchemaVersion">
+            <Parameter Name="Feature" Mode="In" Type="String" />
+            <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Users_CreateUser">
+            <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+            <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_Users_DeleteUser">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="TablesToDeleteFrom" Mode="In" Type="Int32" />
+            <Parameter Name="NumTablesDeletedFrom" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UsersInRoles_AddUsersToRoles" ReturnType="Collection(String)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserNames" Mode="In" Type="String" />
+            <Parameter Name="RoleNames" Mode="In" Type="String" />
+            <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UsersInRoles_FindUsersInRole" ReturnType="Collection(String)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+            <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UsersInRoles_GetRolesForUser" ReturnType="Collection(String)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UsersInRoles_GetUsersInRoles" ReturnType="Collection(String)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UsersInRoles_IsUserInRole">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_UsersInRoles_RemoveUsersFromRoles" ReturnType="Collection(RAMHX.CMS.DataAccess.aspnet_UsersInRoles_RemoveUsersFromRoles_Result)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="UserNames" Mode="In" Type="String" />
+            <Parameter Name="RoleNames" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="aspnet_WebEvent_LogEvent">
+            <Parameter Name="EventId" Mode="In" Type="String" />
+            <Parameter Name="EventTimeUtc" Mode="In" Type="DateTime" />
+            <Parameter Name="EventTime" Mode="In" Type="DateTime" />
+            <Parameter Name="EventType" Mode="In" Type="String" />
+            <Parameter Name="EventSequence" Mode="In" Type="Decimal" />
+            <Parameter Name="EventOccurrence" Mode="In" Type="Decimal" />
+            <Parameter Name="EventCode" Mode="In" Type="Int32" />
+            <Parameter Name="EventDetailCode" Mode="In" Type="Int32" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+            <Parameter Name="ApplicationPath" Mode="In" Type="String" />
+            <Parameter Name="ApplicationVirtualPath" Mode="In" Type="String" />
+            <Parameter Name="MachineName" Mode="In" Type="String" />
+            <Parameter Name="RequestUrl" Mode="In" Type="String" />
+            <Parameter Name="ExceptionType" Mode="In" Type="String" />
+            <Parameter Name="Details" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddAspNetUserRoles">
+            <Parameter Name="userid" Mode="In" Type="String" />
+            <Parameter Name="roleid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteAspNetUserRoles">
+          <Parameter Name="userid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAspNetUserRoles">
+          <Parameter Name="userid" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="C__MigrationHistory" EntityType="RAMHX.CMS.DataAccess.C__MigrationHistory" />
+          <EntitySet Name="app_Configs" EntityType="RAMHX.CMS.DataAccess.app_Configs" />
+          <EntitySet Name="AspNetRoles" EntityType="RAMHX.CMS.DataAccess.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="RAMHX.CMS.DataAccess.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="RAMHX.CMS.DataAccess.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="RAMHX.CMS.DataAccess.AspNetUser" />
+          <EntitySet Name="cms_PageFieldValues" EntityType="RAMHX.CMS.DataAccess.cms_PageFieldValues" />
+          <EntitySet Name="cms_PageHTMLModules" EntityType="RAMHX.CMS.DataAccess.cms_PageHTMLModules" />
+          <EntitySet Name="cms_PageRoles" EntityType="RAMHX.CMS.DataAccess.cms_PageRoles" />
+          <EntitySet Name="cms_Pages" EntityType="RAMHX.CMS.DataAccess.cms_Pages" />
+          <EntitySet Name="cms_TemplateFields" EntityType="RAMHX.CMS.DataAccess.cms_TemplateFields" />
+          <EntitySet Name="cms_Templates" EntityType="RAMHX.CMS.DataAccess.cms_Templates" />
+          <EntitySet Name="cms_UpgradeHistory" EntityType="RAMHX.CMS.DataAccess.cms_UpgradeHistory" />
+          <EntitySet Name="HtmlModules" EntityType="RAMHX.CMS.DataAccess.HtmlModule" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageF__PageI__4F7CD00D" Association="RAMHX.CMS.DataAccess.FK__cms_PageF__PageI__4F7CD00D">
+            <End Role="cms_Pages" EntitySet="cms_Pages" />
+            <End Role="cms_PageFieldValues" EntitySet="cms_PageFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageF__Templ__5070F446" Association="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5070F446">
+            <End Role="cms_Templates" EntitySet="cms_Templates" />
+            <End Role="cms_PageFieldValues" EntitySet="cms_PageFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_PageF__Templ__5165187F" Association="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5165187F">
+            <End Role="cms_TemplateFields" EntitySet="cms_TemplateFields" />
+            <End Role="cms_PageFieldValues" EntitySet="cms_PageFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_Pages__Paren__3C69FB99" Association="RAMHX.CMS.DataAccess.FK__cms_Pages__Paren__3C69FB99">
+            <End Role="cms_Pages" EntitySet="cms_Pages" />
+            <End Role="cms_Pages1" EntitySet="cms_Pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cms_Templ__Templ__4CA06362" Association="RAMHX.CMS.DataAccess.FK__cms_Templ__Templ__4CA06362">
+            <End Role="cms_Templates" EntitySet="cms_Templates" />
+            <End Role="cms_TemplateFields" EntitySet="cms_TemplateFields" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="RAMHX.CMS.DataAccess.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="cms_PageTemplate" Association="RAMHX.CMS.DataAccess.cms_PageTemplate">
+            <End Role="cms_Pages" EntitySet="cms_Pages" />
+            <End Role="cms_Templates" EntitySet="cms_Templates" />
+          </AssociationSet>
+          <EntitySet Name="cms_301Redirection" EntityType="RAMHX.CMS.DataAccess.cms_301Redirection" />
+          <EntitySet Name="cms_PackageInstallations" EntityType="RAMHX.CMS.DataAccess.cms_PackageInstallations" />
+          <FunctionImport Name="GetAspNetUsersByRole" ReturnType="Collection(RAMHX.CMS.DataAccess.GetAspNetUsersByRole_Result)">
+            <Parameter Name="roleId" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="CoreModule_FAQCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_FAQCategory" />
+          <EntitySet Name="CoreModule_FAQMasters" EntityType="RAMHX.CMS.DataAccess.CoreModule_FAQMaster" />
+          <EntitySet Name="CoreModule_GalleryAlbums" EntityType="RAMHX.CMS.DataAccess.CoreModule_GalleryAlbum" />
+          <EntitySet Name="CoreModule_GalleryAlbumItems" EntityType="RAMHX.CMS.DataAccess.CoreModule_GalleryAlbumItem" />
+          <EntitySet Name="CoreModule_GalleryCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_GalleryCategory" />
+          <EntitySet Name="CoreModule_JobCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_JobCategory" />
+          <EntitySet Name="CoreModule_JobMasters" EntityType="RAMHX.CMS.DataAccess.CoreModule_JobMaster" />
+          <EntitySet Name="CoreModule_PackageCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_PackageCategory" />
+          <EntitySet Name="CoreModule_PackageMasters" EntityType="RAMHX.CMS.DataAccess.CoreModule_PackageMaster" />
+          <EntitySet Name="CoreModule_ProductCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_ProductCategory" />
+          <EntitySet Name="CoreModule_ProductMasters" EntityType="RAMHX.CMS.DataAccess.CoreModule_ProductMaster" />
+          <EntitySet Name="CoreModule_ProjectCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_ProjectCategory" />
+          <EntitySet Name="CoreModule_ProjectMasters" EntityType="RAMHX.CMS.DataAccess.CoreModule_ProjectMaster" />
+          <EntitySet Name="CoreModule_TestimonialCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_TestimonialCategory" />
+          <EntitySet Name="CoreModule_TestimonialMasters" EntityType="RAMHX.CMS.DataAccess.CoreModule_TestimonialMaster" />
+          <EntitySet Name="CoreModule_BlogCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_BlogCategory" />
+          <EntitySet Name="CoreModule_Blogs" EntityType="RAMHX.CMS.DataAccess.CoreModule_Blog" />
+          <EntitySet Name="CoreModule_EventCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_EventCategory" />
+          <EntitySet Name="CoreModule_Events" EntityType="RAMHX.CMS.DataAccess.CoreModule_Event" />
+          <EntitySet Name="CoreModule_News" EntityType="RAMHX.CMS.DataAccess.CoreModule_New" />
+          <EntitySet Name="CoreModule_NewsCategories" EntityType="RAMHX.CMS.DataAccess.CoreModule_NewsCategory" />
+          <EntitySet Name="CoreModule_SliderItems" EntityType="RAMHX.CMS.DataAccess.CoreModule_SliderItem" />
+          <EntitySet Name="CoreModule_Sliders" EntityType="RAMHX.CMS.DataAccess.CoreModule_Slider" />
+          <EntitySet Name="CoreModule_SMSQueues" EntityType="RAMHX.CMS.DataAccess.CoreModule_SMSQueue" />
+          <EntitySet Name="AppForgotPasswordTokens" EntityType="RAMHX.CMS.DataAccess.AppForgotPasswordToken" />
+          </EntityContainer>
+        <ComplexType Name="aspnet_Membership_GetPassword_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column4" Nullable="true" />
+          <Property Type="Int32" Name="Column5" Nullable="true" />
+          <Property Type="Boolean" Name="Column6" Nullable="true" />
+          <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetUserByName_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Profile_GetProperties_Result">
+          <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
+          <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+        </ComplexType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="app_Configs">
+          <Key>
+            <PropertyRef Name="GroupId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ItemDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ItemCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="RAMHX.CMS.DataAccess.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="RAMHX.CMS.DataAccess.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="RAMHX.CMS.DataAccess.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="cms_PageFieldValues">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="TemplateId" />
+            <PropertyRef Name="TemplateFieldId" />
+          </Key>
+          <Property Name="PageId" Type="Guid" Nullable="false" />
+          <Property Name="TemplateId" Type="Guid" Nullable="false" />
+          <Property Name="TemplateFieldId" Type="Guid" Nullable="false" />
+          <Property Name="FieldValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cms_Pages" Relationship="RAMHX.CMS.DataAccess.FK__cms_PageF__PageI__4F7CD00D" FromRole="cms_PageFieldValues" ToRole="cms_Pages" />
+          <NavigationProperty Name="cms_Templates" Relationship="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5070F446" FromRole="cms_PageFieldValues" ToRole="cms_Templates" />
+          <NavigationProperty Name="cms_TemplateFields" Relationship="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5165187F" FromRole="cms_PageFieldValues" ToRole="cms_TemplateFields" />
+        </EntityType>
+        <EntityType Name="cms_PageHTMLModules">
+          <Key>
+            <PropertyRef Name="PageHTMLModuleId" />
+          </Key>
+          <Property Name="PageHTMLModuleId" Type="Guid" Nullable="false" />
+          <Property Name="PageID" Type="Guid" />
+          <Property Name="HTMLModuleId" Type="Guid" />
+          <Property Name="OrderIndex" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Guid" />
+        </EntityType>
+        <EntityType Name="cms_PageRoles">
+          <Key>
+            <PropertyRef Name="PageId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="PageId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="cms_Pages">
+          <Key>
+            <PropertyRef Name="PageID" />
+          </Key>
+          <Property Name="PageID" Type="Guid" Nullable="false" />
+          <Property Name="ParentPageID" Type="Guid" />
+          <Property Name="PageOrder" Type="Int32" Nullable="false" />
+          <Property Name="PageName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PageCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="PageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Guid" />
+          <Property Name="PageTitle" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PageMetaKeywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageMetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageLayoutPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cms_PageFieldValues" Relationship="RAMHX.CMS.DataAccess.FK__cms_PageF__PageI__4F7CD00D" FromRole="cms_Pages" ToRole="cms_PageFieldValues" />
+          <NavigationProperty Name="cms_SubPages" Relationship="RAMHX.CMS.DataAccess.FK__cms_Pages__Paren__3C69FB99" FromRole="cms_Pages" ToRole="cms_Pages1" />
+          <NavigationProperty Name="cms_ParentPage" Relationship="RAMHX.CMS.DataAccess.FK__cms_Pages__Paren__3C69FB99" FromRole="cms_Pages1" ToRole="cms_Pages" />
+          <NavigationProperty Name="cms_Templates" Relationship="RAMHX.CMS.DataAccess.cms_PageTemplate" FromRole="cms_Pages" ToRole="cms_Templates" />
+          <Property Name="ShowInNavigation" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cms_TemplateFields">
+          <Key>
+            <PropertyRef Name="TemplateFieldId" />
+          </Key>
+          <Property Name="TemplateFieldId" Type="Guid" Nullable="false" />
+          <Property Name="FieldName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FieldTypeId" Type="Int32" />
+          <Property Name="FieldDisplayOrder" Type="Int32" />
+          <Property Name="DefaultValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateId" Type="Guid" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Guid" />
+          <NavigationProperty Name="cms_PageFieldValues" Relationship="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5165187F" FromRole="cms_TemplateFields" ToRole="cms_PageFieldValues" />
+          <NavigationProperty Name="cms_Templates" Relationship="RAMHX.CMS.DataAccess.FK__cms_Templ__Templ__4CA06362" FromRole="cms_TemplateFields" ToRole="cms_Templates" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="cms_Templates">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="Guid" Nullable="false" />
+          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Guid" />
+          <NavigationProperty Name="cms_PageFieldValues" Relationship="RAMHX.CMS.DataAccess.FK__cms_PageF__Templ__5070F446" FromRole="cms_Templates" ToRole="cms_PageFieldValues" />
+          <NavigationProperty Name="cms_TemplateFields" Relationship="RAMHX.CMS.DataAccess.FK__cms_Templ__Templ__4CA06362" FromRole="cms_Templates" ToRole="cms_TemplateFields" />
+          <NavigationProperty Name="cms_Pages" Relationship="RAMHX.CMS.DataAccess.cms_PageTemplate" FromRole="cms_Templates" ToRole="cms_Pages" />
+        </EntityType>
+        <EntityType Name="cms_UpgradeHistory">
+          <Key>
+            <PropertyRef Name="Script" />
+          </Key>
+          <Property Name="Script" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ReleasedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstalledDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReleasedNote" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HtmlModule">
+          <Key>
+            <PropertyRef Name="HTMLModuleId" />
+          </Key>
+          <Property Name="HTMLModuleId" Type="Guid" Nullable="false" />
+          <Property Name="HtmlModuleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HtmlModuleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HtmlModuleDescription" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="HtmlModuleHTML" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="RAMHX.CMS.DataAccess.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RAMHX.CMS.DataAccess.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="RAMHX.CMS.DataAccess.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RAMHX.CMS.DataAccess.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageF__PageI__4F7CD00D">
+          <End Type="RAMHX.CMS.DataAccess.cms_Pages" Role="cms_Pages" Multiplicity="1" />
+          <End Type="RAMHX.CMS.DataAccess.cms_PageFieldValues" Role="cms_PageFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Pages">
+              <PropertyRef Name="PageID" />
+            </Principal>
+            <Dependent Role="cms_PageFieldValues">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageF__Templ__5070F446">
+          <End Type="RAMHX.CMS.DataAccess.cms_Templates" Role="cms_Templates" Multiplicity="1" />
+          <End Type="RAMHX.CMS.DataAccess.cms_PageFieldValues" Role="cms_PageFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="cms_PageFieldValues">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_PageF__Templ__5165187F">
+          <End Type="RAMHX.CMS.DataAccess.cms_TemplateFields" Role="cms_TemplateFields" Multiplicity="1" />
+          <End Type="RAMHX.CMS.DataAccess.cms_PageFieldValues" Role="cms_PageFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_TemplateFields">
+              <PropertyRef Name="TemplateFieldId" />
+            </Principal>
+            <Dependent Role="cms_PageFieldValues">
+              <PropertyRef Name="TemplateFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_Pages__Paren__3C69FB99">
+          <End Type="RAMHX.CMS.DataAccess.cms_Pages" Role="cms_Pages" Multiplicity="0..1" />
+          <End Type="RAMHX.CMS.DataAccess.cms_Pages" Role="cms_Pages1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Pages">
+              <PropertyRef Name="PageID" />
+            </Principal>
+            <Dependent Role="cms_Pages1">
+              <PropertyRef Name="ParentPageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cms_Templ__Templ__4CA06362">
+          <End Type="RAMHX.CMS.DataAccess.cms_Templates" Role="cms_Templates" Multiplicity="0..1" />
+          <End Type="RAMHX.CMS.DataAccess.cms_TemplateFields" Role="cms_TemplateFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_Templates">
+              <PropertyRef Name="TemplateId" />
+            </Principal>
+            <Dependent Role="cms_TemplateFields">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="RAMHX.CMS.DataAccess.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="RAMHX.CMS.DataAccess.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="cms_PageTemplate">
+          <End Type="RAMHX.CMS.DataAccess.cms_Pages" Role="cms_Pages" Multiplicity="*" />
+          <End Type="RAMHX.CMS.DataAccess.cms_Templates" Role="cms_Templates" Multiplicity="*" />
+        </Association>
+        <EntityType Name="cms_301Redirection">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Guid" Nullable="false" />
+          <Property Name="fromUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="toUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cms_PackageInstallations">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="Guid" Nullable="false" />
+          <Property Name="PackagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ComplatedDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalPages" Type="Int32" />
+          <Property Name="TotalModules" Type="Int32" />
+          <Property Name="TotalTemplateFields" Type="Int32" />
+          <Property Name="ProcPages" Type="Int32" />
+          <Property Name="ProcModules" Type="Int32" />
+          <Property Name="ProcTemplateFields" Type="Int32" />
+          <Property Name="IsValidPackage" Type="Boolean" Nullable="false" />
+          <Property Name="ValidationErrors" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="GetAspNetUsersByRole_Result">
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="Boolean" Name="EmailConfirmed" Nullable="false" />
+          <Property Type="String" Name="PasswordHash" Nullable="true" />
+          <Property Type="String" Name="SecurityStamp" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" />
+          <Property Type="Boolean" Name="PhoneNumberConfirmed" Nullable="false" />
+          <Property Type="Boolean" Name="TwoFactorEnabled" Nullable="false" />
+          <Property Type="DateTime" Name="LockoutEndDateUtc" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="LockoutEnabled" Nullable="false" />
+          <Property Type="Int32" Name="AccessFailedCount" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="CoreModule_FAQCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_FAQMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_GalleryAlbum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ThumbnailPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="AlbumType" Type="Int32" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_GalleryAlbumItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AlbumId" Type="Int32" />
+          <Property Name="ItemPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="AccessType" Type="Int32" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="UploadType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_GalleryCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_JobCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_JobMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Qualification" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EXPERIENCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SPECIALIZATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_PackageCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_PackageMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Usage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MRP" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="OfferPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProdCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProdName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Usage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MRP" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="OfferPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProjectCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_ProjectMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_TestimonialCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestimonialCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_TestimonialMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXPERIENCE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_BlogCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogCategoryId" Type="Int32" />
+          <Property Name="BlogTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BlogShortDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="Author" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_EventCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventCategoryId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventDateTime" Type="DateTime" Precision="3" />
+          <Property Name="EventRegistrationStartsOn" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationEndOn" Type="DateTime" Precision="3" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_New">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsCategoryId" Type="Int32" />
+          <Property Name="NewsTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NewsShortDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="LongDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="NewsDate" Type="DateTime" Precision="3" />
+          <Property Name="AttachmentPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_NewsCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_SliderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderId" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="FirstLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SecondLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ForthLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstButtonText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SecondButtonText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstButtonLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="SecondButtonLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="SliderImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SliderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoreModule_SMSQueue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMSNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SMSText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="SenderName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AppForgotPasswordToken">
+          <Key>
+            <PropertyRef Name="TokenId" />
+          </Key>
+          <Property Name="TokenId" Type="Guid" Nullable="false" />
+          <Property Name="CodeToken" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="ExpireDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RAMHXCMSDataAccessStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <FunctionImportMapping FunctionImportName="AddAspNetUserRoles" FunctionName="RAMHX.CMS.DataAccess.Store.AddAspNetUserRoles" />
+          <FunctionImportMapping FunctionImportName="DeleteAspNetUserRoles" FunctionName="RAMHX.CMS.DataAccess.Store.DeleteAspNetUserRoles" />
+          <FunctionImportMapping FunctionImportName="GetAspNetUserRoles" FunctionName="RAMHX.CMS.DataAccess.Store.GetAspNetUserRoles">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="app_Configs">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.app_Configs">
+              <MappingFragment StoreEntitySet="app_Configs">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_PageFieldValues">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_PageFieldValues">
+              <MappingFragment StoreEntitySet="cms_PageFieldValues">
+                <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+                <ScalarProperty Name="TemplateFieldId" ColumnName="TemplateFieldId" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_PageHTMLModules">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_PageHTMLModules">
+              <MappingFragment StoreEntitySet="cms_PageHTMLModules">
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="HTMLModuleId" ColumnName="HTMLModuleId" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="PageHTMLModuleId" ColumnName="PageHTMLModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_PageRoles">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_PageRoles">
+              <MappingFragment StoreEntitySet="cms_PageRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_Pages">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_Pages">
+              <MappingFragment StoreEntitySet="cms_Pages">
+                <ScalarProperty Name="ShowInNavigation" ColumnName="ShowInNavigation" />
+                <ScalarProperty Name="PageLayoutPath" ColumnName="PageLayoutPath" />
+                <ScalarProperty Name="PageMetaDescription" ColumnName="PageMetaDescription" />
+                <ScalarProperty Name="PageMetaKeywords" ColumnName="PageMetaKeywords" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PageCode" ColumnName="PageCode" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="PageOrder" ColumnName="PageOrder" />
+                <ScalarProperty Name="ParentPageID" ColumnName="ParentPageID" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_TemplateFields">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_TemplateFields">
+              <MappingFragment StoreEntitySet="cms_TemplateFields">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="FieldDisplayOrder" ColumnName="FieldDisplayOrder" />
+                <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="TemplateFieldId" ColumnName="TemplateFieldId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_Templates">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_Templates">
+              <MappingFragment StoreEntitySet="cms_Templates">
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TemplateCode" ColumnName="TemplateCode" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_UpgradeHistory">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_UpgradeHistory">
+              <MappingFragment StoreEntitySet="cms_UpgradeHistory">
+                <ScalarProperty Name="ReleasedNote" ColumnName="ReleasedNote" />
+                <ScalarProperty Name="InstalledDate" ColumnName="InstalledDate" />
+                <ScalarProperty Name="ReleasedDate" ColumnName="ReleasedDate" />
+                <ScalarProperty Name="Script" ColumnName="Script" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HtmlModules">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.HtmlModule">
+              <MappingFragment StoreEntitySet="HtmlModule">
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+                <ScalarProperty Name="CreatedUserName" ColumnName="CreatedUserName" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="HtmlModuleHTML" ColumnName="HtmlModuleHTML" />
+                <ScalarProperty Name="HtmlModuleDescription" ColumnName="HtmlModuleDescription" />
+                <ScalarProperty Name="HtmlModuleName" ColumnName="HtmlModuleName" />
+                <ScalarProperty Name="HtmlModuleCode" ColumnName="HtmlModuleCode" />
+                <ScalarProperty Name="HTMLModuleId" ColumnName="HTMLModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="RAMHX.CMS.DataAccess.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="cms_PageTemplate" TypeName="RAMHX.CMS.DataAccess.cms_PageTemplate" StoreEntitySet="cms_PageTemplate">
+            <EndProperty Name="cms_Templates">
+              <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+            </EndProperty>
+            <EndProperty Name="cms_Pages">
+              <ScalarProperty Name="PageID" ColumnName="PageId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="cms_301Redirection">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_301Redirection">
+              <MappingFragment StoreEntitySet="cms_301Redirection">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="toUrl" ColumnName="toUrl" />
+                <ScalarProperty Name="fromUrl" ColumnName="fromUrl" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_PackageInstallations">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.cms_PackageInstallations">
+              <MappingFragment StoreEntitySet="cms_PackageInstallations">
+                <ScalarProperty Name="ValidationErrors" ColumnName="ValidationErrors" />
+                <ScalarProperty Name="IsValidPackage" ColumnName="IsValidPackage" />
+                <ScalarProperty Name="ProcTemplateFields" ColumnName="ProcTemplateFields" />
+                <ScalarProperty Name="ProcModules" ColumnName="ProcModules" />
+                <ScalarProperty Name="ProcPages" ColumnName="ProcPages" />
+                <ScalarProperty Name="TotalTemplateFields" ColumnName="TotalTemplateFields" />
+                <ScalarProperty Name="TotalModules" ColumnName="TotalModules" />
+                <ScalarProperty Name="TotalPages" ColumnName="TotalPages" />
+                <ScalarProperty Name="ComplatedDate" ColumnName="ComplatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PackagePath" ColumnName="PackagePath" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_FAQCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_FAQCategory">
+              <MappingFragment StoreEntitySet="CoreModule_FAQCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="FAQCategoryName" ColumnName="FAQCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_FAQMasters">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_FAQMaster">
+              <MappingFragment StoreEntitySet="CoreModule_FAQMaster">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_GalleryAlbums">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_GalleryAlbum">
+              <MappingFragment StoreEntitySet="CoreModule_GalleryAlbum">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="AlbumType" ColumnName="AlbumType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ThumbnailPath" ColumnName="ThumbnailPath" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_GalleryAlbumItems">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_GalleryAlbumItem">
+              <MappingFragment StoreEntitySet="CoreModule_GalleryAlbumItem">
+                <ScalarProperty Name="UploadType" ColumnName="UploadType" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="AccessType" ColumnName="AccessType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItemPath" ColumnName="ItemPath" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_GalleryCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_GalleryCategory">
+              <MappingFragment StoreEntitySet="CoreModule_GalleryCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_JobCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_JobCategory">
+              <MappingFragment StoreEntitySet="CoreModule_JobCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="JobCategoryName" ColumnName="JobCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_JobMasters">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_JobMaster">
+              <MappingFragment StoreEntitySet="CoreModule_JobMaster">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SPECIALIZATION" ColumnName="SPECIALIZATION" />
+                <ScalarProperty Name="EXPERIENCE" ColumnName="EXPERIENCE" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_PackageCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_PackageCategory">
+              <MappingFragment StoreEntitySet="CoreModule_PackageCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="PackCategoryName" ColumnName="PackCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_PackageMasters">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_PackageMaster">
+              <MappingFragment StoreEntitySet="CoreModule_PackageMaster">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="OfferPrice" ColumnName="OfferPrice" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="Usage" ColumnName="Usage" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_ProductCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_ProductCategory">
+              <MappingFragment StoreEntitySet="CoreModule_ProductCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ProdCategoryName" ColumnName="ProdCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_ProductMasters">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_ProductMaster">
+              <MappingFragment StoreEntitySet="CoreModule_ProductMaster">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="OfferPrice" ColumnName="OfferPrice" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="Usage" ColumnName="Usage" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="ProdName" ColumnName="ProdName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_ProjectCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_ProjectCategory">
+              <MappingFragment StoreEntitySet="CoreModule_ProjectCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ProjCategoryName" ColumnName="ProjCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_ProjectMasters">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_ProjectMaster">
+              <MappingFragment StoreEntitySet="CoreModule_ProjectMaster">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_TestimonialCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_TestimonialCategory">
+              <MappingFragment StoreEntitySet="CoreModule_TestimonialCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="TestimonialCategoryName" ColumnName="TestimonialCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_TestimonialMasters">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_TestimonialMaster">
+              <MappingFragment StoreEntitySet="CoreModule_TestimonialMaster">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EXPERIENCE" ColumnName="EXPERIENCE" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_BlogCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_BlogCategory">
+              <MappingFragment StoreEntitySet="CoreModule_BlogCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_Blogs">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_Blog">
+              <MappingFragment StoreEntitySet="CoreModule_Blogs">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="BlogShortDesc" ColumnName="BlogShortDesc" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BlogCategoryId" ColumnName="BlogCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_EventCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_EventCategory">
+              <MappingFragment StoreEntitySet="CoreModule_EventCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_Events">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_Event">
+              <MappingFragment StoreEntitySet="CoreModule_Events">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="RegistrationEndOn" ColumnName="RegistrationEndOn" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="EventRegistrationStartsOn" ColumnName="EventRegistrationStartsOn" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EventCategoryId" ColumnName="EventCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_News">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_New">
+              <MappingFragment StoreEntitySet="CoreModule_News">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="AttachmentPath" ColumnName="AttachmentPath" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LongDesc" ColumnName="LongDesc" />
+                <ScalarProperty Name="NewsShortDesc" ColumnName="NewsShortDesc" />
+                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+                <ScalarProperty Name="NewsCategoryId" ColumnName="NewsCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_NewsCategories">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_NewsCategory">
+              <MappingFragment StoreEntitySet="CoreModule_NewsCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_SliderItems">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_SliderItem">
+              <MappingFragment StoreEntitySet="CoreModule_SliderItems">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="SliderImagePath" ColumnName="SliderImagePath" />
+                <ScalarProperty Name="SecondButtonLink" ColumnName="SecondButtonLink" />
+                <ScalarProperty Name="FirstButtonLink" ColumnName="FirstButtonLink" />
+                <ScalarProperty Name="SecondButtonText" ColumnName="SecondButtonText" />
+                <ScalarProperty Name="FirstButtonText" ColumnName="FirstButtonText" />
+                <ScalarProperty Name="ForthLine" ColumnName="ForthLine" />
+                <ScalarProperty Name="ThirdLine" ColumnName="ThirdLine" />
+                <ScalarProperty Name="SecondLine" ColumnName="SecondLine" />
+                <ScalarProperty Name="FirstLine" ColumnName="FirstLine" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_Sliders">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_Slider">
+              <MappingFragment StoreEntitySet="CoreModule_Sliders">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SliderName" ColumnName="SliderName" />
+                <ScalarProperty Name="SliderCode" ColumnName="SliderCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreModule_SMSQueues">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.CoreModule_SMSQueue">
+              <MappingFragment StoreEntitySet="CoreModule_SMSQueue">
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="SMSText" ColumnName="SMSText" />
+                <ScalarProperty Name="SMSNumber" ColumnName="SMSNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppForgotPasswordTokens">
+            <EntityTypeMapping TypeName="RAMHX.CMS.DataAccess.AppForgotPasswordToken">
+              <MappingFragment StoreEntitySet="AppForgotPasswordToken">
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ExpireDateTime" ColumnName="ExpireDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CodeToken" ColumnName="CodeToken" />
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

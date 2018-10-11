@@ -1,0 +1,129 @@
+﻿@using RAMHX.CMS.DataAccess;
+@{
+    var productId = Convert.ToInt32(Request.QueryString["prodid"]);
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var item = (from a in dbEntity.CoreModule_ProductMasters
+                where a.Id == productId
+                select a).OrderByDescending(gal => gal.Id).First();
+    var catProds = dbEntity.CoreModule_ProductMasters.Where(p => p.CategoryId == item.CategoryId).ToList();
+
+}
+
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">@item.ProdName - Detail</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">Products</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<Section class="no-padding-tb">
+    <div class="container">
+        <div class="row">
+            <div class="detail-product-warp">
+                    <h1 class="text-cap">@item.ProdName</h1>
+                    <div class="col-md-7">
+                        <div class="product-detail-image">
+                            <img alt="product-name" src="/ImageThumbHandler.ashx?s=550&f=@item.ImageUrl">
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="single-product-detail">
+                            <h3 class="text-cap">@item.ShortDesc</h3>
+                            <p class="price">
+                                <span class="old-price">MRP: @item.MRP</span> OFFER: @item.OfferPrice
+                            </p>
+                            <div class="divider-line"></div>
+                            <p>@item.LongDesc</p>
+                        </div>
+                    </div>
+            </div><!-- End Product Warp -->
+        </div><!-- End Row -->
+    </div><!-- End container -->
+</Section> <!--End List Product --><div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div>
+<section class="bg-promotion-product">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="promotion-product-warp">
+                <div class="promotion-product-item">
+                    <div class="promotion-product-item-inner">
+                        <h4 class="text-cap">
+                            Money back
+                        </h4>
+                        <p class="text-cap">
+                            If you are not satisfied with your purchase
+                        </p>
+                    </div>
+                </div>
+                <div class="promotion-product-item">
+                    <div class="promotion-product-item-inner">
+                        <h4 class="text-cap">
+                            Free Shipping
+                        </h4>
+                        <p class="text-cap">
+                            Free shipping for standard order over $100
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+        </div>
+    </div>
+</section>
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+<!-- End Section Promotion Product -->
+<section>
+    <div class="container">
+        <div class="row">
+            <h2 class="title text-cap">You may also Like....</h2>
+            <div class="owl-relate-warp">
+                <div class="customNavigation">
+                    <a class="btn prev-relate"><i class="fa fa-angle-left"></i></a>
+                    <a class="btn next-relate"><i class="fa fa-angle-right"></i></a>
+                </div><!-- End owl button -->
+                <div id="owl-relate" class="owl-carousel owl-theme owl-relate clearfix">
+                    @foreach (var cp in catProds)
+                    {
+                        <div class="item">
+                            <div class="product-item">
+                                <a href="/products/productdtl?prodid=@cp.Id" class="products-warp">
+                                    <img src="/ImageThumbHandler.ashx?s=525&f=@cp.ImageUrl" class="img-responsive" alt="Image" style="height:175px" />
+                                    <span class="new-product">Offer</span>
+                                    <span class="sale-product">@cp.OfferPrice</span>
+
+                                </a>
+
+                                <div class="product-info">
+                                    <a href="/products/productdtl?prodid=@cp.Id">
+                                        <h3 class="text-cap">
+                                            @cp.ProdName
+                                        </h3>
+                                    </a>
+                                    <p class="price">
+                                        MRP: @cp.MRP
+                                    </p>
+                                    <a href="/products/productdetails?prodid=@cp.Id" class="ot-btn  btn-main-color">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div><!-- End row partners -->
+        </div>
+    </div>
+</section>
+

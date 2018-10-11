@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<upgradehistory>
+  <release>
+    <script>version.1.0.0.0.sql</script>
+    <releaseddate>31-mar-2016</releaseddate>
+    <releasenote>initial release!</releasenote>
+  </release>
+  <release>
+    <script>version.1.0.0.1.sql</script>
+    <releaseddate>10-jun-2016</releaseddate>
+    <releasenote>guid changes release!</releasenote>
+  </release>
+  <release>
+    <script>version.1.0.0.2.sql</script>
+    <releaseddate>20-sep-2016</releaseddate>
+    <releasenote>301 Redirection release!</releasenote>
+  </release>
+  <release>
+    <script>version.1.0.0.3.sql</script>
+    <releaseddate>11-oct-2016</releaseddate>
+    <releasenote>Package Installation Module</releasenote>
+  </release>
+</upgradehistory>

@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "TemplateFields";
+
+}
+
+<section class="content-header">
+    <h1>
+        Template Field
+        <small>Maintain Template Field</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Template Field</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNewTemplate" class="btn btn btn-primary">
+                            Add New Template Field
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="TemplateFieldjqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div id="">Template Field Details - Add</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Field Name</label>
+                                    <input type="text" name="Name" class="form-control" id="txtFieldName" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Field Type</label>
+                                    <select class="form-control" id="ddlFieldType"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Field Display</label>
+                                    <input type="number" name="Name" class="form-control" id="txtFieldDisplay" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Default Value</label>
+                                    <input type="text" class="form-control" id="txtDefaultValue" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Display Name</label>
+                                    <input type="text" name="Name" class="form-control" id="txtDisplayName" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Notes</label>
+                                    <input type="text" name="Name" class="form-control" id="txtNotes" />
+                                </div>
+
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+<script src="~/Areas/Admin/Assets/js/TemplateFields.js"></script>
+ 
+}
+
+
+
+
+
+
+

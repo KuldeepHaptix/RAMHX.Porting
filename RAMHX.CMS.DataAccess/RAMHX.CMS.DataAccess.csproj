@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F365E4DA-03C2-40BC-B096-06B93E237687}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RAMHX.CMS.DataAccess</RootNamespace>
+    <AssemblyName>RAMHX.CMS.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppForgotPasswordToken.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="app_Configs.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetPasswordWithFormat_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetPassword_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetUserByName_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetUserByUserId_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Profile_GetProperties_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_UsersInRoles_RemoveUsersFromRoles_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_301Redirection.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_PackageInstallations.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_PageFieldValues.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_PageHTMLModules.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_PageRoles.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_Pages.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_TemplateFields.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_Templates.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_UpgradeHistory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_Blog.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_BlogCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_Event.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_EventCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_FAQCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_FAQMaster.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_GalleryAlbum.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_GalleryAlbumItem.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_GalleryCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_JobCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_JobMaster.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_New.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_NewsCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_PackageCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_PackageMaster.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_ProductCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_ProductMaster.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_ProjectCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_ProjectMaster.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_Slider.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_SliderItem.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_SMSQueue.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_TestimonialCategory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoreModule_TestimonialMaster.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataAccessModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\cms_Pages.cs" />
+    <Compile Include="Extension\cms_UpgradeHistory.cs" />
+    <Compile Include="Extension\EntityExtensions.cs" />
+    <Compile Include="Extension\PageFieldValues.cs" />
+    <Compile Include="Extension\TemplateFieldsModel.cs" />
+    <Compile Include="GetAspNetUsersByRole_Result.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlModule.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLDataAccess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataAccessModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataAccessModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccessModel.edmx.diagram">
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataAccessModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
+      <LastGenOutput>DataAccessModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccessModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
+      <LastGenOutput>DataAccessModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

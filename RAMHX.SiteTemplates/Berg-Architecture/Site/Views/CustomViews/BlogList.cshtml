@@ -1,0 +1,73 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    Page.Title = "Blog";
+    var blogs = SiteContext.CurrentPage.cms_SubPages.OrderBy(p => p.PageOrder).ToList();
+}
+
+<!-- Inside Title -->
+<div class="inside_title image_bck grey_border" data-image="/Assets/images/furn3.jpg ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><h1>Blog Masonry</h1></div>
+            <div class="col-md-6 text-right"><div class="breadcrumbs"><a href="#">Home</a><a href="#">Blog</a>Blog Masonry</div></div>
+        </div>
+    </div>
+</div>
+<!-- Inside Title End -->
+
+<!--Title-->
+    <!-- Content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="bordered_block col-md-12 grey_border">
+
+                    <div class="container">
+                        <div class="row">
+
+                            <!--Sidebar-->
+                            <div class="col-md-12 col-xs-12">
+                                <div class="masonry row">
+
+                                    @foreach (var item in blogs)
+                                    {
+                                        <div class="col-sm-6 post-snippet masonry-item">
+                                            <a href="#">
+                                                <img alt="" src="@item.FieldValue("Image")" />
+                                            </a>
+                                            <div class="inner">
+                                                <a href="#">
+                                                    <h4 class="title">@item.FieldValue("Title")</h4>
+                                                    <span class="date">@item.FieldValue("Date")</span>
+                                                </a>
+                                                <p>
+                                                    @item.FieldValue("SortDesc")
+                                                </p>
+                                                <a class="btn btn-default" href="@item.FullPageUrl">Read More</a>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                </div>
+                            </div>
+                            <!--Sidebar End-->
+
+
+
+
+                        </div>
+                        <!--Row End-->
+
+                    </div>
+                </div>
+            </div>
+            <!-- Row End -->
+
+
+        </div>
+    </div>
+    <!-- Content End -->

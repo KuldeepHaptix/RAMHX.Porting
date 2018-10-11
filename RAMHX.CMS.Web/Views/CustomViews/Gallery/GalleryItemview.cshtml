@@ -1,0 +1,97 @@
+﻿@using RAMHX.CMS.DataAccess;
+
+@{ var albumIds = Request.QueryString["aid"];
+    Layout = null;
+    RAMHX.CMS.DataAccess.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccess.DatabaseEntities();
+    var aids = albumIds.Split(',').ToList().Where(c => c != string.Empty).Select(c => Convert.ToInt32(c)).ToList();
+    var albumItem
+    = (from a in dbEntity.CoreModule_GalleryAlbumItems where aids.Contains(a.AlbumId.Value) select a).OrderByDescending(gal => gal.Id).ToList();
+
+    var album = dbEntity.CoreModule_GalleryAlbums.FirstOrDefault(a => aids.Contains(a.Id));
+}
+<link href="~/distfrontend/css/fancybox/jquery.fancybox-thumbs.css" rel="stylesheet" />
+<link href="~/distfrontend/css/fancybox/jquery.fancybox.css" rel="stylesheet" />
+<link href="~/distfrontend/css/fancybox/jquery.fancybox-buttons.css" rel="stylesheet" />
+<section>
+    <div class="sub-header sub-header-1 sub-header-portfolio-grid-1 fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">@album.Name - Photos</h2>
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="">Gallery</li>
+                <li class="active">Album</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<!-- End Section Sub Header -->
+<section class="padding bg-grey padding-bottom-0">
+    <div class="lastest-project-warp portfolio-grid-v2-4-col-warp clearfix">
+        <div class="clearfix projectContainer portfolio-grid-v2-4-col-container">
+            @foreach (var item in albumItem)
+            {
+                <div class="element-item">
+
+                    @if (item.UploadType == 2)
+                    {
+                        if (@item.AccessType == 1 && @item.UploadType == 2)
+                        {
+                            <iframe width="100%" height="192px" src="https://www.youtube.com/embed/@item.ItemPath.Split('=').GetValue(1).ToString().Split('&').GetValue(0)"></iframe>
+                            <a class="img-fb" id="single_@item.Id" href="javascript:;" title="@item.Name">
+                                <h3 class="text-center btn btn-light btn-sm btn-block">@item.Name</h3>
+                            </a>
+                            <div class="clearfix">&nbsp;</div>
+                        }
+                    }
+                    else
+                    {
+                        string ext = "|" + Path.GetExtension(HttpContext.Current.Server.MapPath(item.ItemPath)).ToLower() + "|";
+                        if (@item.AccessType == 1 && System.Configuration.ConfigurationManager.AppSettings["Gallery.Audio.Extensions"].Contains(ext))
+                        {
+                            <audio width="320" min-height="240" controls>
+                                <source src="@item.ItemPath" type="audio/mp3" />
+                            </audio>
+                        }
+                        else if (@item.AccessType == 1 && System.Configuration.ConfigurationManager.AppSettings["Gallery.Video.Extensions"].Contains(ext))
+                        {
+                            <video width="100%" height="192px" controls controlsList="nodownload" preload="metadata">
+                                <source src="@item.ItemPath" type="video/mp4">
+                            </video>
+
+                            <a class="img-fb" id="single_@item.Id" href="javascript:;" title="@item.Name">
+                                <h3 class="text-center btn btn-light btn-sm btn-block">@item.Name</h3>
+                            </a>
+                            <div class="clearfix">&nbsp;</div>
+                        }
+
+                        else if (System.Configuration.ConfigurationManager.AppSettings["Gallery.Photo.Extensions"].Contains(ext))
+                        {
+                            <a class="fancybox fancybox-buttons fancybox-thumb fancybox-media img-fb" id="single_@item.Id" href="@item.ItemPath" title="@item.Name">
+                                <img src="/ImageThumbHandler.ashx?s=150&f=@item.ItemPath" alt="@item.Name" style="width:100%; height:192px;" />
+                                <h3 class="text-center btn btn-light btn-block">@item.Name</h3>
+                            </a>
+                            <div class="clearfix">&nbsp;</div>
+                        }
+                    }
+
+
+                </div>
+            }
+
+        </div>  <!-- End project Container -->
+    </div> <!-- End  -->
+    <div class="clearfix mgt60"></div>
+
+</section>
+<!-- End Section Isotop Lastest Project -->
+@*<script src="~/distfrontend/js/fancybox/jquery-1.10.2.min.js"></script>*@
+<script src="~/distfrontend/js/fancybox/jquery.mousewheel.pack.js"></script>
+<script src="~/distfrontend/js/fancybox/jquery.fancybox.pack.js"></script>
+<script src="~/distfrontend/js/fancybox/jquery.fancybox-buttons.js"></script>
+<script src="~/distfrontend/js/fancybox/jquery.fancybox-thumbs.js"></script>
+<script src="~/distfrontend/js/fancybox/jquery.fancybox-media.js"></script>
+
+<script src="~/distfrontend/js/AlbumItems.js"></script>
+

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Contact Us";
+}
+
+<div class="alert alert-success success" hidden="hidden" id="successMsg"><i class="fa fa-check"></i> Well done! Your message is successfully sent to admin.</div>
+<!-- Contact FORM -->
+<!-- IF MAIL SENT SUCCESSFULLY -->
+<h6 class="successContent">
+    <i class="fa fa-check left" style="color: #5cb45d;"></i>Your message has been sent successfully.
+</h6>
+<!-- END IF MAIL SENT SUCCESSFULLY -->
+<!-- MAIL SENDING UNSUCCESSFULL -->
+<h6 class="errorContent">
+    <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>There was a problem validating the form please check!
+</h6>
+<!-- END MAIL SENDING UNSUCCESSFULL -->
+
+<div class="form-field-wrapper">
+    <input class="input-sm form-full" id="Name" type="text" name="form-name" placeholder="Your Name" required="" aria-required="true">
+</div>
+
+<div class="form-field-wrapper">
+    <input class="input-sm form-full" id="ContactNo" type="text" name="form-contectno" placeholder="Number" required="" aria-required="true">
+</div>
+
+<div class="form-field-wrapper">
+    <input class="input-sm form-full" id="MailAddress" type="email" name="form-email" placeholder="Email" required="" aria-required="true">
+</div>
+
+<div class="form-field-wrapper">
+    <input class="input-sm form-full" id="Subject" type="text" name="form-subject" placeholder="Subject">
+</div>
+
+<div class="form-field-wrapper">
+    <textarea class="form-full" id="Comments" rows="7" name="form-message" placeholder="Your Message" required="" aria-required="true"></textarea>
+</div>
+
+<div id="divCaptcha"></div>
+<br />
+
+<button class="btn btn-md btn-black form-full btnSendEmail" type="submit" name="submit">Send Message</button>
+@*</form>*@
+

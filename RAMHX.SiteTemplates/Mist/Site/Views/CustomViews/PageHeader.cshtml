@@ -1,0 +1,32 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+    RAMHX.CMS.DataAccess.cms_Pages previousPage = SiteContext.CurrentPage.cms_ParentPage;
+    Page.Title = @currentPage.PageName;
+    //Layout = "Your Layout Page goes here";
+}
+
+<div class="page-header">
+    <div class="container">
+        <h1 class="title">@currentPage.PageName</h1>
+    </div>
+    <div class="breadcrumb-box">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+
+                @while (previousPage.cms_ParentPage != null && currentPage.PageID != previousPage.PageID && previousPage.cms_ParentPage.PageID != Guid.Empty)
+                {
+                    <li class="active"><a href="@previousPage.FullPageUrl"> @previousPage.PageName </a></li>
+                    previousPage = previousPage.cms_ParentPage;
+                }
+                <li class="active">@currentPage.PageName</li>
+
+            </ul>
+        </div>
+    </div>
+</div>

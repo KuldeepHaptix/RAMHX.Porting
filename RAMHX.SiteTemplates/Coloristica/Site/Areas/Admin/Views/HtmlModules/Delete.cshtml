@@ -1,0 +1,55 @@
+﻿@model RAMHX.CMS.DataAccess.HtmlModule
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Page Content</h2>
+
+<h4>Delete page content</h4>
+<div>
+    <h3>Are you sure you want to delete this?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlModuleName)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlModuleDescription)
+        </dd>
+
+        <dt>
+            Data
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtmlModuleHTML)
+        </dd>
+
+        <dt>
+            Page Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageName)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

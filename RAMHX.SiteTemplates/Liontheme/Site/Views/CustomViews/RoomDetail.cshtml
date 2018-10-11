@@ -1,0 +1,56 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    var RoomDetail = SiteContext.CurrentPage;
+    Page.Title = RoomDetail.PageTitle;
+    Layout = null;
+    ViewBag.Title = "Room Detail - " + Page.Title;
+    var Rooms = RoomDetail.cms_SubPages.ToList();
+
+    List<RAMHX.CMS.DataAccess.cms_Pages> relatedPage = new List<RAMHX.CMS.DataAccess.cms_Pages>();
+    List<string> relatedPageIds = RoomDetail.FieldValue("RelatedItem").Split('|').ToList();
+    foreach (var pageId in relatedPageIds)
+    {
+
+        Guid pid = Guid.Empty;
+        Guid.TryParse(pageId, out pid);
+        if (pid != Guid.Empty)
+        {
+            relatedPage.Add(SiteContext.Pages.FirstOrDefault(x => x.PageID == Guid.Parse(pageId)));
+        }
+    }
+}
+<!-- subheader begin -->
+<div id="subheader">
+    <h1> @Page.Title</h1>
+    <h3>Room</h3>
+</div>
+<!-- subheader close -->
+<div id="content">
+    <div class="container">
+        @RoomDetail.FieldValue("LongDesc")
+
+        <hr />
+        <div class="row">
+            @for (int i = 0; i < relatedPage.Count; i++)
+            {
+                 <!-- room begin -->
+                <div class="col-md-6">
+                    <div class="room-item item">
+                        <div class="overlay">
+                            <a href="#">
+                                <h1>@relatedPage[i].PageName</h1>
+                            </a>
+                            <div class="desc">
+                                @relatedPage[i].FieldValue("RoomShortDesc")
+                                <a href="@relatedPage[i].FullPageUrl" class="btn-border">View Details</a>
+                            </div>
+                        </div>
+                        <img src="@relatedPage[i].FieldValue("RoomThumb")" alt="@relatedPage[i].PageName" />
+                    </div>
+                </div>
+                <!-- room close -->
+            }
+        </div>
+    </div>
+</div>

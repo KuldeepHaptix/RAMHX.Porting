@@ -1,0 +1,75 @@
+﻿@model RAMHX.CMS.DataAccess.app_Configs
+@{
+    ViewBag.Title = "details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Configurations</h2>
+<h4>Configurations details</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            #Group Id
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupId)
+        </dd>
+
+        <dt>
+            #Item Id
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemId)
+        </dd>
+
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemDesc)
+        </dd>
+        <dt>
+            Active?
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            Short Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDesc)
+        </dd>
+        <dt>
+            Code
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemCode)
+        </dd>
+        @*<dt>
+            HTML Preview
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.HtmlModuleHTML)
+        </dd>*@
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { gid = Model.GroupId, itmid = Model.ItemId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

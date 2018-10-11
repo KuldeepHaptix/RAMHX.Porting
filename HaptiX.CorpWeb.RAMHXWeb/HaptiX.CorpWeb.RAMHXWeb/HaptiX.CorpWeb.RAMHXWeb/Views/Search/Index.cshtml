@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = null;
+
+}
+<div ng-app="searchApp" ng-controller="searchCtrl">
+    <h2>Search Results</h2>
+    <div class="pb-15 mb-15" ng-repeat="x in searchResults">
+        <a href="{{ x.link }}" target="_blank">
+            <h5>
+                {{ x.title }}
+            </h5>
+        </a>
+        {{ x.snippet }}
+    </div>
+
+    <div class="pagination-nav text-left mtb-30">
+        <ul>
+
+            <li ng-click="goToPage(x)" ng-class="{active : activeMenu === x}" ng-init="count=1" ng-repeat="x in totalPages">
+                <a href="#">
+                    {{ x }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script>
+    var app = angular.module('searchApp', []);
+    var searchEngineId = "018239018143234339381%3Alk8lnwbvgcs";
+    var apiKeys = ["AIzaSyD1moyUChCw2bSVoCit6H8O_f3AXi8YSgQ", "AIzaSyBdAUKRVGRbyelfnp0rA8xDhxMEK-PTNdo", "AIzaSyB2Z6LVMnCmR0SbC704tY8nzAlZoeIXCE8", "AIzaSyCC6fHvf709GtIf5342VBVHEU2T8CstkCo", "AIzaSyBtJXKRaUtD4DW0lGKI6MM6QtMMjmKxm3M"]; // SSVRP
+    var apiKey = apiKeys[Math.floor(Math.random() * apiKeys.length)];
+
+    var pageSize = 10;
+
+    app.controller('searchCtrl', function ($scope, $http, $location) {
+        var q = getUrlParameter('q');
+
+        $http.get("https://www.googleapis.com/customsearch/v1?q=" + q + "&cx=" + searchEngineId + "&key=" + apiKey)
+          .success(function (response) {
+              console.log(response);
+              //console.log(response.queries.request[0].startIndex);
+              $scope.searchResults = response.items;
+
+              pageSize = response.queries.request[0].count;
+              var pages = parseInt(response.queries.request[0].totalResults) / pageSize;
+              var totalPages = [];
+              for (var i = 1; i <= Math.ceil(pages) ; i++) {
+                  totalPages.push(i);
+              }
+              $scope.totalPages = totalPages;
+              $scope.activeMenu = 1;
+              $scope.goToPage = function (currentPage) {
+                  var start = ((currentPage - 1) * pageSize) + 1;
+                  $scope.activeMenu = currentPage;
+                  $http.get("https://www.googleapis.com/customsearch/v1?q=" + q + "&cx=" + searchEngineId + "&key=" + apiKey + "&start=" + start)
+              .success(function (response) {
+                  console.log(response);
+                  $scope.searchResults = response.items;
+              });
+
+              }
+          });
+    });
+
+    function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    }
+</script>

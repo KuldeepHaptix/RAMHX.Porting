@@ -1,0 +1,39 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    // var jobs = new HaptiX.CorpWeb.RAMHXWeb.Repos.JobRepo().GetJobs();
+    //Model = jobs;
+    Layout = null;
+    ViewBag.Title = "Recipes";
+
+    var Recipes = SiteContext.CurrentPage.cms_SubPages.ToList();
+}
+ <!--Recipes-->
+<section class="block recipes">
+    <div class="fsbg">
+        <div class="visible" id="r_0" style="background-image: url(@Recipes[0].FieldValue("Banner"))"></div>
+
+     @for (int i = 1; i < Recipes.Count; i++)
+     {
+        <div id="r_@i" style="background-image: url(@Recipes[i].FieldValue("Banner"))"></div>
+     }
+   
+    </div>
+    <div class="recipes-inner">
+        <div class="heading"><h2>Chef recipes</h2><span class="triangle"></span></div>
+        @for (int i = 0; i < Recipes.Count; i++)
+        {
+
+            <a href="@Recipes[i].FullPageUrl" data-recipe="r_@i">
+                <div class="bg"></div>
+                <div class="inner">
+                    <h3>@Recipes[i].FieldValue("RecipeName")</h3>
+                    <p>@Recipes[i].FieldValue("ShortDesc")</p>
+                    <span class="arrowRight"></span>
+                </div>
+            </a>
+        }
+
+    </div>
+</section>

@@ -1,0 +1,68 @@
+﻿@model RAMHX.CMS.Web.Areas.Admin.Models.FileModel
+
+@{
+    ViewBag.Title = "File Edit";
+    Layout = null;
+}
+<link href="~/Areas/Admin/Assets/CodeMirror/codemirror.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Assets/CodeMirror/docs.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <input type="hidden" value="@ViewBag.Saved" id="FileEdited" />
+        @Html.TextAreaFor(model => model.FileContent, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FileContent, "", new { @class = "text-danger" })<br />
+        &nbsp;<input type="submit" value="Save" class="btn btn-success" />
+        &nbsp;&nbsp;<span id="spMsg" style="display:none" class="text-success">Successfully Saved!</span>
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript" src="~/Areas/Admin/Assets/CodeMirror/codemirror.js"></script>
+<script src="~/Areas/Admin/Assets/CodeMirror/css.js"></script>
+<script src="~/Areas/Admin/Assets/CodeMirror/htmlmixed.js"></script>
+<script src="~/Areas/Admin/Assets/CodeMirror/javascript.js"></script>
+<script src="~/Areas/Admin/Assets/CodeMirror/xml.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('#FileEdited').val() == "1") {
+            $('#spMsg').css('display', 'inline');
+            setTimeout(function () { $('#spMsg').fadeOut('slow'); }, 3000);
+        }
+
+        var editorMode = {
+            htm: 'text/html',
+            html: 'text/html',
+            css: 'text/css',
+            js: 'text/javascript',
+            xml: 'application/xml',
+            config: 'application/xml',
+            json: 'application/json'
+        };
+        var selectedMode = 'text/html';
+        var fileExtArray = window.parent.document.getElementById('editorTitle').innerHTML.split('.').pop();
+        var fileExtVal = editorMode[fileExtArray]
+        if (fileExtVal != undefined && fileExtVal != '') {
+            selectedMode = fileExtVal;
+        }
+        editor = CodeMirror.fromTextArea(document.getElementById("FileContent"), {
+            mode: selectedMode,
+            extraKeys: { "Ctrl-Space": "autocomplete" },
+            lineWrapping: true
+        });
+
+        var charWidth = editor.defaultCharWidth(), basePadding = 4;
+        editor.on("renderLine", function (cm, line, elt) {
+            var off = CodeMirror.countColumn(line.text, null, cm.getOption("tabSize")) * charWidth;
+            elt.style.textIndent = "-" + off + "px";
+            elt.style.paddingLeft = (basePadding + off) + "px";
+        });
+        editor.refresh();
+    });
+</script>
+

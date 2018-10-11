@@ -1,0 +1,122 @@
+﻿<section class="content-header">
+    <h1>
+        Book Appointment
+        <small>Book Appointments</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Book Appointment </li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> Select Doctor and Locations</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body ">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="ddlDoctor">Doctor</label>
+                            <select style="width:100%" class="form-control select2" id="ddlDoctor"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="ddlLocation">Location</label>
+                            <select style="width:100%" class="form-control select2" id="ddlLocation"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 hide">
+                        <div class="form-group">
+                            <label for="txtAppointment">Appointment Date</label>
+                            <input type="text" class="form-control datepicker" id="txtAppointment" placeholder="Appointment Date">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group hcenter">
+                            <label for="btnSearchAvailibility"></label>
+                            <input type="button" class="btn btn-block btn-success btn-lg" id="btnSearchAvailibility" value="Search Avaibility" />
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> Doctors Availibility</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body ">
+                    <div id="slotViewer">
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>
+
+<div class="modal modal-info fade" id="modal-bookappinment" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-book"></i> Book Appoinment </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box-body table-responsive">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input type="hidden" id="hdnPatientId" />
+                                    <input type="hidden" id="hdnAppDate" />
+                                    <input type="hidden" id="hdnAppTime" />
+                                    <div class="form-group">
+                                        <label for="txtSearchPatient">Patient Name / Mobile / Email</label>
+                                        <input type="text" class="form-control" id="txtSearchPatient">
+                                        <div id="patientContainer" style="position:fixed;"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtFullName">Full Name</label>
+                                        <input type="text" class="form-control" id="txtFullName" placeholder="Full Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtMobile">Mobile</label>
+                                        <input type="text" class="form-control" id="txtMobile" placeholder="Mobile">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtEmail">Email</label>
+                                        <input type="text" class="form-control" id="txtEmail" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtAddress">Address</label>
+                                        <textarea type="text" class="form-control" id="txtAddress" placeholder="Address"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="reset" class="btn btn-warning reset" id="btnReset" value="Reset" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                    <button id="btnBookNow" type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

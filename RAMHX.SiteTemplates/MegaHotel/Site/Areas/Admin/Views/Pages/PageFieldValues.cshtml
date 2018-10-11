@@ -1,0 +1,212 @@
+﻿@model RAMHX.CMS.DataAccess.cms_Pages
+
+<h2></h2>
+<div class="container1">
+    <form id="formTemplateData">
+        <div id="accordion">
+            @foreach (var pgTemplate in Model.cms_Templates)
+            {
+                <h3>@pgTemplate.Description</h3>
+                <div class="row1">
+                    <input type="hidden" name="templateid" templateid="@pgTemplate.TemplateId" />
+                    @foreach (var pgTemplateField in pgTemplate.cms_TemplateFields.OrderBy(f => f.FieldDisplayOrder))
+                    {
+                        <div>
+                            @{
+                        string fieldTitle = pgTemplateField.DisplayName;
+                        if (string.IsNullOrEmpty(fieldTitle))
+                        {
+                            fieldTitle = pgTemplateField.FieldName;
+                        }
+                        var fv = pgTemplate.cms_PageFieldValues.FirstOrDefault(v => v.TemplateFieldId == pgTemplateField.TemplateFieldId && v.PageId == Model.PageID);
+                        var slValue = pgTemplateField.DefaultValue;
+                        if (fv != null && !string.IsNullOrEmpty(fv.FieldValue))
+                        {
+                            slValue = fv.FieldValue;
+                        }
+                        string fieldName = Model.PageID + "_" + pgTemplate.TemplateId + "_" + pgTemplateField.TemplateFieldId + "_" + pgTemplateField.FieldTypeId;
+                            }
+
+                            @switch (pgTemplateField.FieldTypeId)
+                            {
+                                case 2: // Number
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="control-label" for="PageCode">@fieldTitle</label>
+                                            </div>
+                                            @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                            {
+                                                <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                            }
+                                            <div class="">
+                                                <input type="number" class="form-control text-box numericbox" name="num_@fieldName" value="@slValue" id="num_@pgTemplateField.TemplateFieldId" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                            break;
+                                case 3: // Date
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            <input type="text" name="dt_@fieldName" class="form-control text-box datepicker" value="@slValue" id="dt_@pgTemplateField.TemplateFieldId" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                        break;
+                                case 4: // RichText
+                                <div class="clearfix">&nbsp;</div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            <textarea type="text" name="richtxt_@fieldName" class="form-control text-box ckeditor" id="richtxt_@pgTemplateField.TemplateFieldId">@slValue</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                        break;
+                                case 5: // Multiline
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            <textarea type="text" class="form-control " name="mulline_@fieldName" id="mulline_@pgTemplateField.TemplateFieldId">@slValue</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                        break;
+                                case 6://Time
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            <input type="text" name="time_@fieldName" class="form-control text-box timepicker" value="@slValue" id="time_@pgTemplateField.TemplateFieldId" />
+                                        </div>
+                                    </div>
+                                </div>
+                                        break;
+                                case 7: // checkbox
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            @if (slValue.ToLower() == "true" || slValue.ToLower() == "1")
+                                            {
+                                                <input type="checkbox" name="chk_@fieldName" class="form-control text-box " checked="checked" id="chk_@pgTemplateField.TemplateFieldId" />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" name="chk_@fieldName" class="form-control text-box " id="chk_@pgTemplateField.TemplateFieldId" />
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                            break;
+                                case 8: // Media
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            <input type="text" name="media_@fieldName" class="form-control1 text-box PageLayoutPath" value="@slValue" id="media_@pgTemplateField.TemplateFieldId" />
+                                            <span><a href="javascript:void(0)" onclick="FileMngrDialog('Media Library');"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                        break;
+                                default:
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <label class="control-label" for="PageCode">@fieldTitle</label>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(pgTemplateField.Notes))
+                                        {
+                                            <div class="fieldnotes">@pgTemplateField.Notes</div>
+                                        }
+                                        <div class="">
+                                            <input type="text" class="form-control text-box " name="sl_@fieldName" value="@slValue" id="sl_@pgTemplateField.TemplateFieldId" />
+                                        </div>
+                                    </div>
+                                </div>
+                                        break;
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <input type="button" id="btnSaveData" value="Save" class="btn btn-success" />&nbsp;
+            <input type="button" id="btnCancel" value="Cancel" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+<div id="dialogFileMngr" hidden="hidden" style="overflow:hidden" title="Media Library">
+    <iframe id="iFrmFileManager" height="100%" width="100%" style="border: 0px"></iframe>
+</div>
+<div id="richtextbox">
+
+</div>
+@section scripts{
+    <script src="~/Areas/Admin/Assets/Plugins/ckeditor/ckeditor.js"></script>
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('ckeditor');
+
+            //setTimeout(function () {
+            //    $.each($('textarea'), function () {
+            //        ($($('#cke_' + $(this).attr('id'))[0]).find('iframe')[0]).contentDocument.body.innerHTML = $(this).html();
+            //        console.log(($($('#cke_' + $(this).attr('id'))[0]).find('iframe')[0]).contentDocument.body.innerHTML, $(this).html());
+
+            //    });
+            //}, 1000);
+        });
+
+    </script>
+    <script src="~/Areas/Admin/Assets/js/timepicki.js"></script>
+    <script src="~/Areas/Admin/Assets/js/Page.Fields.js"></script>
+}
+
+

@@ -1,0 +1,30 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = SiteContext.CurrentPage.PageTitle;
+    var Recipe = SiteContext.CurrentPage;
+}
+ <!--Fullscreen Recipe Image-->
+<div class="fsbg">
+    <div class="visible" id="r_1" style="background: url(@Recipe.FieldValue("Banner"))"></div>
+</div>
+
+<!--Recipes Single-->
+<section class="block recipes-single" id="recipe">
+    <div class="header">
+        <div class="bg"></div>
+        <div class="header-inner">
+            <div class="table">
+                <!--This two classes 'table' and 'table-cell' for vertical centering text inside div-->
+                <div class="table-cell heading"><h1>@Recipe.FieldValue("RecipeName")</h1></div>
+                <div class="controls group">
+                    <a class="back-to-list" href="/recipes"></a>
+                    <a class="arrowDown recipe-scroll" href="#recipe"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inner">
+        @Recipe.FieldValue("Description")
+    </div>
+</section>

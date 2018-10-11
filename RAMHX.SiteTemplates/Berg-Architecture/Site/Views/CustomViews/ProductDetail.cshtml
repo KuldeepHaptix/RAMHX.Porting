@@ -1,0 +1,137 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+@{
+    Page.Title = "Product Detail";
+    var products = SiteContext.CurrentPage;
+    var category = SiteContext.CurrentPage.cms_ParentPage.cms_SubPages.ToList();
+}
+
+<!-- Inside Title -->
+<div class="inside_title image_bck bordered_wht_border white_txt" data-image="/Assets/images/shop1.jpg ">
+    <!-- Over -->
+    <div class="over" data-opacity="0.2" data-color="#000"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><h1>Shop</h1></div>
+            <div class="col-md-6 text-right"><div class="breadcrumbs"><a href="#">Home</a><a href="#">Shop</a>Shop</div></div>
+        </div>
+    </div>
+</div>
+<!-- Inside Title End -->
+<!-- Content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="bordered_block col-md-12 grey_border">
+
+                <div class="container">
+                    <div class="row">
+
+                        <!--Sidebar-->
+                        <div class="col-md-9 col-md-push-3 col-xs-12">
+
+                            <!-- Carousel and Anons -->
+                            <div class="row product_inside">
+                                <div class="col-md-6 col-xs-12">
+                                    <!-- Carousel -->
+                                    <div class="products_inside_wrapper intro_wrapper">
+                                        <div class="classes_inside_item bordered_wht_border">
+                                            <img src="@products.FieldValue("Detail_Image1")" alt="">
+                                        </div>
+                                        <div class="classes_inside_item bordered_wht_border">
+                                            <img src="@products.FieldValue("Detail_Image2")" alt="">
+                                        </div>
+                                        <div class="classes_inside_item bordered_wht_border">
+                                            <img src="@products.FieldValue("Detail_Image3")" alt="">
+                                        </div>
+                                    </div>
+                                    <!-- Carousel End -->
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <h3 class="title">@products.FieldValue("ProductName")</h3>
+
+                                    <div class="meta-box clearfix">
+                                        <div class="price-box">
+                                            <span class="special-price">$@products.FieldValue("Price")</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <p>
+                                        @products.FieldValue("ShortDesc")
+                                    </p>
+
+
+                                    <div class="social-icon">
+                                        <ul class="list-unstyled list-inline">
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <br />
+                            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
+                                <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
+                                    <p>@products.FieldValue("LongDesc")</p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledBy="profile-tab">
+                                    <!--  Comments -->
+                                   @products.FieldValue("Reviews")
+                                    <!-- End Comments -->
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <!--Sidebar End-->
+                        <!--Sidebar-->
+                        <div class="col-md-3 col-md-pull-9 hidden-xs hidden-sm">
+
+
+                            <div class="widget">
+                                <h6 class="title">Shop Categories</h6>
+                                <ul class="list-unstyled">
+                                   @foreach (var item in category)
+                                   {
+                                    <li>
+                                        <a href="@item.FullPageUrl">@item.FieldValue("ProductName")</a>
+                                    </li>
+                                   }
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!--Sidebar End-->
+                    </div>
+                    <!--Row End-->
+
+                </div>
+            </div>
+        </div>
+        <!-- Row End -->
+
+
+    </div>
+</div>
+<!-- Content End -->

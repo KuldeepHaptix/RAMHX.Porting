@@ -1,0 +1,20 @@
+﻿@using (Html.BeginForm("InstallRequest", "Packages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-2">
+                Package
+            </div>
+            <div class="col-md-10">
+                <input type="file" name="package" />
+            </div>
+        </div>
+        <input type="hidden" name="apikey" value="testingkey" />
+        <input type="hidden" name="currentusername" value="admin" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Publish" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

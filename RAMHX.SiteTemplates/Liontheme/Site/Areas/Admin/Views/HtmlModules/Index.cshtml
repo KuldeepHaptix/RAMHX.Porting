@@ -1,0 +1,83 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.HtmlModule>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Page Content</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @id = "lnkcreatepage" })
+</p>
+<table class="table" id="tblHTMlModules">
+    <thead>
+        <tr>
+            @if (Request.QueryString["pageid"] != "")
+            {
+                <th class="thSelect">
+                    Select
+                </th>
+            }
+            <th>
+                #ID
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Page Name
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (Request.QueryString["pageid"] != "")
+                {
+                    <td class="tdChkBox">
+                        @Html.CheckBox("checked", false, new { name = "assignChkBx", id = item.HTMLModuleId, value = item.HTMLModuleId })
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.HTMLModuleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HtmlModuleCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HtmlModuleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.HTMLModuleId }, new { id = item.HTMLModuleId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.HTMLModuleId }, new { id = item.HTMLModuleId })
+                    |
+                    @if (string.IsNullOrEmpty(Request.QueryString["pageid"]))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HTMLModuleId, @class = "btnDelete" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (!string.IsNullOrEmpty(Request.QueryString["pageid"]))
+{
+    <div class="form-group">
+        <input type="button" value="Add" class="btn btn-success" id="savedetail" />
+    </div>
+}
+
+@section scripts{
+    <script src="~/Areas/Admin/Assets/js/common.js"></script>
+    <script src="~/Areas/Admin/Assets/js/page.IndexHtmlModuleI.js"></script>
+}
+

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.cms_301Redirection>
+
+@{
+    ViewBag.Title = "301 Redirections";
+}
+
+<section class="content-header">
+    <h1>
+        301 Redirections
+        <small>Maintain 301 Redirections</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Users</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                From Url
+                            </th>
+                            <th>
+                                To Url
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Active)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fromUrl)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.toUrl)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Active)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.rid }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.rid })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

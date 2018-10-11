@@ -1,0 +1,59 @@
+﻿@model IEnumerable<RAMHX.CMS.DataAccess.AspNetRole>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles</h2>
+<p>
+    @Html.ActionLink("Create Role", "Create", null, new { @id = "lnkcreatepage" })
+</p>
+<table class="table" id="tblPageRoles">
+    <thead>
+        <tr>
+            <th class="hide thSelect">
+                Select
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="thaction"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="hide tdChkBox">
+                    @Html.CheckBox("checked", false, new { name = "assignChkBx", id = item.Id, value = item.Id, @class="ckbox" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="tdaction">
+                    @if (item.Name.ToLower() != "admin")
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+
+                        <span>|</span>
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="form-group">
+    <input type="button" value="Save" class="btn btn-success hide" id="savedetail" />
+</div>
+
+@section scripts{
+    <script src="~/Areas/Admin/Assets/js/common.js"></script>
+    <script src="~/Areas/Admin/Assets/js/common.js"></script>
+    <script src="~/Areas/Admin/Assets/js/Page.Roles.js"></script>
+}
+
+
+

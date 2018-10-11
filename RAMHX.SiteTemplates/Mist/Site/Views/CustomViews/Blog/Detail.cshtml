@@ -1,0 +1,19 @@
+﻿@using RAMHX.CMS.DataAccess.Extension;
+@using RAMHX.CMS.Web;
+
+@{
+    Layout = null;
+
+    RAMHX.CMS.DataAccess.cms_Pages currentPage = SiteContext.CurrentPage;
+
+}
+
+
+<!-- page-header -->
+<section class="page-section">
+    <div class="container">
+        @currentPage.FieldValue("LongDesc")
+    </div>
+    <!-- Mix Container -->
+</section>
+<!-- works --> 

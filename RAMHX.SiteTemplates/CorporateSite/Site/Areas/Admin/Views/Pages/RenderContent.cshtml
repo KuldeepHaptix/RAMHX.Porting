@@ -1,0 +1,47 @@
+﻿@model RAMHX.CMS.Repository.PageModel
+@{
+    ViewBag.Title = Model.Page.PageTitle;
+    ViewBag.PageMetaKeywords = Model.Page.PageMetaKeywords;
+    ViewBag.PageMetaDescription = Model.Page.PageMetaDescription;
+    if (!string.IsNullOrEmpty(Model.Page.PageLayoutPath))
+    {
+        Layout = Model.Page.PageLayoutPath;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    RAMHX.CMS.Repository.RenderHtmlRepository htmlRepo = new RAMHX.CMS.Repository.RenderHtmlRepository();
+}
+
+@foreach (var item in Model.HtmlModules)
+{
+    try
+    {
+        if (SiteContext.CurrentUser_IsAdmin && SiteContext.CurrentPage_Mode == RAMHX.CMS.Infra.Enums.PageMode.EDIT)
+        {
+            <div class="editModule" contenteditable="true" id="editModule_@item.HTMLModuleId">
+                @Html.Raw(HttpUtility.HtmlDecode(item.HtmlModuleHTML))
+            </div>
+        }
+        else
+        {
+            @Html.Raw(HttpUtility.HtmlDecode(htmlRepo.GetContent(item.HtmlModuleCode, new ControllerContext())))
+        }
+    }
+    catch (Exception ex)
+    {
+        @Html.Raw("Error Occurred while rendering " + item.HtmlModuleName + " Module. <br/>Error Details: " + ex.Message + "<br/>" + ex.StackTrace)
+    }
+
+}
+@if (SiteContext.CurrentUser_IsAdmin && SiteContext.CurrentPage_Mode == RAMHX.CMS.Infra.Enums.PageMode.EDIT)
+{
+    <script src="/areas/admin/Assets/js/common.js"></script>
+    <script src="~/areas/admin/assets/Plugins/ckeditor/ckeditor.js"></script>
+    <script src="/areas/admin/Assets/js/page.editmode.js"></script>
+    @*<script>
+            alert('hello')
+            applyCKEditor();
+        </script>*@
+}
