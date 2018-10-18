@@ -1,0 +1,121 @@
+﻿@{
+    //Page.Title = "Title goes here";
+    Layout = null;
+
+}
+
+<section class="content-header">
+    <h1>
+        Slider Master
+        <small>Maintain Sliders</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Slider</a></li>
+        <li><a href="#">Slider Master</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New Slider
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Slider Details - Add</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                
+                                <div id="dCategoryId">
+                                    <label class="control-label">Category</label>
+                                    <select type="text" name="CategoryId" class="form-control" id="ddlCategory" isrequired="1" data-error="Please enter Category." errorspan="sCategoryId" divcontainer="dCategoryId"
+                                            defaultvalue="0" />
+                                    <span class="help-block hide error" id="sCategoryId">Please Select Category</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">First Line</label>
+                                    <input type="text" name="Name" class="form-control" id="txtFirstLine" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Second Line</label>
+                                    <input type="text" name="Name" class="form-control" id="txtSecondLine" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Third Line</label>
+                                    <input type="text" name="Name" class="form-control" id="txtThirdLine" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Fourth Line</label>
+                                    <input type="text" name="Name" class="form-control" id="txtFourthLine" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">First Button Text</label>
+                                    <input type="text" name="Name" class="form-control" id="txtFirstButton" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Second Button Text</label>
+                                    <input type="text" name="Name" class="form-control" id="txtSecondButton" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">First Button Link</label>
+                                    <input type="text" name="Name" class="form-control" id="txtFirstButtonLink" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Second Button Link</label>
+                                    <input type="text" name="Name" class="form-control" id="txtSecondButtonLink" />
+                                </div>
+                                <div class="form-group hide">
+                                    <label class="control-label">Thumbnail Path</label>
+                                    <input type="text" class="form-control" id="txtThumbPath" />
+                                    <a class="" href="javascript:void(0)" onclick="FileMngrDialog('Select Banner');"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Slider Image Path</label>
+                                    <div>
+                                        <img id="imgPhoto" />
+                                    </div>
+                                    <div>
+                                        <input type="file" name="updPhoto" id="updPhoto" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Status</label>
+                                    <div>
+                                        <input type="checkbox" name="Active" value="true" id="chkActive" />
+                                        <label class="control-label">Active</label>
+                                    </div>
+                                </div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnPopCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="~/distadmin/js/AppAdmin/Masters/SliderMaster.js?_=@DateTime.Now.Ticks"></script>

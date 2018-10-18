@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RAMHX.CMS.DataAccessCore
 {
@@ -22,8 +23,9 @@ namespace RAMHX.CMS.DataAccessCore
         public Guid? ModifiedByUserId { get; set; }
         public string DisplayName { get; set; }
         public string Notes { get; set; }
-
+        [NotMapped]
         public CmsTemplates Template { get; set; }
-        public ICollection<CmsPageFieldValues> CmsPageFieldValues { get; set; }
+        [NotMapped]
+        public virtual ICollection<CmsPageFieldValues> CmsPageFieldValues { get; set; }
     }
 }

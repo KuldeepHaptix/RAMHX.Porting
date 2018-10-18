@@ -12,7 +12,7 @@ namespace RAMHX.CMS.DataAccessCore
 {
     public class BaseClass
     {
-         IHttpContextAccessor _httpContextAccessor;
+        IHttpContextAccessor _httpContextAccessor;
         public BaseClass(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
@@ -23,7 +23,7 @@ namespace RAMHX.CMS.DataAccessCore
         private readonly IHostingEnvironment environment;
 
 
-        public  BaseClass(IHostingEnvironment environment)
+        public BaseClass(IHostingEnvironment environment)
         {
             this.environment = environment;
         }
@@ -46,12 +46,12 @@ namespace RAMHX.CMS.DataAccessCore
             services.AddMemoryCache();
         }
         protected static IMemoryCache _cache;
-        public  BaseClass(IMemoryCache cache)
+        public BaseClass(IMemoryCache cache)
         {
             _cache = this.Context.HttpContext.RequestServices.GetService<IMemoryCache>();
         }
 
-        
+
 
     }
 

@@ -1,0 +1,168 @@
+﻿@{
+    Layout = null;
+}
+
+<section class="content-header">
+    <h1>
+        Event
+        <small>Maintain Events</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Events</a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New Event
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Event Details - Edit</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-4">
+
+                                        <div class="form-group">
+                                            <div id="dName">
+                                                <label class="control-label">Name</label>
+                                                <input type="text" name="Name" class="form-control" id="txtName" errorspan="sName" isrequired="1" data-error="Please enter Event name." divcontainer="dName" defaultvalue="" />
+                                                <span class="help-block hide error" id="sName">Please Enter Event Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dShortDescription">
+                                                <label class="control-label">Short Description</label>
+                                                <input type="text" name="Name" class="form-control" id="txtShortDesc" isrequired="1" data-error="Please enter Short Description." errorspan="sShortDescription" divcontainer="dShortDescription" defaultvalue="" />
+                                                <span class="help-block hide error" id="sShortDescription">Please Enter Short Description</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dDateTime">
+                                                <label class="control-label">
+                                                    <i class="" aria-hidden="true"></i>Event Date
+                                                </label>
+                                                <input type="text" name="txtDateTime" class="form-control" id="dtpEventDateTime" isrequired="1" errorspan="sEventDateTime" divcontainer="dDateTime"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sEventDateTime">Please Enter Event Date And Time</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dEventRegDateTime">
+                                                <label class="control-label">
+                                                    <i class="" aria-hidden="true"></i>Registration StartsOn
+                                                </label>
+                                                <input type="text" name="txtDateTime" class="form-control" id="dtpEventRegStartOnDateTime" isrequired="1" errorspan="sEventRegDateTime" divcontainer="dEventRegDateTime"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sEventRegDateTime">Please Enter Event Registration Start On</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dEventRegEndDateTime">
+                                                <label class="control-label">
+                                                    <i class="" aria-hidden="true"></i>Registration EndsOn
+                                                </label>
+                                                <input type="text" name="txtDateTime" class="form-control" id="dtpEventRegEndOnDateTime" isrequired="1" errorspan="sEventRegEndDateTime" divcontainer="dEventRegEndDateTime"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sEventRegEndDateTime">Please Enter Event Registration End On</span>
+                                            </div>
+                                        </div>
+                                        <div id="dCategoryId">
+                                            <label class="control-label">Category</label>
+                                            <select type="text" name="CategoryId" class="form-control" id="ddlCategoryId" isrequired="1" data-error="Please enter Category." errorspan="sCategoryId" divcontainer="dCategoryId"
+                                                    defaultvalue="0" />
+                                            <span class="help-block hide error" id="sCategoryId">Please Select Category</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="checkbox" name="Active" value="true" id="chkActive" />
+                                            <label class="control-label">Active</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dLocation">
+                                                <label class="control-label">Location</label>
+                                                <input type="text" name="Location" class="form-control" id="txtLocation" isrequired="1" data-error="Please enter Location." errorspan="sLocation" divcontainer="dLocation"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sLocation">Please Enter Location</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group hide">
+                                            <div id="dPhotoUrl">
+                                                <label class="control-label">Image URL</label>
+                                                <input type="text" name="Name" class="form-control" id="txtImageUrl" isrequired="0" data-error="Please enter Photo Url." errorspan="sPhotoUrl" divcontainer="dPhotoUrl"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sPhotoUrl">Please Enter Image Url</span>
+                                                <a class="" href="javascript:void(0)" onclick="FileMngrDialog('Select Banner');"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Photo</label>
+                                            <div>
+                                                <img id="imgPhoto" />
+                                            </div>
+                                            <div>
+                                                <input type="file" name="updPhoto" id="updPhoto" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-8">
+                                        <div id="dLongDescription">
+                                            <label class="control-label">Long Description</label>
+                                            <textarea rows="4" cols="40" class="form-control" id="txtLongDesc" errorspan="sLongDescription" data-error="Please enter Long Description." divcontainer="dLongDescription"
+                                                      defaultvalue="">
+                                    </textarea>
+                                            <span class="help-block hide error" id="sLongDescription">Please Enter Long Description</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hide">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="eventJqxgrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/distadmin/js/AppAdmin/Masters/EventMaster.js?_=@DateTime.Now.Ticks"></script>
+<script src="/areas/admin/assets/Plugins/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('txtLongDesc');
+</script>

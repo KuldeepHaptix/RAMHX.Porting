@@ -1,0 +1,270 @@
+div.fancy-select {
+	position: relative;
+	color: #46565D;
+}
+
+div.fancy-select.disabled {
+	opacity: 0.5;
+}
+
+div.fancy-select select:focus + div.trigger {
+	box-shadow: 0 0 0 2px #4B5468;
+}
+
+div.fancy-select select:focus + div.trigger.open {
+	box-shadow: none;
+}
+
+div.fancy-select div.trigger {
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 10px 24px 9px 9px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: relative;
+	background: #99A5BE;
+	border: 1px solid #99A5BE;
+	border-top-color: #A5B2CB;
+	color: #4B5468;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	width: 200px;
+
+	transition:all 0.6s ease 0s;
+}
+
+div.fancy-select div.trigger:after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: 5px solid transparent;
+	border-top-color: #4B5468;
+	top: 20px;
+	right: 9px;
+}
+
+div.fancy-select div.trigger.open {
+	background: #4A5368;
+	border: 1px solid #475062;
+	color: #7A8498;
+	box-shadow: none;
+}
+
+div.fancy-select div.trigger.open:after {
+	border-top-color: #7A8498;
+}
+
+div.fancy-select ul.options {
+	list-style: none;
+	margin: 0;
+	position: absolute;
+	top: 40px;
+	right: 0;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 50;
+	max-height: 200px;
+	overflow: auto;
+	background: #62C8BF;
+	border-radius: 4px;
+	border-top: 1px solid #7DD8D2;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	min-width: 120px;
+
+	transition:all 0.3s ease 0s;
+}
+
+div.fancy-select ul.options.open {
+	visibility: visible;
+	top: 50px;
+	opacity: 1;
+
+	/* have to use a non-visibility transition to prevent this iOS issue (bug?): */
+	/*http://stackoverflow.com/questions/10736478/css-animation-visibility-visible-works-on-chrome-and-safari-but-not-on-ios*/
+	transition:all 0.4s ease 0s;
+}
+
+div.fancy-select ul.options.overflowing {
+	top: auto;
+	bottom: 40px;
+
+	transition:all 0.3s ease 0s;
+}
+
+div.fancy-select ul.options.overflowing.open {
+	top: auto;
+	bottom: 50px;
+
+	transition:all 0.3s ease 0s;
+}
+
+div.fancy-select ul.options li {
+	padding: 8px 12px;
+	color: #2B8686;
+	cursor: pointer;
+	white-space: nowrap;
+
+	transition:all 0.3s ease 0s;
+}
+
+div.fancy-select ul.options li.selected {
+	background: rgba(43,134,134,0.3);
+	color: rgba(255,255,255,0.75);
+}
+
+div.fancy-select ul.options li.hover {
+	color: #fff;
+}
+
+    
+/* Custom Finance */
+	/*light top bar*/
+  .right-top-bar .fancy-select
+  {
+         margin-top:2px;
+  }
+	div.fancy-select ul.options
+    {
+      padding-left:0;
+      max-height: none;
+      z-index: 9999;
+    }
+    .top-bar-light .right-top-bar div.fancy-select div.trigger
+    {
+      background: transparent;
+      padding:0;
+      box-shadow: none;
+      min-width: 100px;
+      width:auto;
+      border:none;
+      font-size:13px;
+      line-height: 22px;
+      color:#888888;
+      padding-right: 30px;
+      text-align: right;
+    }
+    .top-bar-light .right-top-bar div.fancy-select div.trigger:hover,.top-bar-light .right-top-bar div.fancy-select div.trigger:hover:after
+    {
+      color:#333;
+    }
+   .top-bar-light .right-top-bar div.fancy-select div.trigger::after
+   {
+    border:0;
+    content:"\f107";
+    font-family: FontAwesome;
+    font-size: 13px;
+    top:0;
+    right:15px;
+   color:#888888;
+   }
+   
+   .top-bar-light .right-top-bar div.fancy-select div.trigger.open:after
+   {
+      color:#555;
+      content:"\f106";
+   }
+   .top-bar-light .right-top-bar div.fancy-select div.trigger.open
+   {
+    color:#555;
+   }
+   .top-bar-light .right-top-bar div.fancy-select ul.options
+   {
+   	top:50px;
+    background:#f2f2f2;
+    border-color:#f2f2f2;
+    color:#888;
+   }
+   .top-bar-light .right-top-bar div.fancy-select ul.options li
+   {
+    color:#888;
+   }
+   .top-bar-light .right-top-bar div.fancy-select ul.options li.selected
+   {
+    color:#fff;
+    background:#2e363a;
+   }
+   .top-bar-light .right-top-bar div.fancy-select ul.options li:hover
+   {
+    color:#fff;
+    background: rgba(46, 54, 58,.8);
+   }
+    .top-bar-light .right-top-bar div.fancy-select ul.options.open
+    {
+    	top:30px;
+    }
+   /*dark top bar*/
+   .top-bar-dark .right-top-bar div.fancy-select div.trigger
+    {
+      background: transparent;
+      padding:0;
+      box-shadow: none;
+      min-width: 100px;
+      width:auto;
+      border:none;
+      font-size:13px;
+      line-height: 22px;
+      color:#888888;
+      padding-right: 20px;
+      text-align: right;
+    }
+    .top-bar-dark .right-top-bar div.fancy-select div.trigger:hover,.top-bar-dark .right-top-bar div.fancy-select div.trigger:hover:after
+    {
+      color:#f2f2f2;
+    }
+   .top-bar-dark .right-top-bar div.fancy-select div.trigger::after
+   {
+    border:0;
+    content:"\f107";
+    font-family: FontAwesome;
+    font-size: 13px;
+    top:0;
+    right:15px;
+   color:#888888;
+   }
+   .top-bar-dark .right-top-bar div.fancy-select ul.options
+   {
+    top:50px;
+   }
+   .top-bar-dark .right-top-bar div.fancy-select div.trigger.open:after
+   {
+      color:#555;
+      content:"\f106";
+   }
+   .top-bar-dark .right-top-bar div.fancy-select div.trigger.open
+   {
+    color:#555;
+   }
+   .top-bar-dark .right-top-bar div.fancy-select ul.options
+   {
+    background:#f2f2f2;
+    border-color:#f2f2f2;
+    color:#888;
+    border:none;
+   }
+   .top-bar-dark .right-top-bar div.fancy-select ul.options li
+   {
+    color:#888;
+   }
+   .top-bar-dark .right-top-bar div.fancy-select ul.options li.selected
+   {
+    color:#fff;
+    background:#2e363a;
+   }
+   .top-bar-dark .right-top-bar div.fancy-select ul.options li:hover
+   {
+    color:#fff;
+    background: rgba(46, 54, 58,.8);
+   }
+    .top-bar-dark .right-top-bar div.fancy-select ul.options.open
+    {
+    	top:30px;
+    }
+div.fancy-select div.trigger.open
+{
+  background: none;
+  border:0;
+}
+
+

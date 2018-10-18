@@ -17,11 +17,13 @@ namespace RAMHX.CMS.DataAccessCore
 
         public virtual DbSet<AppConfigs> AppConfigs { get; set; }
         public virtual DbSet<AppForgotPasswordToken> AppForgotPasswordToken { get; set; }
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<Cms301redirection> Cms301redirection { get; set; }
         public virtual DbSet<CmsPackageInstallations> CmsPackageInstallations { get; set; }
         public virtual DbSet<CmsPageFieldValues> CmsPageFieldValues { get; set; }
@@ -57,14 +59,13 @@ namespace RAMHX.CMS.DataAccessCore
         public virtual DbSet<CoreModuleTestimonialCategory> CoreModuleTestimonialCategory { get; set; }
         public virtual DbSet<CoreModuleTestimonialMaster> CoreModuleTestimonialMaster { get; set; }
         public virtual DbSet<HtmlModule> HtmlModule { get; set; }
-        public virtual DbSet<MigrationHistory> MigrationHistory { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=SOURCEVED01\\MSSQL2016;Database= RAMHX_DB; User ID=sa; Password=123");
+                optionsBuilder.UseSqlServer("Server=SOURCEVED01\\MSSQL2016;Database=RAMHX_DB;User ID=sa;Password=123");
             }
         }
 
@@ -112,101 +113,123 @@ namespace RAMHX.CMS.DataAccessCore
                 entity.Property(e => e.ExpireDateTime).HasColumnType("datetime");
             });
 
+            modelBuilder.Entity<AspNetRoleClaims>(entity =>
+            {
+                entity.HasIndex(e => e.RoleId);
+
+                entity.Property(e => e.RoleId).IsRequired();
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.AspNetRoleClaims)
+                    .HasForeignKey(d => d.RoleId);
+            });
+
             modelBuilder.Entity<AspNetRoles>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasMaxLength(128)
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.NormalizedName)
+                    .HasName("RoleNameIndex")
+                    .IsUnique()
+                    .HasFilter("([NormalizedName] IS NOT NULL)");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(256);
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Name).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedName).HasMaxLength(256);
             });
 
             modelBuilder.Entity<AspNetUserClaims>(entity =>
             {
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(128);
+                entity.HasIndex(e => e.UserId);
+               
+                entity.Property(e => e.UserId).IsRequired();
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserClaims)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId");
+                    .HasForeignKey(d => d.UserId);
             });
 
             modelBuilder.Entity<AspNetUserLogins>(entity =>
             {
-                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey, e.UserId });
+                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
+
+                entity.HasIndex(e => e.UserId);
 
                 entity.Property(e => e.LoginProvider).HasMaxLength(128);
 
                 entity.Property(e => e.ProviderKey).HasMaxLength(128);
 
-                entity.Property(e => e.UserId).HasMaxLength(128);
+                entity.Property(e => e.UserId).IsRequired();
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserLogins)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId");
+                    .HasForeignKey(d => d.UserId);
             });
 
             modelBuilder.Entity<AspNetUserRoles>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.RoleId });
 
-                entity.Property(e => e.UserId).HasMaxLength(128);
-
-                entity.Property(e => e.RoleId).HasMaxLength(128);
+                entity.HasIndex(e => e.RoleId);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.AspNetUserRoles)
-                    .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId");
+                    .HasForeignKey(d => d.RoleId);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserRoles)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId");
+                    .HasForeignKey(d => d.UserId);
             });
 
             modelBuilder.Entity<AspNetUsers>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasMaxLength(128)
-                    .ValueGeneratedNever();
+                entity.HasIndex(e => e.NormalizedEmail)
+                    .HasName("EmailIndex");
+                entity.Ignore(e=>e.AspNetUserClaims);
+                entity.Ignore(e => e.AspNetUserLogins);
+                entity.Ignore(e => e.AspNetUserRoles);
+                entity.Ignore(e => e.AspNetUserTokens);
+                entity.HasIndex(e => e.NormalizedUserName)
+                    .HasName("UserNameIndex")
+                    .IsUnique()
+                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
 
-                entity.Property(e => e.Address)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.City)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.Address).HasMaxLength(450);
+
+                entity.Property(e => e.City).HasMaxLength(450);
 
                 entity.Property(e => e.Email).HasMaxLength(256);
 
-                entity.Property(e => e.FirstName)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.FirstName).HasMaxLength(450);
 
-                entity.Property(e => e.Gender)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.Gender).HasMaxLength(20);
 
-                entity.Property(e => e.LastName)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                entity.Property(e => e.LastName).HasMaxLength(450);
 
                 entity.Property(e => e.LockoutEndDateUtc).HasColumnType("datetime");
 
-                entity.Property(e => e.Mobile)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                entity.Property(e => e.Mobile).HasMaxLength(20);
 
-                entity.Property(e => e.UserName)
-                    .IsRequired()
-                    .HasMaxLength(256);
+                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+
+                entity.Property(e => e.UserName).HasMaxLength(256);
+            });
+
+            modelBuilder.Entity<AspNetUserTokens>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
+
+                entity.Property(e => e.LoginProvider).HasMaxLength(128);
+
+                entity.Property(e => e.Name).HasMaxLength(128);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetUserTokens)
+                    .HasForeignKey(d => d.UserId);
             });
 
             modelBuilder.Entity<Cms301redirection>(entity =>
@@ -326,7 +349,10 @@ namespace RAMHX.CMS.DataAccessCore
             modelBuilder.Entity<CmsPages>(entity =>
             {
                 entity.HasKey(e => e.PageId);
-
+                entity.Ignore(e=>e.CmsPageFieldValues);
+                entity.Ignore(e => e.CmsPageTemplate);
+                entity.Ignore(e => e.InverseParentPage);
+                entity.Ignore(e => e.CmsTemplates);
                 entity.ToTable("cms_Pages");
 
                 entity.Property(e => e.PageId)
@@ -413,6 +439,12 @@ namespace RAMHX.CMS.DataAccessCore
             modelBuilder.Entity<CmsTemplates>(entity =>
             {
                 entity.HasKey(e => e.TemplateId);
+
+                entity.Ignore(e=>e.CmsPageFieldValues);
+
+                entity.Ignore(e => e.CmsPageTemplate);
+
+                entity.Ignore(e => e.CmsTemplateFields);
 
                 entity.ToTable("cms_Templates");
 
@@ -971,23 +1003,6 @@ namespace RAMHX.CMS.DataAccessCore
                 entity.Property(e => e.PageName)
                     .HasMaxLength(100)
                     .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<MigrationHistory>(entity =>
-            {
-                entity.HasKey(e => new { e.MigrationId, e.ContextKey });
-
-                entity.ToTable("__MigrationHistory");
-
-                entity.Property(e => e.MigrationId).HasMaxLength(150);
-
-                entity.Property(e => e.ContextKey).HasMaxLength(300);
-
-                entity.Property(e => e.Model).IsRequired();
-
-                entity.Property(e => e.ProductVersion)
-                    .IsRequired()
-                    .HasMaxLength(32);
             });
         }
     }

@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    HttpContextAccessor context = new HttpContextAccessor();
+    if (context.HttpContext.Request.Query["dialog"] == "1")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_PopupLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+
+}

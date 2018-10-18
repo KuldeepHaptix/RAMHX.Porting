@@ -1,0 +1,34 @@
+﻿@*<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="@ViewBag.PageMetaKeywords" />
+    <meta name="description" content="@ViewBag.PageMetaDescription" />
+    <title>@ViewBag.Title</title>
+    @*Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")
+    @Html.Action("Index", "HtmlModule", new { id = "CSS" })*@
+@*</head>
+<body>
+    <div id="wrapper" style="width: 1200px;">
+        @Html.Action("Index", "HtmlModule", new { id = "TopMenu" })
+        @@Html.Action("Index", "HtmlModule", new { id = "TopLogo" }@@
+        
+
+        <div class="container body-content">
+            @RenderBody()
+
+        </div>
+        @Html.Action("Index", "HtmlModule", new { id = "footerTweets" })
+        @@Html.Action("Index", "HtmlModule", new { id = "footerLinks" })@
+        @Html.Action("Index", "HtmlModule", new { id = "footerButtom" })
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @@Scripts.Render("~/bundles/bootstrap")@
+    @RenderSection("scripts", required: false)
+    @Html.Action("Index", "HtmlModule", new { id = "JS" })
+
+</body>
+</html>*@

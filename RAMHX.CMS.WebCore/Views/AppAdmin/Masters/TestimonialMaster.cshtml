@@ -1,0 +1,125 @@
+﻿@{
+    //Page.Title = "Title goes here";
+    Layout = null;
+}
+
+<section class="content-header">
+    <h1>
+        Testimonial Master
+        <small>Maintain Testimonial</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Testimonial</a></li>
+        <li><a href="#">Testimonial Master</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New Testimonial
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Testimonial Details - Edit</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-4">
+
+                                        <div class="form-group">
+                                            <div id="dName">
+                                                <label class="control-label">Name</label>
+                                                <input type="text" name="Name" class="form-control" id="txtName" isrequired="1" errorspan="sName" divcontainer="dName"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sName">Please Enter Name</span>
+                                            </div>
+                                        </div>
+
+                                       
+
+                                        <div class="form-group hide">
+                                            <div id="dPhotoUrl">
+                                                <label class="control-label">Image URL</label>
+                                                <input type="text" name="Name" class="form-control" id="txtImageUrl" isrequired="0" data-error="Please enter Photo Url." errorspan="sPhotoUrl" divcontainer="dPhotoUrl"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sPhotoUrl">Please Enter Image Url</span>
+                                                <a class="" href="javascript:void(0)" onclick="FileMngrDialog('Select Banner');"><i class="fa fa-folder-open-o fa-1x" id="Dialog"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Photo</label>
+                                            <div>
+                                                <img id="imgPhoto" />
+                                            </div>
+                                            <div>
+                                                <input type="file" name="updPhoto" id="updPhoto" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dCategoryId">
+                                                <label class="control-label">Category</label>
+                                                <select type="text" name="CategoryId" class="form-control" id="ddlCategoryId" isrequired="1" data-error="Please enter Category." errorspan="sCategoryId" divcontainer="dCategoryId"
+                                                        defaultvalue="0" />
+                                                <span class="help-block hide error" id="sCategoryId">Please Select Category</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-8">
+                                        <div id="dLongDescription">
+                                            <label class="control-label">Experiences</label>
+                                            <textarea rows="4" cols="40" class="form-control" id="txtExperience" errorspan="sExperiences" isrequired="1" data-error="Please enter Experiences." divcontainer="dExperiences" defaultvalue="">
+                                    </textarea>
+                                            <span class="help-block hide error" id="sExperiences">Please Enter Experiences</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div>
+                                <div class="form-group actionBar">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hide">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="productJqxgrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="dialogFileMngr" hidden="hidden" style="overflow:hidden" title="Media Library">
+    <iframe id="iFrmFileManager" height="250%" width="100%" style="border: 0px"></iframe>
+</div>
+
+<script src="~/distadmin/js/AppAdmin/Masters/TestimonialMaster.js?_=@DateTime.Now.Ticks"></script>
+<script src="/areas/admin/assets/Plugins/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('txtExperience');
+</script>

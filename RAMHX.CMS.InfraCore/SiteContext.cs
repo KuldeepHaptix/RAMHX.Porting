@@ -19,10 +19,10 @@ namespace RAMHX.CMS.InfraCore
             get
             {
             
-                if (HttpContext.Current.Application["TotalOnlineUsers"] != null)
-                {
-                    return HttpContext.Current.Application["TotalOnlineUsers"].ToString();
-                }
+                //if (HttpContext.Current.Application["TotalOnlineUsers"] != null)
+                //{
+                //    return HttpContext.Current.Application["TotalOnlineUsers"].ToString();
+                //}
                 return "0";
             }
         }
@@ -77,7 +77,7 @@ namespace RAMHX.CMS.InfraCore
             {
                 if (CurrentUser_DBObject != null)
                 {
-                    return CurrentUser_DBObject.AspNetUserRoles.FirstOrDefault(role => role.Role.ToLower() == "admin") != null;
+                    return CurrentUser_DBObject.AspNetUserRoles.FirstOrDefault(role => role.Role.Name.ToLower() == "admin") != null;
                 }
 
                 return false;
@@ -106,7 +106,7 @@ namespace RAMHX.CMS.InfraCore
                 {
                     var curr = CurrentUser_DBObject;
                     if (curr != null)
-                        return curr.AspNetUserRoles.ToList();
+                        return curr.AspNetRoles.ToList();
                 }
 
                 return new List<AspNetRoles>();
@@ -127,7 +127,7 @@ namespace RAMHX.CMS.InfraCore
             get
             {
 
-                return CurrentUser.GetUserName();
+                return _userManager.GetUserName(this.Context.HttpContext.User);
             }
         }
 
@@ -136,7 +136,7 @@ namespace RAMHX.CMS.InfraCore
         {
             get
             {
-                return Guid.Parse(CurrentUser.GetUserId());
+                return Guid.Parse(_userManager.GetUserId(this.Context.HttpContext.User));
             }
         }
 
@@ -144,19 +144,20 @@ namespace RAMHX.CMS.InfraCore
         {
             get
             {
-                if (HttpContext.Current.Items["CurrentPage"] != null && HttpContext.Current.Items["CurrentPage"] is CmsPages)
+                if (this.Context.HttpContext.Items["CurrentPage"] != null && this.Context.HttpContext.Items["CurrentPage"] is CmsPages)
                 {
-                    return (CmsPages)HttpContext.Current.Items["CurrentPage"];
+                    return (CmsPages)this.Context.HttpContext.Items["CurrentPage"];
                 }
                 return null;
             }
         }
 
-        public static RAMHX.CMS.InfraCore.Enums.PageMode CurrentPage_Mode
+        public  RAMHX.CMS.InfraCore.Enums.PageMode CurrentPage_Mode
         {
             get
             {
-                string mode = HttpContext.Current.Request.QueryString["rh_mode"] ?? string.Empty;
+                var qsKey = this.Context.HttpContext.Request.Query.FirstOrDefault(qs => qs.Key == "rh_mode");
+                string mode = qsKey.Key.ToString() ?? string.Empty;
                 mode = mode.ToUpper();
                 if (mode == "EDIT")
                 {
@@ -171,11 +172,11 @@ namespace RAMHX.CMS.InfraCore
             }
         }
 
-        public static bool IsDialogPage
+        public  bool IsDialogPage
         {
             get
             {
-                return (HttpContext.Current.Request.UrlReferrer.PathAndQuery.ToLower().Contains("dialog=1"));
+                return (this.Context.HttpContext.Request.Path.Value.ToLower().Contains("dialog=1"));
             }
         }
 
@@ -193,7 +194,7 @@ namespace RAMHX.CMS.InfraCore
 
         public static CmsPages GetPageById(Guid pageid)
         {
-            return Pages.FirstOrDefault(page => page.PageID == pageid);
+            return Pages.FirstOrDefault(page => page.PageId == pageid);
         }
 
         public static CmsPages GetPageByPath(string pageItemPath)
@@ -204,7 +205,7 @@ namespace RAMHX.CMS.InfraCore
             return null;
         }
 
-        public static bool HasCurrentUserInRole(string rolename)
+        public  bool HasCurrentUserInRole(string rolename)
         {
             try
             {

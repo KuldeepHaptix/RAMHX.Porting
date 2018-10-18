@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace RAMHX.CMS.DataAccessCore.Extension
 {
-    public static class  EntityExtensions
+    public static class EntityExtensions
     {
         public static List<CmsPageFieldValues> FieldValues(this CmsPages page)
         {

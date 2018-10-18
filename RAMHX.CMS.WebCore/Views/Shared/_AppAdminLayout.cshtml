@@ -1,0 +1,446 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@*@if (!Request.IsAuthenticated)
+    {
+
+
+    }*@
+@{
+
+    var CurrentLoggedInUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+    RAMHX.CMS.DataAccessCore.DatabaseEntities dbEntity = new RAMHX.CMS.DataAccessCore.DatabaseEntities();
+   
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cityscape Interior | Admin - @ViewBag.Title</title>
+
+    <!-- Bootstrap 3.3.6 -->
+    <environment exclude="Development">
+        @*~/Areas/Admin/Theme/AdminLTE/bootstrap/css/bootstrap.min.css*@
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Theme style -->
+    </environment>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/Areas/Admin/Assets/bootstrap.min.css">
+        <link rel="stylesheet" href="/Areas/Admin/Theme/AdminLTE/dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="~/Areas/Admin/Theme/AdminLTE/dist/css/skins/_all-skins.min.css">
+        <link href="~/Areas/Admin/Assets/jqwidgets/styles/jqx.base.css" rel="stylesheet" />
+
+
+        <!-- iCheck -->
+        @*
+        <link rel="stylesheet" href="/Areas/Admin/Theme/AdminLTE/plugins/iCheck/flat/blue.css">*@
+        <!-- Morris chart -->
+        @*
+        <link rel="stylesheet" href="/Areas/Admin/Theme/AdminLTE/plugins/morris/morris.css">*@
+        <!-- jvectormap -->
+        @*
+        <link rel="stylesheet" href="/Areas/Admin/Theme/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css">*@
+
+        <!-- Date Picker -->
+        <link rel="stylesheet" href="/Areas/Admin/Theme/AdminLTE/plugins/datepicker/datepicker3.css">
+
+        <!-- Date Picker -->
+
+        <link rel="stylesheet" href="/Plugins/bootstrap-datetimepicker.css">
+        <link rel="stylesheet" href="/Plugins/bootstrap-datetimepicker-standalone.css">
+        <link href="/plugins/select2/select2.min.css" rel="stylesheet" />
+
+        <!-- jQuery 2.2.3 -->
+        <script type="text/javascript">
+        var CurrentLoggedInUserId = @UserManager.GetUserId(this.User).ToString();
+  
+        var isAdminUser = @(this.User.IsInRole("Admin") ? "1" : "0");
+           var de=@this.User.HasClaim(c => c.Value=="Admin");
+        </script>
+
+        <!-- Daterange picker -->
+
+        <link rel="stylesheet" href="~/Areas/Admin/Theme/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+        <!-- bootstrap wysihtml5 - text editor -->
+        @*
+        <link rel="stylesheet" href="/Areas/Admin/Theme/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">*@
+        <link href="~/Areas/Admin/Assets/css/jquery-ui.css" rel="stylesheet" /> @*
+
+        <link href="/Areas/Admin/Theme/AdminLTE/Assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <link href="/Areas/Admin/Theme/AdminLTE/Assets/Fontawesome/font-awesome.min.css" rel="stylesheet" />*@
+
+        <!-- jQuery 2.2.3 -->
+        <script src="~/Areas/Admin/Theme/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="~/Areas/Admin/Assets/js/jquery-ui.min.js"></script>
+        @*<script src="/Dist/js/jquery.blockUI.js"></script>*@
+        <script src="../distadmin/js/jquery.blockUI.js"></script>
+        <script src="../Areas/Admin/Assets/js/bootbox.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <!-- Bootstrap 3.3.6 -->
+        <script src="~/Areas/Admin/Theme/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/Plugins/jquery.capitalize.js"></script>
+        @*<script src="/fronted/js/common.js"></script>*@
+        <script src="../distcommon/common.js"></script>
+
+    </environment>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    @*
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">*@
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/appadmin" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>C</b>MS</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>A</b>dmin</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        @*@if ((await AuthorizationService.AuthorizeAsync(User, "RequireAuthenticatedUser")).Succeeded)
+                        {*@
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="user user-menu">
+                            <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">@UserManager.GetUserName(User)</span>
+                            </a>
+                        </li>
+
+
+                        <li class="user user-menu">
+
+                            <a href="/Identity/Account/Manage/ChangePassword" title="Change Password" id="hypChangePwd" class="btn btn-flat topButton"><i class="fa fa-lock"></i></a>
+                        </li>
+                        <li class="user user-menu">
+                            <a href="/Admin/Account/LogOff" title="Log off"><i class="fa fa-power-off fa-1x"></i></a>
+                        </li>
+                        @*}
+                        else
+                        {*@
+                        <li><a href="/Identity/Account/Login" id="loginLink">Log in</a></li>
+                        @*}*@
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                @if (SignInManager.IsSignedIn(this.User) && this.User.HasClaim(c => c.Value == "Admin"))
+                {
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+
+                        <li class="">
+                            <a href="/appadmin?_=@DateTime.Now.Ticks">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Gallery</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li><a href="/appadmin/gallery/category?_=@DateTime.Now.Ticks" title="Pages"><i class="fa fa-file fa-1x text-green"></i> Category</a></li>
+                                <li><a href="/appadmin/gallery/album?_=@DateTime.Now.Ticks" title="Pages"><i class="fa fa-file fa-1x text-green"></i> Album</a></li>
+                                <a asp-page="/AppAdmin/Gallery/Album">Create</a>
+                                <li class="hide"><a href="/appadmin/gallery/albumitems?_=@DateTime.Now.Ticks" title="Pages"><i class="fa fa-file fa-1x text-green"></i> Album Items</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Products</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/productcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/productmaster"><i class="fa fa-circle-o"></i>Product Master</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Packages</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/packagecategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/packagemaster"><i class="fa fa-circle-o"></i>Package Master</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Projects</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/projectcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/projectmaster"><i class="fa fa-circle-o"></i>Project Master</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Jobs</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/jobcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/jobmaster"><i class="fa fa-circle-o"></i>Job Master</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Testimonials</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/testimonialcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/testimonialmaster"><i class="fa fa-circle-o"></i>Testimonial Master</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>FAQ's</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/faqcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/faqmaster"><i class="fa fa-circle-o"></i>FAQ Master</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Sliders</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/slidercategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/slidermaster"><i class="fa fa-circle-o"></i>Slider Master</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>News</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/newscategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/newsmaster"><i class="fa fa-circle-o"></i>News Master</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Events</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/eventcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/eventmaster"><i class="fa fa-circle-o"></i>Event Master</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Blogs</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/blogcategory"><i class="fa fa-circle-o"></i>Categories</a></li>
+                                <li><a href="/appadmin/masters/blogmaster"><i class="fa fa-circle-o"></i>Blog Master</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>SMS</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/appadmin/masters/sendquicksms"><i class="fa fa-circle-o"></i>Quick SMS</a></li>
+                                <li><a href="/appadmin/masters/smshistory"><i class="fa fa-circle-o"></i>SMS History</a></li>
+                            </ul>
+                        </li>
+
+
+                        @if (SignInManager.IsSignedIn(User) && this.User.HasClaim(c => c.Value == "Admin"))
+                        {
+                            <li class="header">Administration</li>
+                            <li><a href="/admin?_=@DateTime.Now.Ticks" title="Administration"><i class="fa fa-book fa-1x text-red"></i> Administration</a></li>
+
+                        }
+                    </ul>
+
+                }
+
+                @if (SignInManager.IsSignedIn(User) && this.User.HasClaim(c => c.Value == "Admin"))
+                {
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                }
+
+                @if (SignInManager.IsSignedIn(User) && this.User.HasClaim(c => c.Value == "Admin"))
+                {
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+
+                        <li class="">
+                            <a href="/appadmin/dashboard?_=@DateTime.Now.Ticks">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+
+                        </li>
+                    </ul>
+                }
+
+
+            </section>
+
+        </aside>
+        <div class="content-wrapper">
+            @RenderBody()
+
+        </div>
+       
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0.2
+            </div>
+            <strong>Copyright &copy; @DateTime.Now.Year <a href="http://www.haptix.biz">HaptiX</a>.</strong>                        All rights reserved.
+        </footer>
+
+    </div>
+
+
+    @*
+        <script src="/Areas/Admin/Theme/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>*@ @*
+        <script src="/Areas/Admin/Theme/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>*@
+        <!-- jQuery Knob Chart -->
+        @*
+            <script src="/Areas/Admin/Theme/AdminLTE/plugins/knob/jquery.knob.js"></script>*@
+        <!-- daterangepicker -->
+
+        <environment include="Development">
+            <script src="~/Plugins/bootstrap-datetimepicker.js"></script>
+
+            <script src="~/Areas/Admin/Theme/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+
+            <!-- datepicker -->
+            <script src="~/Areas/Admin/Theme/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+        </environment>
+
+        <!-- Bootstrap WYSIHTML5 -->
+        @*
+            <script src="/Areas/Admin/Theme/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>*@
+        <!-- Slimscroll -->
+        @*
+            <script src="/Areas/Admin/Theme/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>*@
+        <!-- FastClick -->
+        @*
+            <script src="/Areas/Admin/Theme/AdminLTE/plugins/fastclick/fastclick.js"></script>*@
+        <!-- AdminLTE App -->
+        <environment include="Development">
+            <script src="/Areas/Admin/Theme/AdminLTE/dist/js/app.min.js"></script>
+            <script src="/Areas/Admin/Assets/jqwidgets/jqx-all.js"></script>
+            <script src="/Areas/Admin/Assets/jqwidgets/jqxgrid.aggregates.js"></script>
+            <script src="/plugins/select2/select2.full.min.js"></script>
+        </environment>
+
+        <environment exclude="Development">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+        </environment>
+        @*
+            <script src="/Areas/Admin/Theme/AdminLTE/Assets/js/jquery.dataTables.min.js"></script>
+            <script src="/Areas/Admin/Theme/AdminLTE/Assets/js/common.js"></script>
+            <script src="/Areas/Admin/Theme/AdminLTE/Assets/js/page.IndexHtmlModuleI.js"></script>*@ @*
+            <script src="~/Areas/Admin/Assets/js/page.IndexHtmlModuleI.js"></script>*@
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+            @*
+                <script src="/Areas/Admin/Theme/AdminLTE/dist/js/pages/dashboard.js"></script>*@
+            <!-- AdminLTE for demo purposes -->
+            @RenderSection("~/bundles/bottomjs", required: false)
+            @RenderSection("~/bundles/toastrjs", required: false)
+            @RenderSection("scripts", required: false) @*
+
+                                                                                                                                       </div>
+                    </div>
+                </div>*@
+
+           
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#divChangePwdPopup").jqxWindow({
+                        width: 400, resizable: false, isModal: true, autoOpen: false, modalOpacity: 0.01, theme: jqxTheme
+                    });
+                    $("#hypChangePwd").click(function () {
+                        $("#ifrChangePwd").attr("src", "/account/changepassword");
+                        $("#divChangePwdPopup").jqxWindow("move", $(window).width() / 2 - $("#divChangePwdPopup").jqxWindow("width") / 2, $(window).height() / 2 - $("#divChangePwdPopup").jqxWindow("height") / 2);
+                        // show the popup window.
+                        $("#divChangePwdPopup").jqxWindow('open');
+                    });
+                });
+            </script>
+        </body>
+    </html>

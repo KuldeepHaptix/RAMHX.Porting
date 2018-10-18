@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewData["Title"] = "ContactUs";
+    Layout = "~/Views/Shared/_AppAdminLayout.cshtml";
+}
+
+<section>
+    <div class="sub-header sub-header-1 sub-header-contact fake-position">
+        <div class="sub-header-content">
+            <h2 class="text-cap white-text">Contact Us</h2>
+
+            <ol class="breadcrumb breadcrumb-arc text-cap">
+                <li><a href="/">Home</a></li>
+                <li>Contact Us</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<!-- End Section Sub Header --><!-- Section form contact -->
+
+<section class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="contact-warp">
+                <div class="col-md-6 ">
+                    <div class="left-contact" id="divContactForm">
+                        <h3 class="text-cap">Send Your Message</h3>
+                        <form id="frmContactUs">
+                            <div class="row">
+                                <div class="form-group col-sm-12" id="dNameContact">
+                                    <input class="form-control" id="txtName" name="txtName" placeholder="Your Name" type="text" isrequired="1" errorspan="sNameContactError" divcontainer="dNameContact" defaultvalue="" />
+                                    <span class="help-block hide error" id="sNameContactError">Please Enter Your Name</span>
+                                </div>
+                                <div class="form-group col-sm-12" id="dEmailContact">
+                                    <input class="form-control" id="txtFromEmail" name="txtFromEmail" placeholder="Your Email" type="email" isrequired="1" errorspan="sEmailContactError" divcontainer="dEmailContact" defaultvalue="" />
+                                    <span class="help-block hide error" id="sEmailContactError">Please Enter Your Email</span>
+                                </div>
+
+                                <div class="form-group col-sm-12" id="dMobileContact">
+                                    <input class="form-control" id="txtMobile" name="txtMobile" placeholder="Mobile Number" type="text" isrequired="0" errorspan="sMobileContactError" divcontainer="dMobileContact" defaultvalue="" />
+                                    <span class="help-block hide error" id="sMobileContactError">Please Enter Mobile</span>
+                                </div>
+                            </div>
+
+                            <div class="input-content">
+                                <div class="form-group form-textarea"><textarea class="form-control" id="txtMessage" name="txtMessage" placeholder="Your Messages" rows="6"></textarea></div>
+                            </div>
+                            <button class="ot-btn btn-main-color btn-long btn-submit text-cap" id="btnSendEmail">Submit</button>
+                            <input type="hidden" name="txtTemplate" value="ContactUs" />
+                            <input type="hidden" name="txtEmailSubject" value="Cityspace - Contact Us Inquiry" />
+                            <input type="hidden" name="txtToEmail" value="ashish.haptix@gmail.com" />
+
+                        </form>
+                        <div id="divSuccessContact" class="hide">
+                            <div class="form-group alert-success col-sm-12">
+                                <h4>Thank You!</h4>
+                                <p> We have received your request. We will get back to you shortly.</p>
+                            </div>
+                        </div>
+                        <!-- End Form -->
+                    </div>
+                    <!-- End col -->
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="right-contact">
+                        <h3 class="text-cap">Contact Info</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque metus arcu, malesuada a est eget, maximus efficitur sapien.</p>
+
+                        <ul class="address">
+                            <li>
+                                <p><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp; 4th floor, 405, Orchid Plaza, B/H Mc Donald, Sama Savli Road, Vaodara - 390024</p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; (+91) 9909364110</p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-fax" aria-hidden="true"></i>&nbsp;(+91) 9909343775</p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp; cityscape1965@gmail.com</p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp; Mon-sat 09:00 - 18:00</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End col -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Section --><!-- Section Google Map -->
+
+<div class="no-padding ">
+    <section>
+        <div>
+            <script>
+                /* --------------------------------------------
+                Google Map
+                -------------------------------------------- */
+                window.onload = MapLoadScript;
+                function GmapInit() {
+                    Gmap = $('.map-canvas');
+                    //22.351237,73.2011948
+                    Gmap.each(function () {
+                        var $this = $(this),
+                            lat = 22.351237,
+                            lng = 73.2011948,
+                            zoom = 12,
+                            scrollwheel = false,
+                            zoomcontrol = true,
+                            draggable = true,
+                            mapType = google.maps.MapTypeId.ROADMAP,
+                            title = '',
+                            contentString = '',
+                            dataLat = $this.data('lat'),
+                            dataLng = $this.data('lng'),
+                            dataZoom = $this.data('zoom'),
+                            dataType = $this.data('type'),
+                            dataScrollwheel = $this.data('scrollwheel'),
+                            dataZoomcontrol = $this.data('zoomcontrol'),
+                            dataHue = $this.data('hue'),
+                            dataTitle = $this.data('title'),
+                            dataContent = $this.data('content');
+
+                        if (dataZoom !== undefined && dataZoom !== false) {
+                            zoom = parseFloat(dataZoom);
+                        }
+                        if (dataLat !== undefined && dataLat !== false) {
+                            lat = parseFloat(dataLat);
+                        }
+                        if (dataLng !== undefined && dataLng !== false) {
+                            lng = parseFloat(dataLng);
+                        }
+                        if (dataScrollwheel !== undefined && dataScrollwheel !== null) {
+                            scrollwheel = dataScrollwheel;
+                        }
+                        if (dataZoomcontrol !== undefined && dataZoomcontrol !== null) {
+                            zoomcontrol = dataZoomcontrol;
+                        }
+                        if (dataType !== undefined && dataType !== false) {
+                            if (dataType == 'satellite') {
+                                mapType = google.maps.MapTypeId.SATELLITE;
+                            } else if (dataType == 'hybrid') {
+                                mapType = google.maps.MapTypeId.HYBRID;
+                            } else if (dataType == 'terrain') {
+                                mapType = google.maps.MapTypeId.TERRAIN;
+                            }
+                        }
+                        if (dataTitle !== undefined && dataTitle !== false) {
+                            title = dataTitle;
+                        }
+                        if (navigator.userAgent.match(/iPad|iPhone|Android/i)) {
+                            draggable = false;
+                        }
+
+                        var mapOptions = {
+                            zoom: zoom,
+                            scrollwheel: scrollwheel,
+                            zoomControl: zoomcontrol,
+                            draggable: draggable,
+                            center: new google.maps.LatLng(lat, lng),
+                            mapTypeId: mapType
+                        };
+                        var map = new google.maps.Map($this[0], mapOptions);
+
+                        var image = window.location.protocol + "//" + window.location.hostname + '/distfrontend/images/Contact/map-marker.png';
+                        if (dataContent !== undefined && dataContent !== false) {
+                            contentString = '<div class="map-data">' + '<h6>' + title + '</h6>' + '<div class="map-content">' + dataContent + '</div>' + '</div>';
+                        }
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(lat, lng),
+                            map: map,
+                            icon: image,
+                            title: title
+                        });
+                        if (dataContent !== undefined && dataContent !== false) {
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infowindow.open(map, marker);
+                            });
+                        }
+
+                        if (dataHue !== undefined && dataHue !== false) {
+                            var styles = [
+                                {
+                                    stylers: []
+                                }
+                            ];
+                            map.setOptions({ styles: styles });
+                        }
+                    });
+                }
+
+                function MapLoadScript() {
+                    "use strict";
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDh015i50EB_Ol2dxNvgd11iJBYJhfpziI&callback=GmapInit';
+                    document.body.appendChild(script);
+                }
+
+            </script>
+        </div>
+    </section>
+
+    <section>
+        <div id="map">
+            <div class="map-section">
+                <div class="map-canvas" data-content="422 Orchid Plaza, B/H McDonald's Complex,&lt;br/&gt;Near Canal, Sama-Salvi Road, &lt;br/&gt; Vadodara - 390024&lt;br/&gt;
+  M: +91 92271 36319&lt;br/&gt;
+  E: &lt;a  data-cke-saved-href='mailto:info@haptix.biz' href='mailto:info@haptix.biz' _fcksavedurl='mailto:info@haptix.biz'&gt;info@haptix.biz&lt;/a&gt;" data-hue="#ffc400" data-lat="22.332728" data-lng="73.180781" data-title="HaptiX" data-type="roadmap" data-zoom="16" style="height: 550px;">&nbsp;</div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End Section -->
+<script src="~/distadmin/js/Contact.js"></script>
+

@@ -37,7 +37,7 @@ namespace RAMHX.CMS.DataAccessCore
         log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static void TakeAutoDailyBackup(bool takeNow)
         {
-           
+
 
             if (GetAppSettings("RAMHX.AllowAutoBack") != "true")
             {
@@ -174,7 +174,7 @@ namespace RAMHX.CMS.DataAccessCore
                     release.InstalledDate = DateTime.Now;
                     dataContext.CmsUpgradeHistory.Add(release);
                     dataContext.SaveChanges();
-                   // dataContext.Database.Connection.Close();
+                    // dataContext.Database.Connection.Close();
                     logger.Info("Upgraded History Table into database for " + release.Script);
                 }
             }

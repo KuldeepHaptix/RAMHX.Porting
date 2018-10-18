@@ -1,0 +1,111 @@
+﻿@{
+    //Page.Title = "Title goes here";
+    Layout = null;
+
+}
+<section class="content-header">
+    <h1>
+        Job Master
+        <small>Maintain Jobs</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">Job</a></li>
+        <li><a href="#">Job Master</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="">
+                        <button type="button" id="btnAddNew" class="btn btn-link">
+                            Add New Job
+                        </button>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="jqxgrid"></div>
+                        <div id="popupWindow" class="hide">
+                            <div>Job Details - Edit</div>
+                            <div style="overflow: auto;">
+                                <div class="callout callout-danger hide errorDiv">
+                                    <h4> Please Correct Below Error(s)</h4>
+                                    <p id="perror"></p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+
+                                        <div class="form-group">
+                                            <div id="dTitle">
+                                                <label class="control-label">Title</label>
+                                                <input type="text" name="Title" class="form-control" id="txtTitle" errorspan="sTitle" isrequired="1" data-error="Please enter Title." divcontainer="dTitle" defaultvalue="" />
+                                                <span class="help-block hide error" id="sTitle">Please Enter Title</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dQualification">
+                                                <label class="control-label">Qualification</label>
+                                                <input type="text" name="Qaulification" class="form-control" id="txtQualification" isrequired="1" data-error="Please enter Qualification." errorspan="sQualification" divcontainer="dQualification" defaultvalue="" />
+                                                <span class="help-block hide error" id="sQualification">Please Enter Qualification</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dExperience">
+                                                <label class="control-label">Experience</label>
+                                                <input type="text" name="Experience" class="form-control" id="txtExperience" isrequired="1" errorspan="sQualification" divcontainer="dExperience"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sQualification">Please Enter Usage</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dSpecialization">
+                                                <label class="control-label">Specialization</label>
+                                                <input type="text" name="Specialization" class="form-control" id="txtSpecialization" isrequired="1" errorspan="sSpecialization" divcontainer="dSpecialization"
+                                                       defaultvalue="" />
+                                                <span class="help-block hide error" id="sSpecialization">Please Enter Specialization</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div id="dCategoryId">
+                                                <label class="control-label">Category</label>
+                                                <select type="text" name="CategoryId" class="form-control" id="ddlCategoryId" isrequired="1" data-error="Please enter Category." errorspan="sCategoryId" divcontainer="dCategoryId"
+                                                        defaultvalue="0" />
+                                                <span class="help-block hide error" id="sCategoryId">Please Select Category</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div>
+                                <div class="form-group actionBar col-lg-12">
+                                    <input class="btn crud-submit btn-success" type="button" id="btnSave" value="Save" />
+                                    <input id="btnCancel" class="btn crud-submit btn-danger" type="button" value="Cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hide">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="productJqxgrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/distadmin/js/AppAdmin/Masters/JobMaster.js?_=@DateTime.Now.Ticks"></script>

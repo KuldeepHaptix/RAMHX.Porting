@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+
+<section class="content-header">
+    <h1>
+        SMS History
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#">SMS</a></li>
+        <li><a href="#">SMS History</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="col-lg-4">
+                        <button type="button" class="btn btn-default " id="ViewSMSHistorydaterange-btn">
+                            <span>
+                                <i class="fa fa-calendar"></i> Select Date
+                            </span>
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                    </div>
+                    <div class="col-lg-4">
+                        <input class="btn" type="button" id="btnSMSHistory" value="View SMS History" />
+                        <input type="hidden" id="ViewSMSHistoryhdnDates" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+
+                    <div>&nbsp;</div>
+                    <div id='jqxWidget'>
+                        <div id="smsJqxgrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/distadmin/js/AppAdmin/Masters/SMSHistory.js?_=@DateTime.Now.Ticks"></script>

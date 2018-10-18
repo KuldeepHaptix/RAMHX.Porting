@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RAMHX.CMS.DataAccessCore.Extension
 {
-    class TemplateFieldsModel
+    public class TemplateFieldsModel
     {
         public Guid TemplateId { get; set; }
 
